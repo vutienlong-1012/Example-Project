@@ -18,33 +18,28 @@ namespace VTLTools.UIAnimation
         {
             get
             {
-                if (rectTransform == null)
+                if (rectTransform is null)
                     rectTransform = GetComponent<RectTransform>();
                 return rectTransform;
             }
         }
 
-        public override void StartShow()
+        public override void SetShowTween()
         {
-            if (!this.gameObject.activeSelf)
-                return;
-            ThisRectTransform.localScale = hideScale;
-            ThisRectTransform.DOScale(showScale, timeShow).SetEase(easeShow).SetDelay(delayShow);
+            ShowTween = ThisRectTransform.DOScale(showScale, timeShow).SetEase(easeShow).SetDelay(delayShow);
         }
 
-        public override void StartHide()
+        public override void SetHideTween()
         {
-            if (!this.gameObject.activeSelf)
-                return;
-            ThisRectTransform.DOScale(hideScale, timeHide).SetEase(easeHide).SetDelay(delayHide);
+            HideTween = ThisRectTransform.DOScale(hideScale, timeHide).SetEase(easeHide).SetDelay(delayHide);
         }
 
-        public override void PreviewHide()
+        public override void HideImidiatly()
         {
             ThisRectTransform.localScale = hideScale;
         }
 
-        public override void PreviewShow()
+        public override void ShowImnidiately()
         {
             ThisRectTransform.localScale = showScale;
         }

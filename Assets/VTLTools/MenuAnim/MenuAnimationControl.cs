@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -8,14 +9,10 @@ namespace VTLTools.UIAnimation
 {
     public class MenuAnimationControl : MonoBehaviour
     {
-        [TableMatrix]
-        public List<MenuItem> menuItems;
+        [SerializeField] List<MenuItem> menuItems;
 
-        //[ShowInInspector]
-        //public bool IsShow
-        //{
-        //    get => this.gameObject.activeSelf;
-        //}
+        Sequence showSequence;
+        Sequence hideSequence;
 
         [ShowInInspector, ReadOnly]
         public MenuItemState ThisMenuItemState
@@ -24,47 +21,51 @@ namespace VTLTools.UIAnimation
             protected set;
         }
 
-        public void StartShow(float _delay, Action _onShowStarted, Action _onShowCompleted)
+        private void Start()
         {
-            StartCoroutine(IEStarShow(_delay, _onShowStarted, _onShowCompleted));
+            SetShowSequence();
+            SetHideSequence();
         }
-        IEnumerator IEStarShow(float _delay, Action _onShowStarted, Action _onShowCompleted)
+
+        public void StartShow(float _delay, Action _onShowStarted, Action _onShowCompleted)
         {
             ThisMenuItemState = MenuItemState.Showing;
 
             _onShowStarted.Invoke();
-            yield return new WaitForSeconds(_delay);
-            foreach (var _item in menuItems)
+            showSequence.Play().SetDelay(_delay).OnComplete(() =>
             {
-                _item.StartShow();
-            }
-            yield return new WaitForSeconds(GetLongestAnimationTime(true));
-            _onShowCompleted.Invoke();
-
-            ThisMenuItemState = MenuItemState.Showed;
+                _onShowCompleted.Invoke();
+                ThisMenuItemState = MenuItemState.Showed;
+            });
         }
+
         public void StartHide(float _delay, Action _onHideStarted, Action _onHideCompleted)
-        {
-            StartCoroutine(IEStartHide(_delay, _onHideStarted, _onHideCompleted));
-
-        }
-        IEnumerator IEStartHide(float _delay, Action _onHideStarted, Action _onHideCompleted)
         {
             ThisMenuItemState = MenuItemState.Hiding;
 
             _onHideStarted.Invoke();
-            yield return new WaitForSeconds(_delay);
+            showSequence.Play().SetDelay(_delay).OnComplete(() =>
+            {
+                _onHideCompleted.Invoke();
+                ThisMenuItemState = MenuItemState.Hidden;
+            });
+        }
+
+        void SetShowSequence()
+        {
             foreach (var _item in menuItems)
             {
-                _item.StartHide();
+                showSequence.Join(_item.ShowTween);
             }
-            yield return new WaitForSeconds(GetLongestAnimationTime(false));
-            _onHideCompleted.Invoke();
-
-            ThisMenuItemState = MenuItemState.Hidden;
         }
-     
 
+        void SetHideSequence()
+        {
+            foreach (var _item in menuItems)
+            {
+                hideSequence.Join(_item.HideTween);
+            }
+        }
 
         [Button]
         public void GetAllMenuItem()
@@ -72,9 +73,5 @@ namespace VTLTools.UIAnimation
             menuItems.Clear();
             menuItems = Helpers.GetAllChildsComponent<MenuItem>(this.transform);
         }
-
-
-
-        //asdas
     }
 }

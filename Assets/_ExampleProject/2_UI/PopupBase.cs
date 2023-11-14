@@ -62,14 +62,6 @@ namespace ExampleProject.UI
         {
             this.actionOnCompleteShow?.Invoke();
         }
-        [Button, BoxGroup("UI preview")]
-        public void PreviewShow()
-        {
-            foreach (var _item in ThisMenuAnimationControl.menuItems)
-            {
-                _item.PreviewShow();
-            }
-        }
 
         #endregion
 
@@ -97,14 +89,6 @@ namespace ExampleProject.UI
         {
             this.actionOnCompleteHide?.Invoke();
             this.gameObject.SetActive(false);
-        }
-        [Button, BoxGroup("UI preview")]
-        public void PreviewHide()
-        {
-            foreach (var _item in ThisMenuAnimationControl.menuItems)
-            {
-                _item.PreviewHide();
-            }
         }
         #endregion
 

@@ -18,34 +18,28 @@ namespace VTLTools.UIAnimation
         {
             get
             {
-                if (rectTransform == null)
+                if (rectTransform is null)
                     rectTransform = GetComponent<RectTransform>();
                 return rectTransform;
             }
         }
 
-        public override void StartShow()
+        public override void SetShowTween()
         {
-            if (!this.gameObject.activeSelf)
-                return;
-            ThisRectTransform.anchoredPosition = hidePos;
-            ThisRectTransform.DOAnchorPos(showPos, timeShow).SetEase(easeShow).SetDelay(delayShow);
-
+            ShowTween = ThisRectTransform.DOAnchorPos(showPos, timeShow).SetEase(easeShow).SetDelay(delayShow);
         }
 
-        public override void StartHide()
+        public override void SetHideTween()
         {
-            if (!this.gameObject.activeSelf)
-                return;
-            ThisRectTransform.DOAnchorPos(hidePos, timeHide).SetEase(easeHide).SetDelay(delayHide);
+            HideTween = ThisRectTransform.DOAnchorPos(hidePos, timeHide).SetEase(easeHide).SetDelay(delayHide);
         }
 
-        public override void PreviewHide()
+        public override void HideImidiatly()
         {
             ThisRectTransform.anchoredPosition = hidePos;
         }
 
-        public override void PreviewShow()
+        public override void ShowImnidiately()
         {
             ThisRectTransform.anchoredPosition = showPos;
         }

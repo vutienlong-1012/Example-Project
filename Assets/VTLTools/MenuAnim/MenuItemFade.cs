@@ -19,40 +19,37 @@ namespace VTLTools.UIAnimation
         {
             get
             {
-                if (image == null)
-
+                if (image is null)
                     image = GetComponent<Image>();
                 return image;
             }
         }
 
-        public override void StartShow()
-        {
-            if (!this.gameObject.activeSelf)
-                return;
-
-            Color _tempColor = ThisImage.color;
-            _tempColor.a = hideAlpha;
-            ThisImage.color = _tempColor;
-
-            ThisImage.DOFade(showAlpha, timeShow).SetEase(easeShow).SetDelay(delayShow);
+        private void Start()
+        { 
+            SetShowTween();
+            SetHideTween();
         }
 
-        public override void StartHide()
+        public override void SetShowTween()
         {
-            if (!this.gameObject.activeSelf)
-                return;
-            ThisImage.DOFade(hideAlpha, timeHide).SetEase(easeHide).SetDelay(delayHide);
+            ShowTween = ThisImage.DOFade(showAlpha, timeShow).SetEase(easeShow).SetDelay(delayShow);
         }
 
-        public override void PreviewHide()
+        public override void SetHideTween()
+        {
+
+            HideTween = ThisImage.DOFade(hideAlpha, timeHide).SetEase(easeHide).SetDelay(delayHide);
+        }
+
+        public override void HideImidiatly()
         {
             Color _tempColor = ThisImage.color;
             _tempColor.a = hideAlpha;
             ThisImage.color = _tempColor;
         }
 
-        public override void PreviewShow()
+        public override void ShowImnidiately()
         {
             Color _tempColor = ThisImage.color;
             _tempColor.a = showAlpha;
