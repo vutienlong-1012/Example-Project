@@ -8,84 +8,65 @@ namespace VTLTools.UIAnimation
 {
     public class MenuItemFade : MenuItem
     {
-        [Button, BoxGroup("Tween setting")] public float showAlpha;
-        [Button, BoxGroup("Tween setting")] public float hideAlpha;
-        [Button, BoxGroup("Tween setting")] public Ease easeShow = Ease.Linear;
-        [Button, BoxGroup("Tween setting")] public Ease easeHide = Ease.Linear;
-        private Image thisImage
+        [Button, BoxGroup("Tween setting"), SerializeField] float showAlpha;
+        [Button, BoxGroup("Tween setting"), SerializeField] float hideAlpha;
+        [Button, BoxGroup("Tween setting"), SerializeField] Ease easeShow = Ease.Linear;
+        [Button, BoxGroup("Tween setting"), SerializeField] Ease easeHide = Ease.Linear;
+
+        Image image;
+        [ShowInInspector]
+        Image ThisImage
         {
             get
             {
-                return GetComponent<Image>();
+                if (image == null)
+
+                    image = GetComponent<Image>();
+                return image;
             }
         }
 
         public override void StartShow()
         {
-            if (this.gameObject.activeSelf)
-                StartCoroutine(IEStartShow());
-        }
+            if (!this.gameObject.activeSelf)
+                return;
 
-        public override IEnumerator IEStartShow()
-        {
-            ThisMenuItemState = MenuItemState.Showing;
-
-            Color _tempColor = thisImage.color;
+            Color _tempColor = ThisImage.color;
             _tempColor.a = hideAlpha;
-            thisImage.color = _tempColor;
+            ThisImage.color = _tempColor;
 
-            yield return new WaitForSeconds(DelayShow);
-            thisImage.DOFade(showAlpha, TimeShow).SetEase(easeShow).OnComplete(() =>
-            {
-                ThisMenuItemState = MenuItemState.Showed;
-
-            });
+            ThisImage.DOFade(showAlpha, timeShow).SetEase(easeShow).SetDelay(delayShow);
         }
 
         public override void StartHide()
         {
-            if (this.gameObject.activeSelf)
-                StartCoroutine(IEStartHide());
-        }
-
-        public override IEnumerator IEStartHide()
-        {
-            ThisMenuItemState = MenuItemState.Hiding;
-
-            yield return new WaitForSeconds(DelayHide);
-            thisImage.DOFade(hideAlpha, TimeHide).SetEase(easeHide).OnComplete(() =>
-            {
-                ThisMenuItemState = MenuItemState.Hidden;
-            });
-
+            if (!this.gameObject.activeSelf)
+                return;
+            ThisImage.DOFade(hideAlpha, timeHide).SetEase(easeHide).SetDelay(delayHide);
         }
 
         public override void PreviewHide()
         {
-            Color _tempColor = thisImage.color;
+            Color _tempColor = ThisImage.color;
             _tempColor.a = hideAlpha;
-            thisImage.color = _tempColor;
-
-            ThisMenuItemState = MenuItemState.Hidden;
+            ThisImage.color = _tempColor;
         }
 
         public override void PreviewShow()
         {
-            Color _tempColor = thisImage.color;
+            Color _tempColor = ThisImage.color;
             _tempColor.a = showAlpha;
-            thisImage.color = _tempColor;
-
-            ThisMenuItemState = MenuItemState.Showed;
+            ThisImage.color = _tempColor;
         }
 
         public override void SetThisAsShow()
         {
-            showAlpha = thisImage.color.a;
+            showAlpha = ThisImage.color.a;
         }
 
         public override void SetThisAsHide()
         {
-            hideAlpha = thisImage.color.a;
+            hideAlpha = ThisImage.color.a;
         }
     }
 }

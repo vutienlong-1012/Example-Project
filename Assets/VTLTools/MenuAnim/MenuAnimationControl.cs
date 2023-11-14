@@ -63,25 +63,7 @@ namespace VTLTools.UIAnimation
 
             ThisMenuItemState = MenuItemState.Hidden;
         }
-
-        float GetLongestAnimationTime(bool _isShowTime)
-        {
-            float _temp = 0;
-            foreach (var _item in menuItems)
-            {
-                if (_isShowTime)
-                {
-                    if ((_item.DelayShow + _item.TimeShow) > _temp)
-                        _temp = _item.DelayShow + _item.TimeShow;
-                }
-                else
-                {
-                    if ((_item.DelayHide + _item.TimeHide) > _temp)
-                        _temp = _item.DelayHide + _item.TimeHide;
-                }
-            }
-            return _temp;
-        }
+     
 
 
         [Button]

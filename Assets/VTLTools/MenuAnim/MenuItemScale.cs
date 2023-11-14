@@ -7,62 +7,46 @@ namespace VTLTools.UIAnimation
 {
     public class MenuItemScale : MenuItem
     {
-        [Button, BoxGroup("Tween setting")] public Vector3 showScale;
-        [Button, BoxGroup("Tween setting")] public Vector3 hideScale;
-        [Button, BoxGroup("Tween setting")] public AnimationCurve easeShow;
-        [Button, BoxGroup("Tween setting")] public AnimationCurve easeHide;
+        [Button, BoxGroup("Tween setting"), SerializeField] Vector3 showScale;
+        [Button, BoxGroup("Tween setting"), SerializeField] Vector3 hideScale;
+        [Button, BoxGroup("Tween setting"), SerializeField] AnimationCurve easeShow;
+        [Button, BoxGroup("Tween setting"), SerializeField] AnimationCurve easeHide;
 
-        private RectTransform ThisRectTransform
+        RectTransform rectTransform;
+        [ShowInInspector]
+        RectTransform ThisRectTransform
         {
             get
             {
-                return GetComponent<RectTransform>();
+                if (rectTransform == null)
+                    rectTransform = GetComponent<RectTransform>();
+                return rectTransform;
             }
         }
 
         public override void StartShow()
         {
-            StartCoroutine(IEStartShow());
-        }
-
-        public override IEnumerator IEStartShow()
-        {
-            ThisMenuItemState = MenuItemState.Showing;
-
+            if (!this.gameObject.activeSelf)
+                return;
             ThisRectTransform.localScale = hideScale;
-            yield return new WaitForSeconds(DelayShow);
-            ThisRectTransform.DOScale(showScale, TimeShow).SetEase(easeShow).OnComplete(() =>
-            {
-                ThisMenuItemState = MenuItemState.Showed;
-            });
+            ThisRectTransform.DOScale(showScale, timeShow).SetEase(easeShow).SetDelay(delayShow);
         }
 
         public override void StartHide()
         {
-            StartCoroutine(IEStartHide());
-        }
-
-        public override IEnumerator IEStartHide()
-        {
-            ThisMenuItemState = MenuItemState.Hiding;
-
-            yield return new WaitForSeconds(DelayHide);
-            ThisRectTransform.DOScale(hideScale, TimeHide).SetEase(easeHide).OnComplete(() =>
-            {
-                ThisMenuItemState = MenuItemState.Hidden;
-            });
+            if (!this.gameObject.activeSelf)
+                return;
+            ThisRectTransform.DOScale(hideScale, timeHide).SetEase(easeHide).SetDelay(delayHide);
         }
 
         public override void PreviewHide()
         {
             ThisRectTransform.localScale = hideScale;
-            ThisMenuItemState = MenuItemState.Hidden;
         }
 
         public override void PreviewShow()
         {
             ThisRectTransform.localScale = showScale;
-            ThisMenuItemState = MenuItemState.Showed;
         }
 
         public override void SetThisAsShow()

@@ -7,65 +7,47 @@ namespace VTLTools.UIAnimation
 {
     public class MenuItemMove : MenuItem
     {
-        [Button, BoxGroup("Tween setting")] public Vector3 showPos;
-        [Button, BoxGroup("Tween setting")] public Vector3 hidePos;
-        [Button, BoxGroup("Tween setting")] public Ease easeShow = Ease.Linear;
-        [Button, BoxGroup("Tween setting")] public Ease easeHide = Ease.Linear;
+        [Button, BoxGroup("Tween setting"), SerializeField] Vector3 showPos;
+        [Button, BoxGroup("Tween setting"), SerializeField] Vector3 hidePos;
+        [Button, BoxGroup("Tween setting"), SerializeField] Ease easeShow = Ease.Linear;
+        [Button, BoxGroup("Tween setting"), SerializeField] Ease easeHide = Ease.Linear;
 
-        private RectTransform ThisRectTransform
+        RectTransform rectTransform;
+        [ShowInInspector]
+        RectTransform ThisRectTransform
         {
             get
             {
-                return GetComponent<RectTransform>();
+                if (rectTransform == null)
+                    rectTransform = GetComponent<RectTransform>();
+                return rectTransform;
             }
         }
 
         public override void StartShow()
         {
-            if (this.gameObject.activeSelf)
-                StartCoroutine(IEStartShow());
-        }
-
-        public override IEnumerator IEStartShow()
-        {
-            ThisMenuItemState = MenuItemState.Showing;
-
+            if (!this.gameObject.activeSelf)
+                return;
             ThisRectTransform.anchoredPosition = hidePos;
-            yield return new WaitForSeconds(DelayShow);
-            ThisRectTransform.DOAnchorPos(showPos, TimeShow).SetEase(easeShow).OnComplete(() =>
-            {
-                ThisMenuItemState = MenuItemState.Showed;
-            });
+            ThisRectTransform.DOAnchorPos(showPos, timeShow).SetEase(easeShow).SetDelay(delayShow);
 
         }
 
         public override void StartHide()
         {
-            if (this.gameObject.activeSelf)
-                StartCoroutine(IEStartHide());
-        }
-
-        public override IEnumerator IEStartHide()
-        {
-            ThisMenuItemState = MenuItemState.Hiding;
-
-            yield return new WaitForSeconds(DelayHide);
-            ThisRectTransform.DOAnchorPos(hidePos, TimeHide).SetEase(easeHide).OnComplete(() =>
-            {
-                ThisMenuItemState = MenuItemState.Hidden;
-            });
+            if (!this.gameObject.activeSelf)
+                return;
+            ThisRectTransform.DOAnchorPos(hidePos, timeHide).SetEase(easeHide).SetDelay(delayHide);
         }
 
         public override void PreviewHide()
         {
             ThisRectTransform.anchoredPosition = hidePos;
-            ThisMenuItemState = MenuItemState.Hidden;
         }
 
         public override void PreviewShow()
         {
             ThisRectTransform.anchoredPosition = showPos;
-            ThisMenuItemState = MenuItemState.Showed;
         }
 
         public override void SetThisAsShow()
