@@ -26,30 +26,30 @@ namespace VTLTools.UIAnimation
         }
 
         private void Start()
-        { 
-            SetShowTween();
-            SetHideTween();
-        }
-
-        public override void SetShowTween()
         {
-            ShowTween = ThisImage.DOFade(showAlpha, timeShow).SetEase(easeShow).SetDelay(delayShow);
+            GetShowTween();
+            GetHideTween();
         }
 
-        public override void SetHideTween()
+        public override Tween GetShowTween()
+        {
+            return ShowTween = ThisImage.DOFade(showAlpha, timeShow).SetEase(easeShow).SetDelay(delayShow);
+        }
+
+        public override Tween GetHideTween()
         {
 
-            HideTween = ThisImage.DOFade(hideAlpha, timeHide).SetEase(easeHide).SetDelay(delayHide);
+            return HideTween = ThisImage.DOFade(hideAlpha, timeHide).SetEase(easeHide).SetDelay(delayHide);
         }
 
-        public override void HideImidiatly()
+        public override void HideImmediately()
         {
             Color _tempColor = ThisImage.color;
             _tempColor.a = hideAlpha;
             ThisImage.color = _tempColor;
         }
 
-        public override void ShowImnidiately()
+        public override void ShowImmediately()
         {
             Color _tempColor = ThisImage.color;
             _tempColor.a = showAlpha;

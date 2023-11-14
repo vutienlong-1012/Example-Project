@@ -24,22 +24,23 @@ namespace VTLTools.UIAnimation
             }
         }
 
-        public override void SetShowTween()
+        public override Tween GetShowTween()
         {
             ShowTween = ThisRectTransform.DOAnchorPos(showPos, timeShow).SetEase(easeShow).SetDelay(delayShow);
+            return ShowTween;
         }
 
-        public override void SetHideTween()
+        public override Tween GetHideTween()
         {
-            HideTween = ThisRectTransform.DOAnchorPos(hidePos, timeHide).SetEase(easeHide).SetDelay(delayHide);
+            return HideTween = ThisRectTransform.DOAnchorPos(hidePos, timeHide).SetEase(easeHide).SetDelay(delayHide);
         }
 
-        public override void HideImidiatly()
+        public override void HideImmediately()
         {
             ThisRectTransform.anchoredPosition = hidePos;
         }
 
-        public override void ShowImnidiately()
+        public override void ShowImmediately()
         {
             ThisRectTransform.anchoredPosition = showPos;
         }

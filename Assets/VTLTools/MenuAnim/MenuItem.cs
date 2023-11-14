@@ -23,8 +23,8 @@ namespace VTLTools.UIAnimation
             protected set;
         }
 
-        public abstract void SetShowTween();
-        public abstract void SetHideTween();
+        public abstract Tween GetShowTween();
+        public abstract Tween GetHideTween();
 
         [Button, BoxGroup("Set Position")]
         public abstract void SetThisAsShow();
@@ -33,10 +33,10 @@ namespace VTLTools.UIAnimation
         public abstract void SetThisAsHide();
 
         [Button, BoxGroup("Preview Position")]
-        public abstract void ShowImnidiately();
+        public abstract void ShowImmediately();
 
         [Button, BoxGroup("Preview Position")]
-        public abstract void HideImidiatly();
+        public abstract void HideImmediately();
 
     }
 

@@ -20,14 +20,4 @@ namespace VTLTools
         Win,
         Retry,
     }
-
-    public enum MenuItemState
-    {
-        None,
-        Showing,
-        Showed,
-        Hiding,
-        Hidden,
-    }
-
 }

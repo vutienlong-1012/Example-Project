@@ -283,10 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfe44d6916deb54eb7c6771514ea31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayShow: 0
-  DelayHide: 0
-  TimeShow: 0.3
-  TimeHide: 0.3
   showPos: {x: 0, y: -49.9, z: 0}
   hidePos: {x: 0, y: -679, z: 0}
   easeShow: 1
@@ -456,18 +452,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5212681137052145824}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &268562550 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5212681137231645275, guid: e9b029f5a022d034dbba585a2e210fbb,
-    type: 3}
-  m_PrefabInstance: {fileID: 5212681137052145824}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268562548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &268562552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,7 +489,7 @@ MonoBehaviour:
   mGUI_ShowReferences: 0
   mGUI_ShowTems: 1
   mGUI_ShowCallback: 0
-  mLocalizeTarget: {fileID: 596885371}
+  mLocalizeTarget: {fileID: 0}
   mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1001 &271819926
 PrefabInstance:
@@ -720,14 +704,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4853ceb94269485488a8a697494735dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayShow: 0
-  DelayHide: 0
-  TimeShow: 0.5
-  TimeHide: 0.5
   showScale: {x: 1, y: 1, z: 1}
   hideScale: {x: 0, y: 0, z: 0}
-  easeShow: 1
-  easeHide: 1
+  easeShow:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  easeHide:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,7 +1382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -211, y: -61}
+  m_AnchoredPosition: {x: 56, y: -61}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &576696974
@@ -1407,10 +1397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfe44d6916deb54eb7c6771514ea31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayShow: 0
-  DelayHide: 0
-  TimeShow: 0.5
-  TimeHide: 0.5
   showPos: {x: 56, y: -61, z: 0}
   hidePos: {x: -211, y: -61, z: 0}
   easeShow: 1
@@ -1497,19 +1483,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576696972}
   m_CullTransparentMesh: 1
---- !u!114 &596885371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 332e36893e7cf4a49b3c1f72f76cd5e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mTarget: {fileID: 268562550}
 --- !u!1 &648841461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4660142118907719945, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
@@ -1735,10 +1708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfe44d6916deb54eb7c6771514ea31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayShow: 0
-  DelayHide: 0
-  TimeShow: 0.3
-  TimeHide: 0.3
   showPos: {x: 0, y: -510, z: 0}
   hidePos: {x: 582, y: -342, z: 0}
   easeShow: 1
@@ -1767,7 +1736,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832575517}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -2977,10 +2946,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfe44d6916deb54eb7c6771514ea31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayShow: 0
-  DelayHide: 0
-  TimeShow: 0.3
-  TimeHide: 0.3
   showPos: {x: 0, y: -355, z: 0}
   hidePos: {x: 464, y: 214, z: 0}
   easeShow: 1
@@ -3657,10 +3622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfe44d6916deb54eb7c6771514ea31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayShow: 0
-  DelayHide: 0
-  TimeShow: 0.3
-  TimeHide: 0.3
   showPos: {x: 0, y: -310, z: 0}
   hidePos: {x: 0, y: -698, z: 0}
   easeShow: 1
@@ -4285,10 +4246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfe44d6916deb54eb7c6771514ea31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayShow: 0
-  DelayHide: 0
-  TimeShow: 0.3
-  TimeHide: 0.3
   showPos: {x: 0, y: -205, z: 0}
   hidePos: {x: 0, y: 200, z: 0}
   easeShow: 1

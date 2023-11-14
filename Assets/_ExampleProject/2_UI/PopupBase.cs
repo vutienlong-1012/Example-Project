@@ -8,31 +8,35 @@ using VTLTools;
 
 namespace ExampleProject.UI
 {
+    [RequireComponent(typeof(MenuAnimationControl))]
     public class PopupBase : MonoBehaviour
     {
-        [SerializeField, BoxGroup("Popup Reference")] protected Button closeButton;
-        private MenuAnimationControl menuAnimationControl;
+        [SerializeField, BoxGroup("Popup Reference")]
+        protected Button closeButton;
+        protected Action actionOnStartShow, actionOnCompleteShow, actionOnStartHide, actionOnCompleteHide;
+        protected object data;
+
+        MenuAnimationControl menuAnimationControl;
         protected MenuAnimationControl ThisMenuAnimationControl
         {
             get
             {
-                if (menuAnimationControl == null)
+                if (menuAnimationControl is null)
                     menuAnimationControl = GetComponent<MenuAnimationControl>();
                 return menuAnimationControl;
             }
         }
-        protected System.Action actionOnStartShow, actionOnCompleteShow, actionOnStartHide, actionOnCompleteHide;
-        protected object data;
+
         public bool IsShow
         {
             get
             {
-                return ThisMenuAnimationControl.ThisMenuItemState == MenuItemState.Showing || ThisMenuAnimationControl.ThisMenuItemState == MenuItemState.Showed;
+                return ThisMenuAnimationControl.MenuItemState == MenuItemState.Showing || ThisMenuAnimationControl.MenuItemState == MenuItemState.Showed;
             }
         }
 
         #region SHOW
-        public virtual void Show(object _data = null, float _delay = 0f, Action _actionOnStartShow = null, Action _actionOnCompleteShow = null, Action _actionOnStartHide = null, Action _actionOnCompleteHide = null)
+        public virtual void Show(object _data = null, bool _isDoAnimation = true, float _delay = 0f, Action _actionOnStartShow = null, Action _actionOnCompleteShow = null, Action _actionOnStartHide = null, Action _actionOnCompleteHide = null)
         {
             this.data = _data;
             this.actionOnStartShow = _actionOnStartShow;
@@ -42,20 +46,19 @@ namespace ExampleProject.UI
             this.Init();
 
             ButtonAddListener();
-            if (ThisMenuAnimationControl == null)
+            if (_isDoAnimation is false)
             {
-                this.gameObject.SetActive(true);
                 OnShowStarted();
                 OnShowCompleted();
             }
             else
             {
-                this.gameObject.SetActive(true);
                 ThisMenuAnimationControl.StartShow(_delay, _onShowStarted: OnShowStarted, _onShowCompleted: OnShowCompleted);
             }
         }
         protected virtual void OnShowStarted()
         {
+            this.gameObject.SetActive(true);
             this.actionOnStartShow?.Invoke();
         }
         protected virtual void OnShowCompleted()
@@ -98,17 +101,18 @@ namespace ExampleProject.UI
         }
         protected virtual void ButtonAddListener()
         {
-            closeButton?.onClick.AddListener(OnCloseClick);
+            closeButton?.onClick.AddListener(OnClickCloseListenerMethod);
         }
         protected virtual void ButtonRemoveListener()
         {
-            closeButton?.onClick.RemoveListener(OnCloseClick);
+            closeButton?.onClick.RemoveListener(OnClickCloseListenerMethod);
         }
-        protected virtual void OnCloseClick()
+        protected virtual void OnClickCloseListenerMethod()
         {
             if (!IsShow)
                 return;
             this.Hide();
         }
     }
+
 }

@@ -15,55 +15,57 @@ namespace VTLTools.UIAnimation
         Sequence hideSequence;
 
         [ShowInInspector, ReadOnly]
-        public MenuItemState ThisMenuItemState
+        public MenuItemState MenuItemState
         {
             get;
-            protected set;
+            private set;
         }
 
         private void Start()
         {
-            SetShowSequence();
-            SetHideSequence();
+
+            // SetHideSequence();
         }
 
         public void StartShow(float _delay, Action _onShowStarted, Action _onShowCompleted)
         {
-            ThisMenuItemState = MenuItemState.Showing;
-
+            SetShowSequence();
+            MenuItemState = MenuItemState.Showing;
             _onShowStarted.Invoke();
             showSequence.Play().SetDelay(_delay).OnComplete(() =>
             {
                 _onShowCompleted.Invoke();
-                ThisMenuItemState = MenuItemState.Showed;
+                MenuItemState = MenuItemState.Showed;
             });
         }
 
         public void StartHide(float _delay, Action _onHideStarted, Action _onHideCompleted)
         {
-            ThisMenuItemState = MenuItemState.Hiding;
+            MenuItemState = MenuItemState.Hiding;
 
             _onHideStarted.Invoke();
             showSequence.Play().SetDelay(_delay).OnComplete(() =>
             {
                 _onHideCompleted.Invoke();
-                ThisMenuItemState = MenuItemState.Hidden;
+                MenuItemState = MenuItemState.Hidden;
             });
         }
 
         void SetShowSequence()
         {
+            showSequence = DOTween.Sequence();
             foreach (var _item in menuItems)
             {
-                showSequence.Join(_item.ShowTween);
+                showSequence.Join(_item.GetShowTween());
             }
         }
 
         void SetHideSequence()
         {
+            hideSequence = DOTween.Sequence();
             foreach (var _item in menuItems)
             {
-                hideSequence.Join(_item.HideTween);
+                hideSequence.Join(_item.GetHideTween());
             }
         }
 
@@ -73,5 +75,15 @@ namespace VTLTools.UIAnimation
             menuItems.Clear();
             menuItems = Helpers.GetAllChildsComponent<MenuItem>(this.transform);
         }
+    }
+
+
+    public enum MenuItemState
+    {
+        None,
+        Showing,
+        Showed,
+        Hiding,
+        Hidden,
     }
 }
