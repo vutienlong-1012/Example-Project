@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 17
+  controlID: 121
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 135
+  controlID: 32
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 0
-  controlID: 141
+  controlID: 31
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 140
+  controlID: 120
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -505,7 +505,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2cfbffff
+      m_ExpandedIDs: f8b7ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -613,38 +613,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_ExampleProject
-    - Assets/CrystalFramework
-    - Assets/I2
-    - Assets/NiceVibrations
-    - Assets/Plugins
-    - Assets/Resources
-    - Assets/Settings
-    - Assets/TrashStuff
-    - Assets/VTLTools
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/_ExampleProject
-  - Assets/CrystalFramework
-  - Assets/I2
-  - Assets/NiceVibrations
-  - Assets/Plugins
-  - Assets/Resources
-  - Assets/Settings
-  - Assets/TrashStuff
-  - Assets/VTLTools
+  - Assets
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: D:\Unity Productions\Projects\Example Project
+  m_LastProjectPath: D:\Softwares\Unity Productions\Projects\vutienlong-1012\Example-Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9c6d00009e6d0000a06d0000a26d0000a46d0000a66d0000a86d0000aa6d0000ac6d0000
-    m_LastClickedID: 28062
-    m_ExpandedIDs: 00000000846d0000866d0000886d00008a6d00008c6d00008e6d0000906d0000926d0000946d0000966d000000ca9a3b
+    m_SelectedIDs: f8c00000
+    m_LastClickedID: 49400
+    m_ExpandedIDs: 00000000f8c0000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -672,7 +656,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000846d0000866d0000886d00008a6d00008c6d00008e6d0000906d0000926d0000946d0000966d0000
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

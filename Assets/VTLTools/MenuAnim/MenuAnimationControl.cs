@@ -90,5 +90,9 @@ namespace VTLTools.UIAnimation
             menuItems.Clear();
             menuItems = Helpers.GetAllChildsComponent<MenuItem>(this.transform);
         }
+
+
+
+        //asdas
     }
 }
