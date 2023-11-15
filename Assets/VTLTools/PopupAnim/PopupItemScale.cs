@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace VTLTools.UIAnimation
 {
-    public class MenuItemScale : MenuItem
+    public class PopupItemScale : PopupItem
     {
         [Button, BoxGroup("Tween setting"), SerializeField] Vector3 showScale;
         [Button, BoxGroup("Tween setting"), SerializeField] Vector3 hideScale;
@@ -18,7 +18,7 @@ namespace VTLTools.UIAnimation
         {
             get
             {
-                if (rectTransform is null)
+                if (rectTransform == null)
                     rectTransform = GetComponent<RectTransform>();
                 return rectTransform;
             }

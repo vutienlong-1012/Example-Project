@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace VTLTools.UIAnimation
 {
-    public class MenuItemFade : MenuItem
+    public class PopupItemFade : PopupItem
     {
         [Button, BoxGroup("Tween setting"), SerializeField] float showAlpha;
         [Button, BoxGroup("Tween setting"), SerializeField] float hideAlpha;
@@ -19,16 +19,10 @@ namespace VTLTools.UIAnimation
         {
             get
             {
-                if (image is null)
+                if (image == null)
                     image = GetComponent<Image>();
                 return image;
             }
-        }
-
-        private void Start()
-        {
-            GetShowTween();
-            GetHideTween();
         }
 
         public override Tween GetShowTween()
@@ -38,7 +32,6 @@ namespace VTLTools.UIAnimation
 
         public override Tween GetHideTween()
         {
-
             return HideTween = ThisImage.DOFade(hideAlpha, timeHide).SetEase(easeHide).SetDelay(delayHide);
         }
 

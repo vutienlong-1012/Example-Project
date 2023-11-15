@@ -24,15 +24,15 @@ namespace ExampleProject.UI
 
         void SettingButtonOnClick()
         {
-            //UIManager.Instance.settingPopup.Show(
-            //                                    _data: null,
-            //                                    _isDoAnimation: true,
-            //                                    _delay: 0,
-            //                                    _actionOnStartShow: () => UIManager.Instance.homePopup.Hide(),
-            //                                    _actionOnCompleteShow: null,
-            //                                    _actionOnStartHide: () => UIManager.Instance.homePopup.Show(),
-            //                                    _actionOnCompleteHide: null
-            //                                    );
+            UIManager.Instance.settingPopup.Show(
+                                                _data: null,
+                                                _isDoAnimation: true,
+                                                _delay: 0,
+                                                _actionOnStartShow: () => UIManager.Instance.homePopup.Hide(),
+                                                _actionOnCompleteShow: null,
+                                                _actionOnStartHide: () => UIManager.Instance.homePopup.Show(),
+                                                _actionOnCompleteHide: null
+                                                );
         }
     }
 }

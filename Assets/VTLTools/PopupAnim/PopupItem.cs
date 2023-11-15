@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace VTLTools.UIAnimation
 {
-    public abstract class MenuItem : MonoBehaviour
+    public abstract class PopupItem : MonoBehaviour
     {
         [Button, BoxGroup("Time setting")] protected float delayShow;
         [Button, BoxGroup("Time setting")] protected float delayHide;

@@ -15,7 +15,8 @@ namespace ExampleProject.UI
         {
             //homePopup.PreviewHide();
             //settingPopup.PreviewHide();
-            homePopup.Show();
+            //homePopup.Show();
+           homePopup.Show();
         }   
     }
 }

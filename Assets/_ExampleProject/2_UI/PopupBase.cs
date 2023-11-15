@@ -8,64 +8,49 @@ using VTLTools;
 
 namespace ExampleProject.UI
 {
-    [RequireComponent(typeof(MenuAnimationControl))]
+    [RequireComponent(typeof(PopupAnimationControl))]
     public class PopupBase : MonoBehaviour
     {
         [SerializeField, BoxGroup("Popup Reference")]
         protected Button closeButton;
-        protected Action actionOnStartShow, actionOnCompleteShow, actionOnStartHide, actionOnCompleteHide;
+        //protected Action onStartShowAction, onCompleteShowAction, onStartHideAction, onCompleteHideAction;
+        protected Action onStartShowAction, onCompleteShowAction, onStartHideAction, onCompleteHideAction;
         protected object data;
 
-        MenuAnimationControl menuAnimationControl;
-        protected MenuAnimationControl ThisMenuAnimationControl
+        PopupAnimationControl menuAnimationControl;
+        protected PopupAnimationControl ThisMenuAnimationControl
         {
             get
             {
                 if (menuAnimationControl is null)
-                    menuAnimationControl = GetComponent<MenuAnimationControl>();
+                    menuAnimationControl = GetComponent<PopupAnimationControl>();
                 return menuAnimationControl;
             }
         }
 
-        public bool IsShow
-        {
-            get
-            {
-                return ThisMenuAnimationControl.MenuItemState == MenuItemState.Showing || ThisMenuAnimationControl.MenuItemState == MenuItemState.Showed;
-            }
-        }
+        public bool IsShow => this.gameObject.activeSelf;
 
         #region SHOW
         public virtual void Show(object _data = null, bool _isDoAnimation = true, float _delay = 0f, Action _actionOnStartShow = null, Action _actionOnCompleteShow = null, Action _actionOnStartHide = null, Action _actionOnCompleteHide = null)
         {
             this.data = _data;
-            this.actionOnStartShow = _actionOnStartShow;
-            this.actionOnCompleteShow = _actionOnCompleteShow;
-            this.actionOnStartHide = _actionOnStartHide;
-            this.actionOnCompleteHide = _actionOnCompleteHide;
-            this.Init();
+            this.onStartShowAction = _actionOnStartShow;
+            this.onCompleteShowAction = _actionOnCompleteShow;
+            this.onStartHideAction = _actionOnStartHide;
+            this.onCompleteHideAction = _actionOnCompleteHide;
 
             ButtonAddListener();
-            if (_isDoAnimation is false)
-            {
-                OnShowStarted();
-                OnShowCompleted();
-            }
-            else
-            {
-                ThisMenuAnimationControl.StartShow(_delay, _onShowStarted: OnShowStarted, _onShowCompleted: OnShowCompleted);
-            }
+            ThisMenuAnimationControl.StartShow(_isDoAnimation, _delay, _onShowStarted: OnShowStarted, _onShowCompleted: OnShowCompleted);
         }
         protected virtual void OnShowStarted()
         {
             this.gameObject.SetActive(true);
-            this.actionOnStartShow?.Invoke();
+            this.onStartShowAction?.Invoke();
         }
         protected virtual void OnShowCompleted()
         {
-            this.actionOnCompleteShow?.Invoke();
+            this.onCompleteShowAction?.Invoke();
         }
-
         #endregion
 
         #region HIDE
@@ -81,24 +66,20 @@ namespace ExampleProject.UI
             }
             else
             {
-                ThisMenuAnimationControl.StartHide(0f, _onHideStarted: OnHideStarted, _onHideCompleted: OnHideCompleted);
+                ThisMenuAnimationControl.StartHide(true, 0f, _onHideStarted: OnHideStarted, _onHideCompleted: OnHideCompleted);
             }
         }
         protected virtual void OnHideStarted()
         {
-            this.actionOnStartHide?.Invoke();
+            this.onStartHideAction?.Invoke();
         }
         protected virtual void OnHideCompleted()
         {
-            this.actionOnCompleteHide?.Invoke();
+            this.onCompleteHideAction?.Invoke();
             this.gameObject.SetActive(false);
         }
         #endregion
 
-        protected virtual void Init()
-        {
-
-        }
         protected virtual void ButtonAddListener()
         {
             closeButton?.onClick.AddListener(OnClickCloseListenerMethod);
@@ -114,5 +95,4 @@ namespace ExampleProject.UI
             this.Hide();
         }
     }
-
 }

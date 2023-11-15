@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace VTLTools.UIAnimation
 {
-    public class MenuItemMove : MenuItem
+    public class PopupItemMove : PopupItem
     {
         [Button, BoxGroup("Tween setting"), SerializeField] Vector3 showPos;
         [Button, BoxGroup("Tween setting"), SerializeField] Vector3 hidePos;
@@ -18,7 +18,7 @@ namespace VTLTools.UIAnimation
         {
             get
             {
-                if (rectTransform is null)
+                if (rectTransform == null)
                     rectTransform = GetComponent<RectTransform>();
                 return rectTransform;
             }
@@ -26,8 +26,7 @@ namespace VTLTools.UIAnimation
 
         public override Tween GetShowTween()
         {
-            ShowTween = ThisRectTransform.DOAnchorPos(showPos, timeShow).SetEase(easeShow).SetDelay(delayShow);
-            return ShowTween;
+            return ShowTween = ThisRectTransform.DOAnchorPos(showPos, timeShow).SetEase(easeShow).SetDelay(delayShow);
         }
 
         public override Tween GetHideTween()
