@@ -31,11 +31,11 @@ namespace VTLTools.UIAnimation
 
             SetShowSequence();
             CurrentPopupAnimState = PopupAnimState.Showing;
-            _onShowStarted.Invoke();
+            _onShowStarted?.Invoke();
 
             showSequence.Play().SetDelay(_delay).OnComplete(() =>
             {
-                _onShowCompleted.Invoke();
+                _onShowCompleted?.Invoke();
                 CurrentPopupAnimState = PopupAnimState.Showed;
             });
 
@@ -50,10 +50,10 @@ namespace VTLTools.UIAnimation
             SetHideSequence();
             CurrentPopupAnimState = PopupAnimState.Hiding;
 
-            _onHideStarted.Invoke();
+            _onHideStarted?.Invoke();
             hideSequence.Play().SetDelay(_delay).OnComplete(() =>
             {
-                _onHideCompleted.Invoke();
+                _onHideCompleted?.Invoke();
                 CurrentPopupAnimState = PopupAnimState.Hidden;
             });
 
