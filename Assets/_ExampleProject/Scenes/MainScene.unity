@@ -1964,7 +1964,7 @@ PrefabInstance:
     - target: {fileID: 2895193139184816141, guid: 7ccaa210207e86b46a784eb4b3aaede0,
         type: 3}
       propertyPath: popupItemList.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ccaa210207e86b46a784eb4b3aaede0, type: 3}
