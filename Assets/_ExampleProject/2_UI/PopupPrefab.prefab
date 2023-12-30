@@ -51,8 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b5c4bac2d34de46b986ccb99d8acc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsShow: 0
-  menuItems: []
+  popupItemList: []
 --- !u!1 &4660142118907719945
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,11 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06d48ac771c49b439cbfb7b24e7e79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsShow: 0
-  DelayShow: 0
-  DelayHide: 0
-  TimeShow: 0
-  TimeHide: 0
   showAlpha: 0
   hideAlpha: 0
   easeShow: 1
