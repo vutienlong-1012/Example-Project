@@ -11,7 +11,7 @@ namespace ExampleProject
     {
         public void PlayVibration()
         {
-            if (!StaticVariables.IsVibrationOn)
+            if (!UserDataManager.IsVibrationOn)
                 return;
             HapticPatterns.PlayPreset(HapticPatterns.PresetType.LightImpact);
         }
@@ -19,7 +19,7 @@ namespace ExampleProject
         [Button]
         public void ToggeVibration()
         {
-            StaticVariables.IsVibrationOn = !StaticVariables.IsVibrationOn;
+            UserDataManager.IsVibrationOn = !UserDataManager.IsVibrationOn;
         }
     }
 }

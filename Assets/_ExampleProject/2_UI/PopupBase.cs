@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VTLTools.UIAnimation;
 using VTLTools;
+using DG.Tweening;
 
 namespace ExampleProject.UI
 {
@@ -13,16 +14,16 @@ namespace ExampleProject.UI
     {
         [SerializeField, BoxGroup("Popup Reference")]
         protected Button closeButton;
-        //protected Action onStartShowAction, onCompleteShowAction, onStartHideAction, onCompleteHideAction;
-        protected Action onStartShowAction, onCompleteShowAction, onStartHideAction, onCompleteHideAction;
+        [ShowInInspector] protected Action onStartShowAction, onCompleteShowAction, onStartHideAction, onCompleteHideAction;
         protected object data;
 
         PopupAnimationControl menuAnimationControl;
+        [ShowInInspector]
         protected PopupAnimationControl ThisMenuAnimationControl
         {
             get
             {
-                if (menuAnimationControl is null)
+                if (menuAnimationControl == null)
                     menuAnimationControl = GetComponent<PopupAnimationControl>();
                 return menuAnimationControl;
             }
@@ -31,17 +32,42 @@ namespace ExampleProject.UI
         public bool IsShow => this.gameObject.activeSelf;
 
         #region SHOW
-        public virtual void Show(object _data = null, bool _isDoAnimation = true, float _delay = 0f, Action _actionOnStartShow = null, Action _actionOnCompleteShow = null, Action _actionOnStartHide = null, Action _actionOnCompleteHide = null)
+        public virtual void Show(bool _isDoAnimation = true, float _delay = 0f)
         {
-            this.data = _data;
-            this.onStartShowAction = _actionOnStartShow;
-            this.onCompleteShowAction = _actionOnCompleteShow;
-            this.onStartHideAction = _actionOnStartHide;
-            this.onCompleteHideAction = _actionOnCompleteHide;
-
             ButtonAddListener();
             ThisMenuAnimationControl.StartShow(_isDoAnimation, _delay, _onShowStarted: OnShowStarted, _onShowCompleted: OnShowCompleted);
         }
+
+        public PopupBase SetData(object _data)
+        {
+            this.data = _data;
+            return this;
+        }
+
+        public PopupBase SetOnStartShow(Action _actionOnStartShow)
+        {
+            this.onStartShowAction = _actionOnStartShow;
+            return this;
+        }
+
+        public PopupBase SetOnCompleteShow(Action _actionOnCompleteShow)
+        {
+            this.onCompleteShowAction = _actionOnCompleteShow;
+            return this;
+        }
+
+        public PopupBase SetOnStartHide(Action _actionOnStartHide)
+        {
+            this.onStartHideAction = _actionOnStartHide;
+            return this;
+        }
+
+        public PopupBase SetOnCompleteHide(Action _actionOnCompleteHide)
+        {
+            this.onCompleteHideAction = _actionOnCompleteHide;
+            return this;
+        }
+
         protected virtual void OnShowStarted()
         {
             this.gameObject.SetActive(true);
@@ -54,7 +80,7 @@ namespace ExampleProject.UI
         #endregion
 
         #region HIDE
-        public virtual void Hide()
+        public virtual void Hide(bool _isDoAnimation = true, float _delay = 0f)
         {
             if (!IsShow)
                 return;
@@ -66,7 +92,7 @@ namespace ExampleProject.UI
             }
             else
             {
-                ThisMenuAnimationControl.StartHide(true, 0f, _onHideStarted: OnHideStarted, _onHideCompleted: OnHideCompleted);
+                ThisMenuAnimationControl.StartHide(_isDoAnimation, _delay, _onHideStarted: OnHideStarted, _onHideCompleted: OnHideCompleted);
             }
         }
         protected virtual void OnHideStarted()
@@ -90,8 +116,6 @@ namespace ExampleProject.UI
         }
         protected virtual void OnClickCloseListenerMethod()
         {
-            if (!IsShow)
-                return;
             this.Hide();
         }
     }

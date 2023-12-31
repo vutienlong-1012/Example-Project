@@ -17,7 +17,7 @@ namespace ExampleProject
 
         public void ChangeLanguage(int _newLangIndex)
         {
-            StaticVariables.CurrentLanguage = AllLanguages[_newLangIndex];
+            UserDataManager.CurrentLanguage = AllLanguages[_newLangIndex];
         }
     }
 }

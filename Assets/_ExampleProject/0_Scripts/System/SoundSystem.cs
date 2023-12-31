@@ -13,7 +13,7 @@ namespace ExampleProject
         [SerializeField] AudioClip uIOnClickAudioClip;
         public void PlaySoundOneShot(AudioSource _audioSource, AudioClip _audioClip)
         {
-            if (!StaticVariables.IsSoundOn)
+            if (!UserDataManager.IsSoundOn)
                 return;
             else
                 _audioSource.PlayOneShot(_audioClip);
@@ -21,7 +21,7 @@ namespace ExampleProject
 
         public void PlaySoundOneShot(AudioSource _audioSource, AudioClip _audioClip, float _volume)
         {
-            if (!StaticVariables.IsSoundOn)
+            if (!UserDataManager.IsSoundOn)
                 return;
             else
                 _audioSource.PlayOneShot(_audioClip, _volume);
@@ -29,7 +29,7 @@ namespace ExampleProject
 
         public void PlayUIClick()
         {
-            if (!StaticVariables.IsSoundOn)
+            if (!UserDataManager.IsSoundOn)
                 return;
             else
                 uIAudioSource.PlayOneShot(uIOnClickAudioClip);
@@ -37,7 +37,7 @@ namespace ExampleProject
 
         public void ToggeSound()
         {
-            StaticVariables.IsSoundOn = !StaticVariables.IsSoundOn;
+            UserDataManager.IsSoundOn = !UserDataManager.IsSoundOn;
         }
     }
 }

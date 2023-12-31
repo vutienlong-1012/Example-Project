@@ -11,5 +11,7 @@ namespace VTLTools
         public static string PREF_IS_VIBRATION_ON = "PREF_IS_VIBRATION_ON";
 
         public static string RESOURCE_DATA_PATH = "Data/";
+
+        public static string PREF_USER_DATA = "PREF_USER_DATA";
     }
 }

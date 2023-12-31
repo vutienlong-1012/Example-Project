@@ -11,7 +11,7 @@ namespace ExampleProject.UI
         [SerializeField] Toggle musicToggle;
         private void OnEnable()
         {
-            musicToggle.isOn = StaticVariables.IsMusicOn;
+            musicToggle.isOn = UserDataManager.IsMusicOn;
             musicToggle.onValueChanged.AddListener(delegate
             {
                 MusicSystem.Instance.ToggeMusic();

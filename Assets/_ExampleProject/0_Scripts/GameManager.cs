@@ -1,4 +1,5 @@
 using ExampleProject.UI;
+using ExampleProject.Scene;
 using Sirenix.OdinInspector;
 using System.Collections;
 using VTLTools;
@@ -20,35 +21,17 @@ namespace ExampleProject
                 Debug.Log(State);
                 switch (_state)
                 {
-                    case GameState.ResetRound:
-                        HandleResetRound();
+                    case GameState.FakeLoadingMainScene:
+                        HandleFakeLoadingMainSceneState();
                         break;
-                    case GameState.Starting:
-                        HandleStartingState();
+                    case GameState.MainScene:
+                        HandleMainSceneState();
                         break;
-                    case GameState.Idle:
-                        HandleIdleState();
+                    case GameState.LoadingNewScene:
+                        HandleLoadingNewSceneState();
                         break;
-                    case GameState.ChoosingNode:
-                        HandleChoosingNodeState();
-                        break;
-                    case GameState.Run:
-                        HandleRunState();
-                        break;
-                    case GameState.Fight:
-                        HandleFightState();
-                        break;
-                    case GameState.AttackCastle:
-                        HandleAttackCastle();
-                        break;
-                    case GameState.Lose:
-                        HandleLose();
-                        break;
-                    case GameState.Win:
-                        HandleWin();
-                        break;
-                    case GameState.Retry:
-                        HandleRetry();
+                    case GameState.PlayingScene:
+                        HandlePlayingScene();
                         break;
                 }
                 EventDispatcher.Instance.Dispatch(EventName.OnAfterFightStateChange, _state);
@@ -59,55 +42,36 @@ namespace ExampleProject
         // Kick the game off with the first state
         void Start()
         {
-            State = GameState.Starting;
+            State = GameState.FakeLoadingMainScene;
         }
 
-        void HandleResetRound()
+        void HandleFakeLoadingMainSceneState()
         {
-           
+            FakeLoadMainScene.instance.StartFakeLoad();
         }
 
-      
-        void HandleStartingState()
-        {
-            
-
-        }
-        void HandleIdleState()
-        {
-           
-        }
-        void HandleChoosingNodeState()
-        {
-
-        }
-        void HandleRunState()
-        {
-            
-        }
-        void HandleFightState()
+        void HandleMainSceneState()
         {
 
         }
 
-        void HandleAttackCastle()
+        void HandleLoadingNewSceneState()
         {
 
         }
 
-        void HandleLose()
+        void HandlePlayingScene()
         {
-           
-        }
-        void HandleWin()
-        {
-          
-        }
-
-        void HandleRetry()
-        {
-            
 
         }
+    }
+
+    public enum GameState
+    {
+        None,
+        FakeLoadingMainScene,
+        MainScene,
+        LoadingNewScene,
+        PlayingScene,
     }
 }

@@ -34,7 +34,7 @@ namespace ExampleProject
                 };
                 languageSwitcherDropdown.options.Add(_optionData);
 
-                if (_languages[i] == StaticVariables.CurrentLanguage)
+                if (_languages[i] == UserDataManager.CurrentLanguage)
                 {
                     languageSwitcherDropdown.value = i;
                     languageSwitcherDropdown.RefreshShownValue();

@@ -13,12 +13,12 @@ namespace ExampleProject
 
         private void OnEnable()
         {
-            musicAudioSource.mute = !StaticVariables.IsMusicOn;
+            musicAudioSource.mute = !UserDataManager.IsMusicOn;
         }
 
         public void PlayMusic(AudioClip _audioClip)
         {
-            if (!StaticVariables.IsMusicOn)
+            if (!UserDataManager.IsMusicOn)
             {
                 musicAudioSource.clip = _audioClip;
                 return;
@@ -32,8 +32,8 @@ namespace ExampleProject
 
         public void ToggeMusic()
         {
-            StaticVariables.IsMusicOn = !StaticVariables.IsMusicOn;
-            musicAudioSource.mute = !StaticVariables.IsMusicOn;
+            UserDataManager.IsMusicOn = !UserDataManager.IsMusicOn;
+            musicAudioSource.mute = !UserDataManager.IsMusicOn;
         }
     }
 }

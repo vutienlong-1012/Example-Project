@@ -32,7 +32,6 @@ namespace VTLTools
                 //bgRectTransform.sizeDelta = bgRectTransform.sizeDelta / (1280 / 720) * (resolutionY / resolutionX);
                 float _newX = bgRectTransform.sizeDelta.x / (720f / 1280f) * (resolutionX / resolutionY);
                 float _newY = bgRectTransform.sizeDelta.y / (720f / 1280f) * (resolutionX / resolutionY);
-                Debug.Log(new Vector2(_newX, _newY));
                 bgRectTransform.sizeDelta = new Vector2(_newX, _newY);
                 //loadingSlider.GetComponent<RectTransform>().localScale *= ratioX;
             }

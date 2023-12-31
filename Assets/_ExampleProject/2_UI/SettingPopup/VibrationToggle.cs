@@ -11,7 +11,7 @@ namespace ExampleProject.UI
         [SerializeField] Toggle vibrationToggle;
         private void OnEnable()
         {
-            vibrationToggle.isOn = StaticVariables.IsVibrationOn;
+            vibrationToggle.isOn = UserDataManager.IsVibrationOn;
             vibrationToggle.onValueChanged.AddListener(delegate
             {
                 VibrationSystem.Instance.ToggeVibration();

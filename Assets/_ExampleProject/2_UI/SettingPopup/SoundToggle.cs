@@ -13,7 +13,7 @@ namespace ExampleProject.UI
         [SerializeField] Toggle soundToggle;
         private void OnEnable()
         {
-            soundToggle.isOn = StaticVariables.IsSoundOn;
+            soundToggle.isOn = UserDataManager.IsSoundOn;
             soundToggle.onValueChanged.AddListener(delegate
             {
                 SoundSystem.Instance.ToggeSound();
