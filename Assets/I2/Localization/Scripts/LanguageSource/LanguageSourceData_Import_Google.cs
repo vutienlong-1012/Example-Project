@@ -11,7 +11,7 @@ namespace I2.Loc
 {
 	public partial class LanguageSourceData
 	{
-        private string mDelayedGoogleData;  // Data that was downloaded and is waiting for a levelLoaded event to apply the localization without a lag in performance
+        private string mDelayedGoogleData;  // ResourceData that was downloaded and is waiting for a levelLoaded event to apply the localization without a lag in performance
 		#region Connection to Web Service 
 
 		public static void FreeUnusedLanguages()
@@ -358,7 +358,7 @@ namespace I2.Loc
 
                     Import_I2CSV(category, csv, UpdateMode);
 
-                    // Only the first CSV should clear the Data
+                    // Only the first CSV should clear the ResourceData
                     if (UpdateMode == eSpreadsheetUpdateMode.Replace)
                         UpdateMode = eSpreadsheetUpdateMode.Merge;
                 }
