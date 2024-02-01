@@ -5,30 +5,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using VTLTools;
 using Sirenix.OdinInspector;
+using ExampleProject.UI.BaseUI;
 
-namespace ExampleProject.UI
+namespace ExampleProject.UI.SettingPopup
 {
-    public class SoundToggle : MonoBehaviour
+    public class SoundToggle : BaseToggle
     {
-        [SerializeField] Toggle soundToggle;
-        private void OnEnable()
+        protected override void OnEnable()
         {
-            soundToggle.isOn = UserDataManager.IsSoundOn;
-            soundToggle.onValueChanged.AddListener(delegate
-            {
-                SoundSystem.Instance.ToggeSound();
-                SoundSystem.Instance.PlayUIClick();
-                VibrationSystem.Instance.PlayVibration();
-            });
+            ThisToggle.isOn = UserDataManager.IsSoundOn;
+            base.OnEnable();
         }
-        private void OnDisable()
+
+        protected override void ListenerMethod(bool arg0)
         {
-            soundToggle.onValueChanged.RemoveListener(delegate
-            {
-                SoundSystem.Instance.ToggeSound();
-                SoundSystem.Instance.PlayUIClick();
-                VibrationSystem.Instance.PlayVibration();
-            });
-        }    
+            SoundSystem.Instance.ToggeSound();
+            base.ListenerMethod(arg0);
+        }
     }
 }

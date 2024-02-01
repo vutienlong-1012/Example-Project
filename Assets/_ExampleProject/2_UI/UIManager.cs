@@ -8,8 +8,8 @@ namespace ExampleProject.UI
 {
     public class UIManager : Singleton<UIManager>
     {
-        [SerializeField] public HomePopup homePopup;
-        [SerializeField] public SettingPopup settingPopup;
+        [SerializeField] public HomePopup.HomePopup homePopup;
+        [SerializeField] public SettingPopup.SettingPopup settingPopup;
 
         private void Start()
         {

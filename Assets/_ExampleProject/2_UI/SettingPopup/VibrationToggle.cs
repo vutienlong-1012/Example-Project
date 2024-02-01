@@ -1,3 +1,4 @@
+using ExampleProject.UI.BaseUI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,27 +7,18 @@ using VTLTools;
 
 namespace ExampleProject.UI
 {
-    public class VibrationToggle : MonoBehaviour
+    public class VibrationToggle : BaseToggle
     {
-        [SerializeField] Toggle vibrationToggle;
-        private void OnEnable()
+        protected override void OnEnable()
         {
-            vibrationToggle.isOn = UserDataManager.IsVibrationOn;
-            vibrationToggle.onValueChanged.AddListener(delegate
-            {
-                VibrationSystem.Instance.ToggeVibration();
-                SoundSystem.Instance.PlayUIClick();
-                VibrationSystem.Instance.PlayVibration();
-            });
+            ThisToggle.isOn = UserDataManager.IsVibrationOn;
+            base.OnEnable();
         }
-        private void OnDisable()
+
+        protected override void ListenerMethod(bool arg0)
         {
-            vibrationToggle.onValueChanged.RemoveListener(delegate
-            {
-                VibrationSystem.Instance.ToggeVibration();
-                SoundSystem.Instance.PlayUIClick();
-                VibrationSystem.Instance.PlayVibration();
-            });
+            VibrationSystem.Instance.ToggeVibration();
+            base.ListenerMethod(arg0);
         }
     }
 }

@@ -1,3 +1,4 @@
+using ExampleProject.UI.BaseUI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,28 +7,18 @@ using VTLTools;
 
 namespace ExampleProject.UI
 {
-    public class MusicToggle : MonoBehaviour
+    public class MusicToggle : BaseToggle
     {
-        [SerializeField] Toggle musicToggle;
-        private void OnEnable()
+        protected override void OnEnable()
         {
-            musicToggle.isOn = UserDataManager.IsMusicOn;
-            musicToggle.onValueChanged.AddListener(delegate
-            {
-                MusicSystem.Instance.ToggeMusic();
-                SoundSystem.Instance.PlayUIClick();
-                VibrationSystem.Instance.PlayVibration();
-            });
+            ThisToggle.isOn = UserDataManager.IsMusicOn;
+            base.OnEnable();
         }
-        private void OnDisable()
-        {
-            musicToggle.onValueChanged.RemoveListener(delegate
-            {
-                MusicSystem.Instance.ToggeMusic();
-                SoundSystem.Instance.PlayUIClick();
-                VibrationSystem.Instance.PlayVibration();
 
-            });
+        protected override void ListenerMethod(bool arg0)
+        {
+            MusicSystem.Instance.ToggeMusic();
+            base.ListenerMethod(arg0);
         }
     }
 }
