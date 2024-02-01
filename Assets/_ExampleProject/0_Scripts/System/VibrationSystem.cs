@@ -17,9 +17,9 @@ namespace ExampleProject
         }
 
         [Button]
-        public void ToggeVibration()
+        public void SetVibration(bool _value)
         {
-            UserDataManager.IsVibrationOn = !UserDataManager.IsVibrationOn;
+            UserDataManager.IsVibrationOn = _value;
         }
     }
 }

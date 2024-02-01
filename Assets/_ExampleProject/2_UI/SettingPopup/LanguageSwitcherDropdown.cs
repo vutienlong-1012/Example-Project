@@ -4,27 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using I2.Loc;
 using VTLTools;
+using ExampleProject.UI.BaseUI;
 
-namespace ExampleProject
+namespace ExampleProject.UI.SettingPopup
 {
-    public class LanguageSwitcherDropdown : MonoBehaviour
+    public class LanguageSwitcherDropdown : BaseDropdown
     {
-        [SerializeField] Dropdown languageSwitcherDropdown;
-
-        private void OnEnable()
+        protected override void OnEnable()
         {
             Init();
-            languageSwitcherDropdown.onValueChanged.AddListener(DropdownOnValueChange);
-        }
-
-        private void OnDisable()
-        {
-            languageSwitcherDropdown.onValueChanged.RemoveListener(DropdownOnValueChange);
+            base.OnEnable();
         }
 
         void Init()
         {
-            languageSwitcherDropdown.ClearOptions();
+            ThisDropdown.ClearOptions();
             var _languages = LanguageSystem.Instance.AllLanguages;
             for (int i = 0; i < _languages.Count; i++)
             {
@@ -32,18 +26,20 @@ namespace ExampleProject
                 {
                     text = LocalizationManager.GetTranslation(_languages[i], true, 0, true, false, null, _languages[i], true),
                 };
-                languageSwitcherDropdown.options.Add(_optionData);
+                ThisDropdown.options.Add(_optionData);
 
                 if (_languages[i] == UserDataManager.CurrentLanguage)
                 {
-                    languageSwitcherDropdown.value = i;
-                    languageSwitcherDropdown.RefreshShownValue();
+                    ThisDropdown.value = i;
+                    ThisDropdown.RefreshShownValue();
                 }
             }
         }
-        void DropdownOnValueChange(int _value)
+
+        protected override void ListenerMethod(int _value)
         {
             LanguageSystem.Instance.ChangeLanguage(_value);
+            base.ListenerMethod(_value);
         }
     }
 }

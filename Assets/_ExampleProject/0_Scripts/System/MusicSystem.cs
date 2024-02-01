@@ -30,9 +30,9 @@ namespace ExampleProject
             }
         }
 
-        public void ToggeMusic()
+        public void SetMusic(bool _value)
         {
-            UserDataManager.IsMusicOn = !UserDataManager.IsMusicOn;
+            UserDataManager.IsMusicOn = _value;
             musicAudioSource.mute = !UserDataManager.IsMusicOn;
         }
     }

@@ -7,7 +7,7 @@ using VTLTools.UIAnimation;
 using VTLTools;
 using DG.Tweening;
 
-namespace ExampleProject.UI
+namespace ExampleProject.UI.SharedAssets
 {
     [RequireComponent(typeof(PopupAnimationControl))]
     public class PopupBase : MonoBehaviour

@@ -13,10 +13,6 @@ namespace ExampleProject.UI
 
         private void Start()
         {
-            //homePopup.PreviewHide();
-            //settingPopup.PreviewHide();
-            homePopup.Show();
-            //homePopup.Show();
         }
     }
 }

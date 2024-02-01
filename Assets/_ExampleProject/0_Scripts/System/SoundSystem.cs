@@ -35,9 +35,9 @@ namespace ExampleProject
                 uIAudioSource.PlayOneShot(uIOnClickAudioClip);
         }
 
-        public void ToggeSound()
+        public void SetSound(bool _value)
         {
-            UserDataManager.IsSoundOn = !UserDataManager.IsSoundOn;
+            UserDataManager.IsSoundOn = _value;
         }
     }
 }

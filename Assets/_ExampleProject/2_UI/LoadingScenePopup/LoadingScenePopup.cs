@@ -1,4 +1,5 @@
 using ExampleProject.UI;
+using ExampleProject.UI.SharedAssets;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +13,6 @@ namespace ExampleProject.UI.LoadingScenePopup
         [SerializeField] Slider loadingSlider;
         [SerializeField] Text progressText;
 
-        [Button]
         public void SetProgress(float _value)
         {
             loadingSlider.value = _value;

@@ -23,8 +23,8 @@ namespace ExampleProject.Scene
 
     public enum SceneId
     {
-        None,
-        FakeLoading,
-        MainHome
+        None = 0,
+        FakeLoading = 1,
+        MainHome = 2,
     }
 }

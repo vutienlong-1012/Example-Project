@@ -61,7 +61,8 @@ namespace ExampleProject.Scene
             _operation.allowSceneActivation = true;
             _operation.completed += (AsyncOperation op) =>
             {
-                //GameManager.instance.State = GameState.MainScene;
+                SceneManager.SetActiveScene(Scenes.GetScene(SceneId.MainHome));
+                GameManager.instance.State = GameState.MainScene;
                 loadingScenePopup.Hide();
             };
         }

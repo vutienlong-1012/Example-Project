@@ -13,8 +13,8 @@ namespace ExampleProject
     public class LoadSceneManager : Singleton<LoadSceneManager>
     {
         [SerializeField] LoadingScenePopup loadingPopup;
-        [SerializeField, ReadOnly]
-        public SceneId CurrentScene
+        [ShowInInspector, ReadOnly]
+        public SceneId CurrentSceneId
         {
             get; private set;
         }
@@ -25,19 +25,19 @@ namespace ExampleProject
         {
             Debug.Log("<color=yellow>Loading scene: </color>" + _sceneID);
             GameManager.instance.State = GameState.LoadingNewScene;
-            CurrentScene = _sceneID;
+            CurrentSceneId = _sceneID;
             loadingPopup.Show();
 
             StartCoroutine(_LoadScene());
             IEnumerator _LoadScene()
             {
-                var _asyncOp = SceneManager.LoadSceneAsync(Scenes.GetData(CurrentScene).SceneName);
+                var _asyncOp = SceneManager.LoadSceneAsync(Scenes.GetData(CurrentSceneId).SceneName);
                 while (!_asyncOp.isDone)
                 {
                     loadingPopup.SetProgress(_asyncOp.progress);
                     yield return null;
                 }
-              
+
                 loadingPopup.Hide();
                 _onComepleteLoading?.Invoke();
                 //GameManager.instance.State = GameState.PlayingMinigame;
@@ -55,7 +55,7 @@ namespace ExampleProject
 
             isUnloadingScene = true;
             //LogManager.LogLevel(GetCurrentGameLevel, LevelDifficulty.Easy, (int)timePlayCount.GetPlayTime(), PassLevelStatus.Pass, "");
-            Debug.Log("<color=yellow>Unloading scene: </color>" + CurrentScene);
+            Debug.Log("<color=yellow>Unloading scene: </color>" + CurrentSceneId);
             //GameManager.instance.State = GameState.UnloadingMiniGame;
 
             loadingPopup.Show();
@@ -63,14 +63,14 @@ namespace ExampleProject
             StartCoroutine(_LoadScene());
             IEnumerator _LoadScene()
             {
-                var _asyncOp = SceneManager.UnloadSceneAsync(Scenes.GetData(CurrentScene).SceneName);
+                var _asyncOp = SceneManager.UnloadSceneAsync(Scenes.GetData(CurrentSceneId).SceneName);
                 while (!_asyncOp.isDone)
                 {
                     loadingPopup.SetProgress(_asyncOp.progress);
                     yield return null;
                 }
 
-                SceneManager.SetActiveScene(SceneManager.GetSceneByName("MainHomeScene")); ;
+                SceneManager.SetActiveScene(Scenes.GetScene(SceneId.MainHome));
                 loadingPopup.Hide();
                 //GameManager.instance.backHomeCount++;
                 //GameManager.instance.State = GameState.BackToMainScene;

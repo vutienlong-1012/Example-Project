@@ -26,7 +26,7 @@ namespace ExampleProject.UI.BaseUI
             ThisToggle.onValueChanged.RemoveListener(ListenerMethod);
         }
 
-        protected virtual void ListenerMethod(bool arg0)
+        protected virtual void ListenerMethod(bool _value)
         {
             SoundSystem.Instance.PlayUIClick();
             VibrationSystem.Instance.PlayVibration();

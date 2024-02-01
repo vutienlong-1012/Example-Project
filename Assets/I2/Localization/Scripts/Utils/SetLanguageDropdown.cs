@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace I2.Loc
 {
-	[AddComponentMenu("I2/Localization/SetLanguage Dropdown")]
+	[AddComponentMenu("I2/Localization/SetLanguage dropdown")]
 	public class SetLanguageDropdown : MonoBehaviour 
 	{
         #if UNITY_5_2 || UNITY_5_3 || UNITY_5_4_OR_NEWER

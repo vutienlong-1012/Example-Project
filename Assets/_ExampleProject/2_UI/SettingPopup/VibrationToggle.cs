@@ -15,10 +15,10 @@ namespace ExampleProject.UI
             base.OnEnable();
         }
 
-        protected override void ListenerMethod(bool arg0)
+        protected override void ListenerMethod(bool _value)
         {
-            VibrationSystem.Instance.ToggeVibration();
-            base.ListenerMethod(arg0);
+            VibrationSystem.Instance.SetVibration(_value);
+            base.ListenerMethod(_value);
         }
     }
 }

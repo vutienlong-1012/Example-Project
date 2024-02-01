@@ -9,17 +9,17 @@ namespace ExampleProject
 {
     public class GameManager : Singleton<GameManager>
     {
-        private GameState _state;
+        GameState state;
         [ShowInInspector]
         public GameState State
         {
-            get => _state;
+            get => state;
             set
             {
-                _state = value;
-                EventDispatcher.Instance.Dispatch(EventName.OnBeforeFightStateChange, _state);
-                Debug.Log(State);
-                switch (_state)
+                state = value;
+                EventDispatcher.Instance.Dispatch(EventName.OnBeforeGameStateChange, state);
+                Debug.Log("<color=yellow>Game State: </color>" + State);
+                switch (state)
                 {
                     case GameState.FakeLoadingMainScene:
                         HandleFakeLoadingMainSceneState();
@@ -34,10 +34,11 @@ namespace ExampleProject
                         HandlePlayingScene();
                         break;
                 }
-                EventDispatcher.Instance.Dispatch(EventName.OnAfterFightStateChange, _state);
+                EventDispatcher.Instance.Dispatch(EventName.OnAfterGameStateChange, state);
             }
         }
 
+        UIManager UIManager => UIManager.instance;
 
         // Kick the game off with the first state
         void Start()
@@ -52,7 +53,7 @@ namespace ExampleProject
 
         void HandleMainSceneState()
         {
-
+            UIManager.homePopup.Show();
         }
 
         void HandleLoadingNewSceneState()

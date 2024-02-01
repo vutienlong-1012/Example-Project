@@ -17,10 +17,10 @@ namespace ExampleProject.UI.SettingPopup
             base.OnEnable();
         }
 
-        protected override void ListenerMethod(bool arg0)
+        protected override void ListenerMethod(bool _value)
         {
-            SoundSystem.Instance.ToggeSound();
-            base.ListenerMethod(arg0);
+            SoundSystem.Instance.SetSound(_value);
+            base.ListenerMethod(_value);
         }
     }
 }

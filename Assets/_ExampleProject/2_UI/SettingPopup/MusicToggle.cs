@@ -15,10 +15,10 @@ namespace ExampleProject.UI
             base.OnEnable();
         }
 
-        protected override void ListenerMethod(bool arg0)
+        protected override void ListenerMethod(bool _value)
         {
-            MusicSystem.Instance.ToggeMusic();
-            base.ListenerMethod(arg0);
+            MusicSystem.Instance.SetMusic(_value);
+            base.ListenerMethod(_value);
         }
     }
 }
