@@ -15,9 +15,8 @@ namespace ExampleProject.Scene
         static Scenes()
         {
             ITEM_RESOURCE_FOLDER_PATH = StringsSafeAccess.RESOURCE_DATA_PATH + typeof(Scenes).Name;
+            asset = new(ITEM_RESOURCE_FOLDER_PATH);
         }
-
-
 
         public static SceneData GetData(SceneId _id)
         {
@@ -27,7 +26,7 @@ namespace ExampleProject.Scene
 
         public static UnityEngine.SceneManagement.Scene GetScene(SceneId _id)
         {
-            return SceneManager.GetSceneByName(GetData(_id).name);
+            return SceneManager.GetSceneByName(GetData(_id).SceneName);
         }
     }
 }

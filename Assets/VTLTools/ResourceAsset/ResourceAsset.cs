@@ -18,11 +18,6 @@ namespace VTLTools.ResoureAsset
 
         public static List<T> GetDataList<T>() where T : ResourceData
         {
-            Debug.Log(ITEM_RESOURCE_FOLDER_PATH);
-            Debug.Log(asset);
-            Debug.Log(asset.Value);
-            Debug.Log(asset.Value.dataList);
-            Debug.Log(asset.Value.dataList.Count);
             return asset.Value.dataList.Cast<T>().ToList();
         }
     }
