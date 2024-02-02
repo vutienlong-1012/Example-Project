@@ -62,7 +62,7 @@ namespace I2.Loc
 
 		public Object[] Assets;
 
-		// This function tries finding an asset in the Assets array, if not found it tries loading it from the Resources Folder
+		// This function tries finding an loader in the Assets array, if not found it tries loading it from the Resources Folder
 		public T GetAsset<T>( string Name ) where T : Object
 		{
 			T Obj = FindAsset( Name ) as T;

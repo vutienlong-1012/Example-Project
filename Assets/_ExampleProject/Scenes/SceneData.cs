@@ -1,6 +1,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
-using VTLTools.ResoureAsset;
+using VTLTools.ResourceAsset;
 
 namespace ExampleProject.Scene
 {

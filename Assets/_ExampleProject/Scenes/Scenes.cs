@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VTLTools;
-using VTLTools.ResoureAsset;
+using VTLTools.ResourceAsset;
 
 namespace ExampleProject.Scene
 {
@@ -14,19 +14,19 @@ namespace ExampleProject.Scene
     {
         static Scenes()
         {
-            ITEM_RESOURCE_FOLDER_PATH = StringsSafeAccess.RESOURCE_DATA_PATH + typeof(Scenes).Name;
-            asset = new(ITEM_RESOURCE_FOLDER_PATH);
+            resourceFolderPath = StringsSafeAccess.RESOURCE_DATA_PATH + typeof(Scenes).Name;
+            resourceLoader = new(resourceFolderPath);
         }
 
-        public static SceneData GetData(SceneId _id)
+        public static SceneData GetResourceData(SceneId _id)
         {
-            var _data = GetDataList<SceneData>().Find(x => x.id.Equals(_id));
+            var _data = GetResourceDataList<SceneData>().Find(x => x.id.Equals(_id));
             return _data;
         }
 
-        public static UnityEngine.SceneManagement.Scene GetScene(SceneId _id)
+        public static UnityEngine.SceneManagement.Scene GetUnityScene(SceneId _id)
         {
-            return SceneManager.GetSceneByName(GetData(_id).SceneName);
+            return SceneManager.GetSceneByName(GetResourceData(_id).SceneName);
         }
     }
 }

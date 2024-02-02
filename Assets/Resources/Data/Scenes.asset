@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2837e44c05241b74488b7745fcd74761, type: 3}
   m_Name: Scenes
   m_EditorClassIdentifier: 
-  dataList:
+  resourceDataList:
   - {fileID: 11400000, guid: df3baa56fc4328d4ea44856158c0dca5, type: 2}
   - {fileID: 11400000, guid: 368b1c6c68d86f945af681fd6b65e461, type: 2}

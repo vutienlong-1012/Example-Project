@@ -14,7 +14,7 @@ namespace ExampleProject.UI.SharedAssets
     {
         [SerializeField, BoxGroup("Popup Reference")]
         protected Button closeButton;
-        [ShowInInspector] protected Action onStartShowAction, onCompleteShowAction, onStartHideAction, onCompleteHideAction;
+        [ShowInInspector, ReadOnly] protected Action onStartShowAction, onCompleteShowAction, onStartHideAction, onCompleteHideAction;
         protected object data;
 
         PopupAnimationControl menuAnimationControl;

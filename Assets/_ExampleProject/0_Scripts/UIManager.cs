@@ -1,3 +1,4 @@
+using ExampleProject.UI.SharedAssets;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,5 @@ namespace ExampleProject.UI
     {
         [SerializeField] public HomePopup.HomePopup homePopup;
         [SerializeField] public SettingPopup.SettingPopup settingPopup;
-
-        private void Start()
-        {
-        }
     }
 }

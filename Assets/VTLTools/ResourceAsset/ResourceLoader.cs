@@ -1,30 +1,30 @@
 ﻿using UnityEngine;
 
-namespace VTLTools.ResoureAsset
+namespace VTLTools.ResourceAsset
 {
-    public class ResourceLoader<T> where T : Object
+    public class ResourceLoader<ResourceType> where ResourceType : Object
     {
-        public ResourceLoader(string path)
+        public ResourceLoader(string resourcePath)
         {
-            this.path = path;
+            this.resourcePath = resourcePath;
         }
 
-        public T Value
+        public ResourceType Resource
         {
             get
             {
-                T t;
-                if ((t = this.asset) == null)
+                ResourceType resource;
+                if ((resource = this.loadedResource) == null)
                 {
-                    t = Resources.Load<T>(this.path);
+                    resource = Resources.Load<ResourceType>(this.resourcePath);
                 }
-                this.asset = t;
-                return this.asset;
+                this.loadedResource = resource;
+                return this.loadedResource;
             }
         }
 
-        private readonly string path;
+        private readonly string resourcePath;
 
-        private T asset;
+        private ResourceType loadedResource;
     }
 }

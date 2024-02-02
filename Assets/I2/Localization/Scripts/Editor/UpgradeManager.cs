@@ -219,11 +219,11 @@ namespace I2.Loc
                 if (!Directory.Exists(fullresFolder))
                     Directory.CreateDirectory(fullresFolder);
 
-                sourcePath = ResourcesFolder + "/" + LocalizationManager.GlobalSources[0] + ".asset";
+                sourcePath = ResourcesFolder + "/" + LocalizationManager.GlobalSources[0] + ".loader";
             }
             else
             {
-                sourcePath = sourcePath.Replace(".prefab", ".asset");
+                sourcePath = sourcePath.Replace(".prefab", ".loader");
             }
 
             AssetDatabase.CreateAsset(asset, sourcePath);
@@ -238,13 +238,13 @@ namespace I2.Loc
             Application.OpenURL(LocalizeInspector.HelpURL_Documentation);
         }
 
-        [MenuItem("Tools/I2 Localization/Open I2Languages.asset", false, 0)]
+        [MenuItem("Tools/I2 Localization/Open I2Languages.loader", false, 0)]
         public static void OpenGlobalSource()
         {
             CreateLanguageSources();
             LanguageSourceAsset GO = Resources.Load<LanguageSourceAsset>(LocalizationManager.GlobalSources[0]);
             if (GO == null)
-                Debug.Log("Unable to find Global Language at Assets/Resources/" + LocalizationManager.GlobalSources[0] + ".asset");
+                Debug.Log("Unable to find Global Language at Assets/Resources/" + LocalizationManager.GlobalSources[0] + ".loader");
             
             Selection.activeObject = GO;
         }

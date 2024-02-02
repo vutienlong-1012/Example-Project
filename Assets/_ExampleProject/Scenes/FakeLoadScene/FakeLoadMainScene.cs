@@ -50,7 +50,7 @@ namespace ExampleProject.Scene
 
                 if (_progess >= 0.3 && !isLoadingGamplayScene)
                 {
-                    _operation = SceneManager.LoadSceneAsync(1);
+                    _operation = SceneManager.LoadSceneAsync(Scenes.GetResourceData(SceneId.MainHome).SceneName);
                     _operation.allowSceneActivation = false;
                     isLoadingGamplayScene = true;
                 }
@@ -62,7 +62,7 @@ namespace ExampleProject.Scene
             _operation.completed += (AsyncOperation op) =>
             {
                 GameManager.instance.State = GameState.MainScene;
-                SceneManager.SetActiveScene(Scenes.GetScene(SceneId.MainHome));
+                SceneManager.SetActiveScene(Scenes.GetUnityScene(SceneId.MainHome));
                 loadingScenePopup.Hide();
             };
         }

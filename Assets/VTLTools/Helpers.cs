@@ -154,18 +154,6 @@ namespace VTLTools
 
             return coinsUsed; // return the list of coins used
         }
-
-        public static void SaveStringToFile(string _filePath, string _textToSave)
-        {
-            File.WriteAllText("Assets/Resources/" + _filePath + ".txt", _textToSave);
-        }
-
-        public static string LoadFileToString(string _filePath)
-        {
-            TextAsset _textAss = (TextAsset)Resources.Load(_filePath);
-            return _textAss.text;
-        }
-
         
         public static Vector3 WorldToLocalPointInRectangle(Vector3 _worldPosition, Canvas _canvasParent)
         {
@@ -182,6 +170,70 @@ namespace VTLTools
             int _minutes = Mathf.FloorToInt(_time / 60f);
             int _seconds = Mathf.FloorToInt(_time % 60f);
             return string.Format("{0:00}:{1:00}", _minutes, _seconds);
+        }
+
+        public static bool IsLongScreen()
+        {
+            return (float)Screen.currentResolution.width / (float)Screen.currentResolution.height < 9f / 16f;
+        }
+
+        public static void Shuffle<T>(List<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = Random.Range(0, n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
+
+        public static T GetRandomEnum<T>(T _min, T _max)
+        {
+            System.Array A = System.Enum.GetValues(typeof(T));
+            T V = (T)A.GetValue(UnityEngine.Random.Range((int)(object)_min, (int)(object)_max));
+            return V;
+        }
+
+        public static List<T> GetAllEnum<T>()
+        {
+
+            List<T> enumValues = new();
+            foreach (T value in System.Enum.GetValues(typeof(T)))
+            {
+                enumValues.Add(value);
+            }
+            return enumValues;
+        }
+
+        public static bool GetMousePostionOnPlane(Ray _ray, Plane _plane, out Vector3 _hitPoint)
+        {
+            if (_plane.Raycast(_ray, out float enter))
+            {
+                _hitPoint = _ray.GetPoint(enter);
+                return true;
+            }
+            else
+            {
+                _hitPoint = Vector3.zero;
+                return false;
+            }
+        }
+
+        public static bool GetMousePostionOnCollider(Ray _ray, LayerMask _mask, out RaycastHit _raycastHit)
+        {
+            if (Physics.Raycast(_ray, out RaycastHit _raycastHitPoint, Mathf.Infinity, _mask))
+            {
+                _raycastHit = _raycastHitPoint;
+                return true;
+            }
+            else
+            {
+                _raycastHit = new RaycastHit();
+                return false;
+            }
         }
     }
 }

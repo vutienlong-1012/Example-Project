@@ -4,21 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace VTLTools.ResoureAsset
+namespace VTLTools.ResourceAsset
 {
     public class ResourceAsset : ScriptableObject
     {
         [ShowInInspector, ReadOnly]
-        protected static string ITEM_RESOURCE_FOLDER_PATH;
+        protected static string resourceFolderPath;
 
-        protected static ResourceLoader<ResourceAsset> asset = new(ITEM_RESOURCE_FOLDER_PATH);
+        protected static ResourceLoader<ResourceAsset> resourceLoader;
 
+        [SerializeField] List<ResourceData> resourceDataList = new();
 
-        [SerializeField] List<ResourceData> dataList = new();
-
-        public static List<T> GetDataList<T>() where T : ResourceData
+        public static List<T> GetResourceDataList<T>() where T : ResourceData
         {
-            return asset.Value.dataList.Cast<T>().ToList();
+            return resourceLoader.Resource.resourceDataList.Cast<T>().ToList();
         }
     }
 

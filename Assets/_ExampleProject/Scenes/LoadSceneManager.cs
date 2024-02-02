@@ -31,7 +31,7 @@ namespace ExampleProject
             StartCoroutine(_LoadScene());
             IEnumerator _LoadScene()
             {
-                var _asyncOp = SceneManager.LoadSceneAsync(Scenes.GetData(CurrentSceneId).SceneName);
+                var _asyncOp = SceneManager.LoadSceneAsync(Scenes.GetResourceData(CurrentSceneId).SceneName);
                 while (!_asyncOp.isDone)
                 {
                     loadingPopup.SetProgress(_asyncOp.progress);
@@ -63,14 +63,14 @@ namespace ExampleProject
             StartCoroutine(_LoadScene());
             IEnumerator _LoadScene()
             {
-                var _asyncOp = SceneManager.UnloadSceneAsync(Scenes.GetData(CurrentSceneId).SceneName);
+                var _asyncOp = SceneManager.UnloadSceneAsync(Scenes.GetResourceData(CurrentSceneId).SceneName);
                 while (!_asyncOp.isDone)
                 {
                     loadingPopup.SetProgress(_asyncOp.progress);
                     yield return null;
                 }
 
-                SceneManager.SetActiveScene(Scenes.GetScene(SceneId.MainHome));
+                SceneManager.SetActiveScene(Scenes.GetUnityScene(SceneId.MainHome));
                 loadingPopup.Hide();
                 //GameManager.instance.backHomeCount++;
                 //GameManager.instance.State = GameState.BackToMainScene;
