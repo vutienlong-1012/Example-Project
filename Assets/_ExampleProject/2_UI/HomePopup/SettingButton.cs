@@ -7,16 +7,17 @@ namespace ExampleProject.UI.HomePopup
 {
     public class SettingButton : BaseButton
     {
+        UIManager uIManager => UIManager.Instance;
         protected override void ListenerMethod()
         {
             base.ListenerMethod();
-            UIManager.Instance.homePopup.SetOnCompleteHide(() =>
+            uIManager.GetPopup(uIManager.homePopup).SetOnCompleteHide(() =>
             {
-                UIManager.Instance.settingPopup.SetOnCompleteHide(() =>
+                uIManager.SpawnPopup(uIManager.settingPopup).SetOnCompleteHide(() =>
                 {
-                    UIManager.Instance.homePopup.Show();
+                    uIManager.SpawnPopup(uIManager.homePopup).Show();
                 }).Show();
-            }).Hide();
+            }).Hide(); ;
         }
     }
 }

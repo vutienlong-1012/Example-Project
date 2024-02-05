@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VTLTools;
+using ExampleProject.UI;
 
 namespace ExampleProject.Scene
 {
@@ -13,14 +14,17 @@ namespace ExampleProject.Scene
     {
         [SerializeField] float fakeLoadTime;
         [SerializeField] float editorLoadTime;
-        [SerializeField] LoadingScenePopup loadingScenePopup;
+        [SerializeField, ReadOnly] LoadingScenePopup loadingScenePopup;
         //[SerializeField] bool isShowedFirstAOA = false;
+
+        UIManager uIManager => UIManager.instance;
         public void StartFakeLoad()
         {
             Application.targetFrameRate = 60;
 #if UNITY_EDITOR
             fakeLoadTime = editorLoadTime;
 #endif
+            loadingScenePopup = (LoadingScenePopup)uIManager.SpawnPopup(uIManager.loadingScenePopup);
             StartCoroutine(LoadAsynchronously());
         }
 
@@ -63,7 +67,7 @@ namespace ExampleProject.Scene
             {
                 GameManager.instance.State = GameState.MainScene;
                 SceneManager.SetActiveScene(Scenes.GetUnityScene(SceneId.MainHome));
-                loadingScenePopup.Hide();
+                uIManager.GetPopup(uIManager.loadingScenePopup).Hide();
             };
         }
     }

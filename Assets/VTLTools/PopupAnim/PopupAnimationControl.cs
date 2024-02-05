@@ -24,10 +24,7 @@ namespace VTLTools.UIAnimation
         public void StartShow(bool _isDoAnimation, float _delay, Action _onShowStarted, Action _onShowCompleted)
         {
             //Hide first, then show
-            foreach(var item in popupItemList)
-            {
-                item.HideImmediately();
-            }
+            HideAllImmediately();
 
             SetShowSequence();
             CurrentPopupAnimState = PopupAnimState.Showing;
@@ -86,6 +83,23 @@ namespace VTLTools.UIAnimation
         {
             popupItemList.Clear();
             popupItemList = Helpers.GetAllChildsComponent<PopupItem>(this.transform);
+        }
+
+        [Button]
+        void HideAllImmediately()
+        {
+            foreach (var item in popupItemList)
+            {
+                item.HideImmediately();
+            }
+        }
+        [Button]
+        void ShowAllImmediately()
+        {
+            foreach (var item in popupItemList)
+            {
+                item.ShowImmediately();
+            }
         }
     }
 

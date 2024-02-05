@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4660142118716238684}
   - component: {fileID: 5752383207155496750}
   m_Layer: 5
-  m_Name: PopupBase
+  m_Name: BasePopupPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

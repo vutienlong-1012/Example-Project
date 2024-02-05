@@ -10,26 +10,56 @@ using DG.Tweening;
 namespace ExampleProject.UI.SharedAssets
 {
     [RequireComponent(typeof(PopupAnimationControl))]
-    public class PopupBase : MonoBehaviour
+    public class BasePopup : MonoBehaviour
     {
         [SerializeField, BoxGroup("Popup Reference")]
         protected Button closeButton;
-        [ShowInInspector, ReadOnly] protected Action onStartShowAction, onCompleteShowAction, onStartHideAction, onCompleteHideAction;
+
+        [ShowInInspector, ReadOnly, BoxGroup("Action")]
+        protected Action onStartShowAction, onCompleteShowAction, onStartHideAction, onCompleteHideAction;
+
         protected object data;
 
         PopupAnimationControl menuAnimationControl;
-        [ShowInInspector]
-        protected PopupAnimationControl ThisMenuAnimationControl
+
+        [ShowInInspector, BoxGroup("Component")]
+        protected PopupAnimationControl ThisMenuAnimationControl => menuAnimationControl = menuAnimationControl != null ? menuAnimationControl : GetComponent<PopupAnimationControl>();
+
+        [ShowInInspector, BoxGroup("Set up")]
+        public bool IsShow => this.gameObject.activeSelf;
+
+        [SerializeField, BoxGroup("Set up")] 
+        bool isDestroyOnHide = true;
+
+        public BasePopup SetData(object _data)
         {
-            get
-            {
-                if (menuAnimationControl == null)
-                    menuAnimationControl = GetComponent<PopupAnimationControl>();
-                return menuAnimationControl;
-            }
+            this.data = _data;
+            return this;
         }
 
-        public bool IsShow => this.gameObject.activeSelf;
+        public BasePopup SetOnStartShow(Action _actionOnStartShow)
+        {
+            this.onStartShowAction = _actionOnStartShow;
+            return this;
+        }
+
+        public BasePopup SetOnCompleteShow(Action _actionOnCompleteShow)
+        {
+            this.onCompleteShowAction = _actionOnCompleteShow;
+            return this;
+        }
+
+        public BasePopup SetOnStartHide(Action _actionOnStartHide)
+        {
+            this.onStartHideAction = _actionOnStartHide;
+            return this;
+        }
+
+        public BasePopup SetOnCompleteHide(Action _actionOnCompleteHide)
+        {
+            this.onCompleteHideAction = _actionOnCompleteHide;
+            return this;
+        }
 
         #region SHOW
         public virtual void Show(bool _isDoAnimation = true, float _delay = 0f)
@@ -37,37 +67,6 @@ namespace ExampleProject.UI.SharedAssets
             ButtonAddListener();
             ThisMenuAnimationControl.StartShow(_isDoAnimation, _delay, _onShowStarted: OnShowStarted, _onShowCompleted: OnShowCompleted);
         }
-
-        public PopupBase SetData(object _data)
-        {
-            this.data = _data;
-            return this;
-        }
-
-        public PopupBase SetOnStartShow(Action _actionOnStartShow)
-        {
-            this.onStartShowAction = _actionOnStartShow;
-            return this;
-        }
-
-        public PopupBase SetOnCompleteShow(Action _actionOnCompleteShow)
-        {
-            this.onCompleteShowAction = _actionOnCompleteShow;
-            return this;
-        }
-
-        public PopupBase SetOnStartHide(Action _actionOnStartHide)
-        {
-            this.onStartHideAction = _actionOnStartHide;
-            return this;
-        }
-
-        public PopupBase SetOnCompleteHide(Action _actionOnCompleteHide)
-        {
-            this.onCompleteHideAction = _actionOnCompleteHide;
-            return this;
-        }
-
         protected virtual void OnShowStarted()
         {
             this.gameObject.SetActive(true);
@@ -102,7 +101,11 @@ namespace ExampleProject.UI.SharedAssets
         protected virtual void OnHideCompleted()
         {
             this.onCompleteHideAction?.Invoke();
-            this.gameObject.SetActive(false);
+
+            if (isDestroyOnHide)
+                Destroy(this.gameObject);
+            else
+                this.gameObject.SetActive(false);
         }
         #endregion
 

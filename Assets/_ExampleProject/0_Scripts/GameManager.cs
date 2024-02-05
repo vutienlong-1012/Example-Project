@@ -53,7 +53,7 @@ namespace ExampleProject
 
         void HandleMainSceneState()
         {
-            UIManager.homePopup.Show();
+            UIManager.SpawnPopup(UIManager.homePopup).Show();
         }
 
         void HandleLoadingNewSceneState()

@@ -347,12 +347,12 @@ PrefabInstance:
     - target: {fileID: 4660142118716238685, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
         type: 3}
       propertyPath: m_Name
-      value: HomePopup Variant
+      value: HomePopup
       objectReference: {fileID: 0}
     - target: {fileID: 4660142118716238685, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4660142118907719945, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
         type: 3}
@@ -382,7 +382,7 @@ PrefabInstance:
     - target: {fileID: 5752383207155496750, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
         type: 3}
       propertyPath: popupItemList.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5752383207155496750, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
         type: 3}
@@ -423,3 +423,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeButton: {fileID: 0}
+  isDestroyOnHide: 1

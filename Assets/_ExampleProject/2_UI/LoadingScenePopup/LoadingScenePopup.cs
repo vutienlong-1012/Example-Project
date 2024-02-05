@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace ExampleProject.UI.LoadingScenePopup
 {
-    public class LoadingScenePopup : PopupBase
+    public class LoadingScenePopup : BasePopup
     {
         [SerializeField] Slider loadingSlider;
         [SerializeField] Text progressText;

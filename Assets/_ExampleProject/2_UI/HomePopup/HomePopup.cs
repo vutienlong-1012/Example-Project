@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace ExampleProject.UI.HomePopup
 {
-    public class HomePopup : PopupBase
+    public class HomePopup : BasePopup
     {
 
     }

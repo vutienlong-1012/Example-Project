@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ExampleProject.UI.SettingPopup
 {
-    public class SettingPopup : PopupBase
+    public class SettingPopup : BasePopup
     {
 
     }

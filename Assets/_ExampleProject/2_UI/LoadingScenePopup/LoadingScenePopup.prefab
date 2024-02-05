@@ -609,8 +609,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5752383207155496750, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
+        type: 3}
+      propertyPath: popupItemList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5752383207155496750, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
+        type: 3}
+      propertyPath: popupItemList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1253862545349955923}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5, type: 3}
+--- !u!114 &1253862545349955923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7022328594490534732, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8075745719688722975}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f06d48ac771c49b439cbfb7b24e7e79b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3512501361722233154 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4660142118716238685, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
@@ -630,6 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeButton: {fileID: 0}
+  isDestroyOnHide: 1
   loadingSlider: {fileID: 657781856}
   progressText: {fileID: 0}
 --- !u!224 &3512501362082224507 stripped

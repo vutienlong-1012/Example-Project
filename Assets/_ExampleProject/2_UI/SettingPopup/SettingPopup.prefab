@@ -41,7 +41,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -49.9}
+  m_AnchoredPosition: {x: 0, y: -49.900024}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &71505217
@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0565d369d599abd43b6ce25c50838950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  languageSwitcherDropdown: {fileID: 71505215}
 --- !u!114 &71505219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1478,7 +1477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2c29a093466484c882c621c66c542d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vibrationToggle: {fileID: 7243967453064417071}
 --- !u!114 &799214529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,18 +1493,6 @@ MonoBehaviour:
   hidePos: {x: 582, y: -342, z: 0}
   easeShow: 1
   easeHide: 1
---- !u!114 &7243967453064417071 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5212681136167315841, guid: e9b029f5a022d034dbba585a2e210fbb,
-    type: 3}
-  m_PrefabInstance: {fileID: 3229247941231552174}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7243967453064417041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3229247942421557473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1649,7 +1635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a413a41c392337d4989c064be1d6bc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicToggle: {fileID: 7243967453981792608}
 --- !u!114 &1699931420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1666,18 +1651,6 @@ MonoBehaviour:
   hidePos: {x: 464, y: 214, z: 0}
   easeShow: 1
   easeHide: 1
---- !u!114 &7243967453981792608 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5212681136167315841, guid: e9b029f5a022d034dbba585a2e210fbb,
-    type: 3}
-  m_PrefabInstance: {fileID: 3229247942421557473}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7243967453981792606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7243967454092221080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1852,18 +1825,6 @@ MonoBehaviour:
   mGUI_ShowCallback: 0
   mLocalizeTarget: {fileID: 0}
   mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
---- !u!114 &3229247942242710297 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5212681136167315841, guid: e9b029f5a022d034dbba585a2e210fbb,
-    type: 3}
-  m_PrefabInstance: {fileID: 7243967454092221080}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3229247942242710311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3229247942242710311 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5212681136167315903, guid: e9b029f5a022d034dbba585a2e210fbb,
@@ -1882,7 +1843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9427228498e651042af93d7aea9ca413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToggle: {fileID: 3229247942242710297}
 --- !u!114 &5212681137052145832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2019,7 +1979,7 @@ PrefabInstance:
     - target: {fileID: 4660142118716238685, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4660142118928507749, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
         type: 3}
@@ -2154,6 +2114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeButton: {fileID: 1971986121}
+  isDestroyOnHide: 1
 --- !u!224 &3229247941828219011 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4660142118928507748, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
