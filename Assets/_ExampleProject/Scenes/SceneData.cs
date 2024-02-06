@@ -1,11 +1,11 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
-using VTLTools.ResourceAsset;
+using VTLTools.ResourceLoader;
 
 namespace ExampleProject.Scene
 {
-    [CreateAssetMenu(fileName = "SceneData", menuName = "ScriptableObjects/SceneData")]
-    public class SceneData : ResourceData
+    [CreateAssetMenu(fileName = "SceneData", menuName = "ScriptableObjects/SceneData"), InlineEditor]
+    public class SceneData : ScriptableObject
     {
         public SceneId id;
         [ShowInInspector]

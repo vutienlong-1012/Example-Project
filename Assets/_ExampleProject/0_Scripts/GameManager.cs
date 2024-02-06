@@ -4,6 +4,9 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using VTLTools;
 using UnityEngine;
+using ExampleProject.UI.SharedAssets;
+using ExampleProject.UI.HomePopup;
+using ExampleProject.UI.LoadingScenePopup;
 
 namespace ExampleProject
 {
@@ -53,7 +56,7 @@ namespace ExampleProject
 
         void HandleMainSceneState()
         {
-            UIManager.SpawnPopup(UIManager.homePopup).Show();
+            UIManager.instance.SpawnPopup(PopupId.HomePopup).Show();
         }
 
         void HandleLoadingNewSceneState()

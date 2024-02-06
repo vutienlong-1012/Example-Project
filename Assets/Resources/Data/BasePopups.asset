@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2759a3567833d11469a320ac3d00484b, type: 3}
+  m_Name: BasePopups
+  m_EditorClassIdentifier: 
+  resourceDataList:
+  - {fileID: 11400000, guid: 39bc68c19d811f44f949087dc91b8d97, type: 2}
+  - {fileID: 11400000, guid: de197c42e4c7ed04d9e92e12912afb5a, type: 2}
+  - {fileID: 11400000, guid: c5c7379bcf96a72479925afd09d28dfb, type: 2}

@@ -1,4 +1,5 @@
 using ExampleProject.UI.BaseUI;
+using ExampleProject.UI.SharedAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +12,11 @@ namespace ExampleProject.UI.HomePopup
         protected override void ListenerMethod()
         {
             base.ListenerMethod();
-            uIManager.GetPopup(uIManager.homePopup).SetOnCompleteHide(() =>
+            uIManager.GetPopup(PopupId.HomePopup).SetOnCompleteHide(() =>
             {
-                uIManager.SpawnPopup(uIManager.settingPopup).SetOnCompleteHide(() =>
+                uIManager.SpawnPopup(PopupId.SettingPopup).SetOnCompleteHide(() =>
                 {
-                    uIManager.SpawnPopup(uIManager.homePopup).Show();
+                    uIManager.SpawnPopup(PopupId.HomePopup).Show();
                 }).Show();
             }).Hide(); ;
         }

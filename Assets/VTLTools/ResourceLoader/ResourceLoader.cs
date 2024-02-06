@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VTLTools.ResourceAsset
+namespace VTLTools.ResourceLoader
 {
     public class ResourceLoader<ResourceType> where ResourceType : Object
     {

@@ -9,28 +9,24 @@ namespace ExampleProject.UI
 {
     public class UIManager : Singleton<UIManager>
     {
-        [SerializeField] public HomePopup.HomePopup homePopup;
-        [SerializeField] public SettingPopup.SettingPopup settingPopup;
-        [SerializeField] public LoadingScenePopup.LoadingScenePopup loadingScenePopup;
-
         [SerializeField] public RectTransform canvas;
-        [ShowInInspector, ReadOnly] Dictionary<BasePopup, BasePopup> showingPopupDictionary = new();
+        [ShowInInspector, ReadOnly] Dictionary<PopupId, BasePopup> showingPopupDictionary = new();
 
-        public BasePopup SpawnPopup(BasePopup _popupPrefab)
+        public BasePopup SpawnPopup(PopupId _popupId)
         {
-            BasePopup _tempPopup = Instantiate(_popupPrefab, canvas);
-            showingPopupDictionary.Add(_popupPrefab, _tempPopup);
+            BasePopup _tempPopup = Instantiate(BasePopups.GetResourceData(_popupId).basePopupPrefab, canvas);
+            showingPopupDictionary.Add(_popupId, _tempPopup);
             return _tempPopup;
         }
 
-        public void RemovePopup(BasePopup _popupPrefab)
+        public void RemovePopup(PopupId _popupId)
         {
-            showingPopupDictionary.Remove(_popupPrefab);
+            showingPopupDictionary.Remove(_popupId);
         }
 
-        public BasePopup GetPopup(BasePopup _popupPrefab)
+        public BasePopup GetPopup(PopupId _popupId)
         {
-            if (showingPopupDictionary.TryGetValue(_popupPrefab, out BasePopup _value))
+            if (showingPopupDictionary.TryGetValue(_popupId, out BasePopup _value))
                 return _value;
             else
                 return null;
