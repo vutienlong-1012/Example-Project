@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace VTLTools
 {
-    public class UserDataManager 
+    public class UserDataManager : MonoBehaviour
     {
         public static bool IsSoundOn
         {

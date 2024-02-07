@@ -12,7 +12,8 @@ namespace ExampleProject.UI.HomePopup
         protected override void ListenerMethod()
         {
             base.ListenerMethod();
-            uIManager.GetPopup(PopupId.HomePopup).SetOnCompleteHide(() =>
+            uIManager.TryGetGetPopup(PopupId.HomePopup, out BasePopup _homePopup);
+            _homePopup.SetOnCompleteHide(() =>
             {
                 uIManager.SpawnPopup(PopupId.SettingPopup).SetOnCompleteHide(() =>
                 {

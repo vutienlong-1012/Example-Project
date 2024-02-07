@@ -68,7 +68,7 @@ namespace ExampleProject.Scene
             {
                 GameManager.instance.State = GameState.MainScene;
                 SceneManager.SetActiveScene(Scenes.GetUnityScene(SceneId.MainHome));
-                UIManager.GetPopup(PopupId.LoadingScenePopup).Hide();
+                loadingScenePopup.Hide();
             };
         }
     }

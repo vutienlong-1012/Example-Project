@@ -15,6 +15,7 @@ namespace ExampleProject.UI
         public BasePopup SpawnPopup(PopupId _popupId)
         {
             BasePopup _tempPopup = Instantiate(BasePopups.GetResourceData(_popupId).basePopupPrefab, canvas);
+            _tempPopup.Init(_popupId);
             showingPopupDictionary.Add(_popupId, _tempPopup);
             return _tempPopup;
         }
@@ -24,12 +25,9 @@ namespace ExampleProject.UI
             showingPopupDictionary.Remove(_popupId);
         }
 
-        public BasePopup GetPopup(PopupId _popupId)
+        public bool TryGetGetPopup(PopupId _popupId, out BasePopup _value)
         {
-            if (showingPopupDictionary.TryGetValue(_popupId, out BasePopup _value))
-                return _value;
-            else
-                return null;
+            return showingPopupDictionary.TryGetValue(_popupId, out _value);
         }
     }
 }

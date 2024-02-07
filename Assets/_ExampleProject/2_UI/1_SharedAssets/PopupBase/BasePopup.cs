@@ -25,11 +25,14 @@ namespace ExampleProject.UI.SharedAssets
         [ShowInInspector, BoxGroup("Component")]
         protected PopupAnimationControl ThisMenuAnimationControl => menuAnimationControl = menuAnimationControl != null ? menuAnimationControl : GetComponent<PopupAnimationControl>();
 
-        [ShowInInspector, BoxGroup("Set up")]
+        [ShowInInspector, BoxGroup("Infor")]
         public bool IsShow => this.gameObject.activeSelf;
 
-        [SerializeField, BoxGroup("Set up")] 
+        [SerializeField, BoxGroup("Infor")]
         bool isDestroyOnHide = true;
+
+        [SerializeField, BoxGroup("Infor"), ReadOnly]
+        PopupId id;
 
         public BasePopup SetData(object _data)
         {
@@ -59,6 +62,11 @@ namespace ExampleProject.UI.SharedAssets
         {
             this.onCompleteHideAction = _actionOnCompleteHide;
             return this;
+        }
+
+        public void Init(PopupId _id)
+        {
+            id = _id;
         }
 
         #region SHOW
@@ -103,7 +111,10 @@ namespace ExampleProject.UI.SharedAssets
             this.onCompleteHideAction?.Invoke();
 
             if (isDestroyOnHide)
+            {
+                UIManager.Instance.RemovePopup(id);
                 Destroy(this.gameObject);
+            }
             else
                 this.gameObject.SetActive(false);
         }
