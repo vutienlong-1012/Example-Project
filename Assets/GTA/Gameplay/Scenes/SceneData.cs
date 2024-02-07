@@ -1,24 +1,25 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 using VTLTools.ResourceLoader;
 
-namespace ExampleProject.Scene
+namespace ExampleProject.Scenes
 {
     [CreateAssetMenu(fileName = "SceneData", menuName = "ScriptableObjects/SceneData"), InlineEditor]
     public class SceneData : ScriptableObject
     {
+        #region Fields
+
         public SceneId id;
-        [ShowInInspector]
-        public string SceneName
-        {
-            get
-            {
-                if (scene != null)
-                    return scene.name;
-                return "";
-            }
-        }
         public Object scene;
+
+        #endregion
+
+        #region Properties
+
+         [SerializeField] public string sceneName;
+
+        #endregion
     }
 
     public enum SceneId
@@ -26,5 +27,6 @@ namespace ExampleProject.Scene
         None = 0,
         FakeLoading = 1,
         MainHome = 2,
+        Gameplay = 3,
     }
 }

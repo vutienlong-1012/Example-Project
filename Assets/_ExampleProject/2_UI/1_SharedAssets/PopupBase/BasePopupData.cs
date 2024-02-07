@@ -17,5 +17,6 @@ namespace ExampleProject.UI.SharedAssets
         LoadingScenePopup = 1,
         HomePopup = 2,
         SettingPopup = 3,
+        DevModePopup = 4,
     }
 }

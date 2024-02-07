@@ -56,7 +56,7 @@ namespace ExampleProject
 
         void HandleMainSceneState()
         {
-            UIManager.instance.SpawnPopup(PopupId.HomePopup).Show();
+            UIManager.instance.GetPopup(PopupId.HomePopup).Show();
         }
 
         void HandleLoadingNewSceneState()

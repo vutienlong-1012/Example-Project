@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_ExampleProject/Scenes/FakeLoadScene/FakeLoadScene.unity
+    path: Assets/GTA/Gameplay/Scenes/FakeLoadScene/FakeLoadScene.unity
     guid: b035441c4c4067b4db764b97b8f82aef
   - enabled: 1
-    path: Assets/_ExampleProject/Scenes/MainHomeScene/MainHomeScene.unity
+    path: Assets/GTA/Gameplay/Scenes/MainHomeScene/MainHomeScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 0
     path: 

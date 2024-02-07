@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using VTLTools;
 using ExampleProject.UI;
 using ExampleProject.UI.SharedAssets;
+using ExampleProject.Scenes;
 
 namespace ExampleProject.Scene
 {
@@ -25,7 +26,7 @@ namespace ExampleProject.Scene
 #if UNITY_EDITOR
             fakeLoadTime = editorLoadTime;
 #endif
-            loadingScenePopup = (LoadingScenePopup)UIManager.SpawnPopup(PopupId.LoadingScenePopup);
+            loadingScenePopup = (LoadingScenePopup)UIManager.GetPopup(PopupId.LoadingScenePopup);
             StartCoroutine(LoadAsynchronously());
         }
 
@@ -55,7 +56,7 @@ namespace ExampleProject.Scene
 
                 if (_progess >= 0.3 && !isLoadingGamplayScene)
                 {
-                    _operation = SceneManager.LoadSceneAsync(Scenes.GetResourceData(SceneId.MainHome).SceneName);
+                    _operation = SceneManager.LoadSceneAsync(Scenes.Scenes.GetResourceData(SceneId.MainHome).sceneName);
                     _operation.allowSceneActivation = false;
                     isLoadingGamplayScene = true;
                 }
@@ -67,7 +68,7 @@ namespace ExampleProject.Scene
             _operation.completed += (AsyncOperation op) =>
             {
                 GameManager.instance.State = GameState.MainScene;
-                SceneManager.SetActiveScene(Scenes.GetUnityScene(SceneId.MainHome));
+                SceneManager.SetActiveScene(Scenes.Scenes.GetUnityScene(SceneId.MainHome));
                 loadingScenePopup.Hide();
             };
         }

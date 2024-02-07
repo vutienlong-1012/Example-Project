@@ -1,4 +1,3 @@
-using ExampleProject.UI.SharedAssets;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,17 +7,20 @@ using UnityEngine.SceneManagement;
 using VTLTools;
 using VTLTools.ResourceLoader;
 
-namespace ExampleProject.Scene
+namespace ExampleProject.Scenes
 {
     [CreateAssetMenu(fileName = "Scenes", menuName = "ScriptableObjects/Scenes")]
     public class Scenes : ScriptableObject
     {
-        [ShowInInspector, ReadOnly]
-        protected const string resourceFolderPath = "Data/Scenes";
+        #region Fields
 
-        private static ResourceLoader<Scenes> resourceLoader = new(resourceFolderPath);
-
+        static ResourceLoader<Scenes> resourceLoader = new(resourceFolderPath);
+        [ShowInInspector, ReadOnly] const string resourceFolderPath = "Data/Scenes";
         [SerializeField] List<SceneData> resourceDataList = new();
+
+        #endregion
+
+        #region Public Methods
 
         public static List<SceneData> GetResourceDataList()
         {
@@ -33,8 +35,10 @@ namespace ExampleProject.Scene
 
         public static UnityEngine.SceneManagement.Scene GetUnityScene(SceneId _id)
         {
-            var _data = GetResourceDataList().Find(x => x.id.Equals(_id)).SceneName;
+            var _data = GetResourceDataList().Find(x => x.id.Equals(_id)).sceneName;
             return SceneManager.GetSceneByName(_data);
         }
+
+        #endregion
     }
 }
