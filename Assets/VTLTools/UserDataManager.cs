@@ -153,10 +153,12 @@ namespace VTLTools
         static void SaveData()
         {
             VTLPlayerPrefs.SetObjectValue(StringsSafeAccess.PREF_USER_DATA, userData);
+            //ES3.Save(StringsSafeAccess.PREF_USER_DATA, userData);
         }
         static UserData GetData()
         {
             return VTLPlayerPrefs.GetObjectValue<UserData>(StringsSafeAccess.PREF_USER_DATA);
+            //return ES3.Load<UserData>(StringsSafeAccess.PREF_USER_DATA, new UserData()); 
         }
         #endregion
     }
