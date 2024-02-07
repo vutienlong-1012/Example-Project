@@ -1101,11 +1101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDontDestroyOnLoad: 0
-  homePopup: {fileID: 1957570843, guid: 7ccaa210207e86b46a784eb4b3aaede0, type: 3}
-  settingPopup: {fileID: 4660142120734290401, guid: 25856c8da0dbc1442866cd332348327b,
-    type: 3}
-  loadingScenePopup: {fileID: 5919249593074721654, guid: e9a61e1462551714c991cd02c8aef7da,
-    type: 3}
   canvas: {fileID: 1173459567}
 --- !u!1 &832575517
 GameObject:
