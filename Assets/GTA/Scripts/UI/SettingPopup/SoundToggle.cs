@@ -23,4 +23,4 @@ namespace ExampleProject.UI.SettingPopup
             base.ListenerMethod(_value);
         }
     }
-}
+}  
