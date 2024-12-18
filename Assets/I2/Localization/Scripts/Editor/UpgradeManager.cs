@@ -96,7 +96,7 @@ namespace I2.Loc
 				if (!AutoEnablePlugins)
 					return;
 			}
-			//var tar = System.Enum.GetValues(typeof(BuildTargetGroup));
+			//var tar = GameSystem.Enum.GetValues(typeof(BuildTargetGroup));
 			foreach (BuildTargetGroup target in Enum.GetValues(typeof(BuildTargetGroup)))
 				if (target!=BuildTargetGroup.Unknown && !target.HasAttributeOfType<ObsoleteAttribute>())
 				{
@@ -259,7 +259,7 @@ namespace I2.Loc
 			string ScriptsFolder = "Assets";
 			string ScriptText = LocalizationEditor.mScriptLocalizationHeader + "	}\n}";
 			
-			System.IO.File.WriteAllText(ScriptsFolder + "/ScriptLocalization.cs", ScriptText);
+			GameSystem.IO.File.WriteAllText(ScriptsFolder + "/ScriptLocalization.cs", ScriptText);
 			
 			AssetDatabase.SaveAssets();
 			AssetDatabase.Refresh();

@@ -26,14 +26,14 @@ namespace I2.Loc
 
 						string sPath = string.Empty;
 						try {
-						sPath = System.IO.Path.GetDirectoryName(sFileName);
+						sPath = GameSystem.IO.Path.GetDirectoryName(sFileName);
 						}
-						catch( System.Exception e){}
+						catch( GameSystem.Exception e){}
 
 						if (string.IsNullOrEmpty(sPath))
 							sPath = Application.dataPath + "/";
 
-						sFileName = System.IO.Path.GetFileName(sFileName);
+						sFileName = GameSystem.IO.Path.GetFileName(sFileName);
 						if (string.IsNullOrEmpty(sFileName))
 							sFileName = "Localization.csv";
 
