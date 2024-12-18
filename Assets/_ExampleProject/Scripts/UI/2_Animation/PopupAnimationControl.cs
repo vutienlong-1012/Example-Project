@@ -110,6 +110,6 @@ namespace ExampleProject.UI.UIAnimation
         Showing,
         Showed,
         Hiding,
-        Hidden,
+        Hidden, 
     }
 }
