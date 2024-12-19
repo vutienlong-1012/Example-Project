@@ -1,13 +1,10 @@
-using ExampleProject.UI;
-using ExampleProject.Scene;
 using Sirenix.OdinInspector;
 using System.Collections;
 using ExampleProject.Tools;
 using UnityEngine;
-using ExampleProject.UI.SharedAssets;
-using ExampleProject.UI.LoadingScenePopup;
+using ExampleProject.Gameplay.Scenes;
 
-namespace ExampleProject
+namespace ExampleProject.Manager
 {
     public class GameManager : Singleton<GameManager>
     {

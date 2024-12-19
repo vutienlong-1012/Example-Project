@@ -1,13 +1,11 @@
 using Sirenix.OdinInspector;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using ExampleProject.Tools;
-using DG.Tweening;
 using ExampleProject.UI.UIAnimation;
+using ExampleProject.Manager;
 
-namespace ExampleProject.UI.SharedAssets
+namespace ExampleProject.UI.BaseUI.BasePopup
 {
     [RequireComponent(typeof(PopupAnimationControl))]
     public class BasePopup : MonoBehaviour

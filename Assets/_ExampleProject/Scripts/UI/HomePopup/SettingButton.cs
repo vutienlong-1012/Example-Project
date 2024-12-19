@@ -1,5 +1,5 @@
+using ExampleProject.Manager;
 using ExampleProject.UI.BaseUI;
-using ExampleProject.UI.SharedAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

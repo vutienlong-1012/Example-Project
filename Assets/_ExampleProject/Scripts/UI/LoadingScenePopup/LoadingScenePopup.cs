@@ -1,8 +1,4 @@
-using ExampleProject.UI;
-using ExampleProject.UI.SharedAssets;
-using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
+using ExampleProject.UI.BaseUI.BasePopup;
 using UnityEngine;
 using UnityEngine.UI;
 

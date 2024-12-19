@@ -1,49 +1,52 @@
-using ExampleProject.UI.LoadingScenePopup;
-using ExampleProject;
 using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using ExampleProject.Tools;
-using ExampleProject.UI;
-using ExampleProject.UI.SharedAssets;
-using ExampleProject.Scenes;
+using ExampleProject.Manager;
+using ExampleProject.UI.BaseUI.BasePopup;
+using ExampleProject.UI.LoadingScenePopup;
 
-namespace ExampleProject.Scene
+
+namespace ExampleProject.Gameplay.Scenes
 {
     public class FakeLoadMainScene : Singleton<FakeLoadMainScene>
     {
+        #region Fields
+
         [SerializeField] float fakeLoadTime;
         [SerializeField] float editorLoadTime;
         [SerializeField, ReadOnly] LoadingScenePopup loadingScenePopup;
         //[SerializeField] bool isShowedFirstAOA = false;
+        bool isLoadingGameplayScene;
+        bool isAlreadyCalledAOA;
+
+        #endregion
+
+        #region Properties
 
         UIManager UIManager => UIManager.instance;
-        public void StartFakeLoad()
-        {
-            Application.targetFrameRate = 60;
-#if UNITY_EDITOR
-            fakeLoadTime = editorLoadTime;
-#endif
-            loadingScenePopup = (LoadingScenePopup)UIManager.GetPopup(PopupId.LoadingScenePopup);
-            StartCoroutine(LoadAsynchronously());
-        }
 
-        bool isLoadingGamplayScene;
-        bool isAlreadyCalledAOA;
+        #endregion
+
+        #region LifeCycle   
+
+        #endregion
+
+        #region Private Methods
+
         IEnumerator LoadAsynchronously()
         {
             AsyncOperation _operation = null;
             float _currentFakeLoadTime = fakeLoadTime;
-            float _progess = 0;
-            while (_progess < 1)
+            float _progress = 0;
+            while (_progress < 1)
             {
                 _currentFakeLoadTime -= Time.deltaTime;
-                _progess = 1 - (_currentFakeLoadTime / fakeLoadTime);
-                loadingScenePopup.SetProgress(_progess);
+                _progress = 1 - (_currentFakeLoadTime / fakeLoadTime);
+                loadingScenePopup.SetProgress(_progress);
 
-                if (_progess >= 0.55 && !isAlreadyCalledAOA)
+                if (_progress >= 0.55 && !isAlreadyCalledAOA)
                 {
                     isAlreadyCalledAOA = true;
                     //if (CC_Interface.current.isJustLaunch)
@@ -54,11 +57,11 @@ namespace ExampleProject.Scene
                     //}
                 }
 
-                if (_progess >= 0.3 && !isLoadingGamplayScene)
+                if (_progress >= 0.3 && !isLoadingGameplayScene)
                 {
-                    _operation = SceneManager.LoadSceneAsync(Scenes.Scenes.GetResourceData(SceneId.MainHome).sceneName);
+                    _operation = SceneManager.LoadSceneAsync(Scenes.GetResourceData(SceneId.MainHome).SceneName);
                     _operation.allowSceneActivation = false;
-                    isLoadingGamplayScene = true;
+                    isLoadingGameplayScene = true;
                 }
 
                 yield return null;
@@ -68,9 +71,31 @@ namespace ExampleProject.Scene
             _operation.completed += (AsyncOperation op) =>
             {
                 GameManager.instance.State = GameState.MainScene;
-                SceneManager.SetActiveScene(Scenes.Scenes.GetUnityScene(SceneId.MainHome));
+                SceneManager.SetActiveScene(Scenes.GetUnityScene(SceneId.MainHome));
                 loadingScenePopup.Hide();
             };
         }
+
+        #endregion
+
+        #region Protected Methods
+
+        #endregion
+
+        #region Public Methods
+
+        public void StartFakeLoad()
+        {
+            Application.targetFrameRate = 60;
+#if UNITY_EDITOR
+            fakeLoadTime = editorLoadTime;
+#endif
+            loadingScenePopup = (LoadingScenePopup)UIManager.GetPopup(PopupId.LoadingScenePopup);
+            StartCoroutine(LoadAsynchronously());
+        }
+
+        #endregion
+
+
     }
 }

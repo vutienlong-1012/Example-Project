@@ -1,11 +1,11 @@
-using ExampleProject.UI.SharedAssets;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using ExampleProject.Tools;
+using ExampleProject.UI.BaseUI.BasePopup;
 
-namespace ExampleProject.UI
+namespace ExampleProject.Manager
 {
     public class UIManager : Singleton<UIManager>
     {

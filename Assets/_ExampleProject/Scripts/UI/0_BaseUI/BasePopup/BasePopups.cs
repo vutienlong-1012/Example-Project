@@ -1,4 +1,3 @@
-using ExampleProject.Scene;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +5,7 @@ using ExampleProject.Tools;
 using UnityEngine.SceneManagement;
 using Sirenix.OdinInspector;
 
-namespace ExampleProject.UI.SharedAssets
+namespace ExampleProject.UI.BaseUI.BasePopup
 {
     [CreateAssetMenu(fileName = "BasePopups", menuName = "ScriptableObjects/BasePopups")]
     public class BasePopups : ScriptableObject

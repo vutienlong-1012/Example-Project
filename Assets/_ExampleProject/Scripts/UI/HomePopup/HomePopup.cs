@@ -1,4 +1,4 @@
-using ExampleProject.UI.SharedAssets;
+using ExampleProject.UI.BaseUI.BasePopup;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
