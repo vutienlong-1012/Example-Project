@@ -1,4 +1,4 @@
-using ExampleProject.UI.SharedAssets;
+using ExampleProject.UI.BaseUI.BasePopup;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

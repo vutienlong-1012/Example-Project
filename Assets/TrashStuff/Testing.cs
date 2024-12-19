@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VTLTools
+namespace TrashStuff
 {
     public class Testing : MonoBehaviour
     {

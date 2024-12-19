@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using ExampleProject.Tools;
 
-namespace ExampleProject.Scenes
+namespace ExampleProject.Gameplay.Scenes
 {
     [CreateAssetMenu(fileName = "Scenes", menuName = "ScriptableObjects/Scenes")]
     public class Scenes : ScriptableObject
@@ -34,7 +34,7 @@ namespace ExampleProject.Scenes
 
         public static UnityEngine.SceneManagement.Scene GetUnityScene(SceneId _id)
         {
-            var _data = GetResourceDataList().Find(x => x.id.Equals(_id)).sceneName;
+            var _data = GetResourceDataList().Find(x => x.id.Equals(_id)).SceneName;
             return SceneManager.GetSceneByName(_data);
         }
 

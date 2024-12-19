@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using ExampleProject.Tools;
 
-namespace ExampleProject.Scenes
+namespace ExampleProject.Gameplay.Scenes
 {
     [CreateAssetMenu(fileName = "SceneData", menuName = "ScriptableObjects/SceneData"), InlineEditor]
     public class SceneData : ScriptableObject
@@ -17,7 +17,7 @@ namespace ExampleProject.Scenes
 
         #region Properties
 
-         [SerializeField] public string sceneName;
+        [ShowInInspector] public string SceneName => scene.name;
 
         #endregion
     }

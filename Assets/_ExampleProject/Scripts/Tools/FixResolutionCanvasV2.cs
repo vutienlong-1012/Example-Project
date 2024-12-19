@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace VTLTools.FixResolution
+namespace ExampleProject.Tools
 {
     public class FixResolutionCanvasV2 : MonoBehaviour
     {

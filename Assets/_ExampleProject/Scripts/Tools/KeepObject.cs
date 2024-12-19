@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using ExampleProject.Tools;
 
-namespace ExampleProject.Scenes
+namespace ExampleProject.Tools
 {
-    public class KeepOpject : MonoBehaviour
+    public class KeepObject : MonoBehaviour
     {
         #region Fields
 

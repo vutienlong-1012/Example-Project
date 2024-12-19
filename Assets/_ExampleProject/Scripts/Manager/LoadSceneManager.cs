@@ -1,17 +1,15 @@
 using DG.Tweening;
-using ExampleProject.Scene;
-using ExampleProject.Scenes;
 using ExampleProject.UI;
 using ExampleProject.UI.LoadingScenePopup;
-using ExampleProject.UI.SharedAssets;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using ExampleProject.Tools;
+using ExampleProject.Gameplay.Scenes;
 
-namespace ExampleProject
+namespace ExampleProject.Manager
 {
     public class LoadSceneManager : Singleton<LoadSceneManager>
     {
@@ -80,8 +78,8 @@ namespace ExampleProject
             loadingPopup.SetProgress(_loadProgress);
             yield return new WaitForSeconds(0.2f);
 
-            _asyncLoad = SceneManager.LoadSceneAsync(Scenes.Scenes.GetResourceData(CurrentSceneId).sceneName);
-            Debug.Log(Scenes.Scenes.GetResourceData(CurrentSceneId).sceneName);
+            _asyncLoad = SceneManager.LoadSceneAsync(Scenes.GetResourceData(CurrentSceneId).SceneName);
+            Debug.Log(Scenes.GetResourceData(CurrentSceneId).SceneName);
             _asyncLoad.allowSceneActivation = false;
             float _lastTime = Time.time;
 
@@ -146,7 +144,7 @@ namespace ExampleProject
 
                     if (_progess >= 0.3 && !isLoadingGamplayScene)
                     {
-                        _operation = SceneManager.LoadSceneAsync(Scenes.Scenes.GetResourceData(SceneId.MainHome).sceneName);
+                        _operation = SceneManager.LoadSceneAsync(Scenes.GetResourceData(SceneId.MainHome).SceneName);
                         _operation.allowSceneActivation = false;
                         isLoadingGamplayScene = true;
                     }
@@ -158,7 +156,7 @@ namespace ExampleProject
                 _operation.completed += (AsyncOperation op) =>
                 {
                     GameManager.instance.State = GameState.MainScene;
-                    SceneManager.SetActiveScene(Scenes.Scenes.GetUnityScene(SceneId.MainHome));
+                    SceneManager.SetActiveScene(Scenes.GetUnityScene(SceneId.MainHome));
                     loadingPopup.Hide();
                     _onCompleteAction?.Invoke();
                 };
@@ -183,14 +181,14 @@ namespace ExampleProject
             StartCoroutine(_LoadScene());
             IEnumerator _LoadScene()
             {
-                var _asyncOp = SceneManager.UnloadSceneAsync(Scenes.Scenes.GetResourceData(CurrentSceneId).sceneName);
+                var _asyncOp = SceneManager.UnloadSceneAsync(Scenes.GetResourceData(CurrentSceneId).SceneName);
                 while (!_asyncOp.isDone)
                 {
                     loadingPopup.SetProgress(_asyncOp.progress);
                     yield return null;
                 }
 
-                SceneManager.SetActiveScene(Scenes.Scenes.GetUnityScene(SceneId.MainHome));
+                SceneManager.SetActiveScene(Scenes.GetUnityScene(SceneId.MainHome));
                 loadingPopup.Hide();
                 //GameManager2.instance.backHomeCount++;
                 //GameManager2.instance.State = GameState.BackToMainScene;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using ExampleProject.Tools;
 using ExampleProject.GameSystem;
 
-namespace ExampleProject.UI
+namespace ExampleProject.UI.SettingPopup
 {
     public class VibrationToggle : BaseToggle
     {
