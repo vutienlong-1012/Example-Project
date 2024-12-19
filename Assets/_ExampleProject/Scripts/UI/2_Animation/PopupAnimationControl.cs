@@ -10,17 +10,70 @@ namespace ExampleProject.UI.UIAnimation
 {
     public class PopupAnimationControl : MonoBehaviour
     {
+        #region Fields
+
         [SerializeField] List<PopupItem> popupItemList;
 
         Sequence showSequence;
         Sequence hideSequence;
 
+        #endregion
+
+        #region Properties
+
         [ShowInInspector, ReadOnly]
-        public PopupAnimState CurrentPopupAnimState
+        public PopupAnimState CurrentPopupAnimState { get; private set; }
+
+        #endregion
+
+        #region LifeCycle   
+
+
+
+        #endregion
+
+        #region Private Methods
+
+        void SetShowSequence()
         {
-            get;
-            private set;
+            showSequence = DOTween.Sequence();
+            foreach (var _item in popupItemList)
+            {
+                showSequence.Join(_item.GetShowTween());
+            }
         }
+
+        void SetHideSequence()
+        {
+            hideSequence = DOTween.Sequence();
+            foreach (var _item in popupItemList)
+            {
+                hideSequence.Join(_item.GetHideTween());
+            }
+        }
+        void GetAllMenuItem()
+        {
+            popupItemList.Clear();
+            popupItemList = Helpers.GetAllChildsComponent<PopupItem>(this.transform);
+        }
+        void HideAllImmediately()
+        {
+            foreach (var item in popupItemList)
+            {
+                item.HideImmediately();
+            }
+        }
+        void ShowAllImmediately()
+        {
+            foreach (var item in popupItemList)
+            {
+                item.ShowImmediately();
+            }
+        }
+
+        #endregion
+
+        #region Public Methods
 
         public void StartShow(bool _isDoAnimation, float _delay, Action _onShowStarted, Action _onShowCompleted)
         {
@@ -42,7 +95,6 @@ namespace ExampleProject.UI.UIAnimation
                 showSequence.Complete();
             }
         }
-
         public void StartHide(bool _isDoAnimation, float _delay, Action _onHideStarted, Action _onHideCompleted)
         {
             SetHideSequence();
@@ -61,47 +113,7 @@ namespace ExampleProject.UI.UIAnimation
             }
         }
 
-        void SetShowSequence()
-        {
-            showSequence = DOTween.Sequence();
-            foreach (var _item in popupItemList)
-            {
-                showSequence.Join(_item.GetShowTween());
-            }
-        }
-
-        void SetHideSequence()
-        {
-            hideSequence = DOTween.Sequence();
-            foreach (var _item in popupItemList)
-            {
-                hideSequence.Join(_item.GetHideTween());
-            }
-        }
-
-        [Button]
-        public void GetAllMenuItem()
-        {
-            popupItemList.Clear();
-            popupItemList = Helpers.GetAllChildsComponent<PopupItem>(this.transform);
-        }
-
-        [Button]
-        void HideAllImmediately()
-        {
-            foreach (var item in popupItemList)
-            {
-                item.HideImmediately();
-            }
-        }
-        [Button]
-        void ShowAllImmediately()
-        {
-            foreach (var item in popupItemList)
-            {
-                item.ShowImmediately();
-            }
-        }
+        #endregion
     }
 
     public enum PopupAnimState
@@ -110,6 +122,6 @@ namespace ExampleProject.UI.UIAnimation
         Showing,
         Showed,
         Hiding,
-        Hidden, 
+        Hidden,
     }
 }

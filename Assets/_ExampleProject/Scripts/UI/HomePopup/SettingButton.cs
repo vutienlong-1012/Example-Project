@@ -1,18 +1,43 @@
 using ExampleProject.Manager;
 using ExampleProject.UI.BaseUI;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using ExampleProject.UI.BaseUI.BasePopup;
 
 namespace ExampleProject.UI.HomePopup
 {
     public class SettingButton : BaseButton
     {
-        UIManager uIManager => UIManager.Instance;
+        #region Fields
+
+
+
+        #endregion
+
+        #region Properties
+
+
+
+        #endregion
+
+        #region LifeCycle   
+
+
+
+        #endregion
+
+        #region Private Methods
+
+
+
+        #endregion
+
+        #region Public Methods
+
         protected override void ListenerMethod()
         {
             base.ListenerMethod();
-            uIManager.GetPopup(PopupId.SettingPopup).Show();
+            UIManager.Instance.GetPopup(PopupId.SettingPopup).Show();
         }
+
+        #endregion      
     }
 }

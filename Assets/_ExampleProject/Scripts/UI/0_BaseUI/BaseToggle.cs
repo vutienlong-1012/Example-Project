@@ -11,10 +11,19 @@ namespace ExampleProject.UI.BaseUI
 {
     public class BaseToggle : MonoBehaviour
     {
+        #region Fields
+
         Toggle toggle;
 
-        [ShowInInspector]
-        protected Toggle ThisToggle => toggle = toggle != null ? toggle : GetComponent<Toggle>();
+        #endregion
+
+        #region Properties
+
+        [ShowInInspector] protected Toggle ThisToggle => toggle = toggle != null ? toggle : GetComponent<Toggle>();
+
+        #endregion
+
+        #region LifeCycle   
 
         protected virtual void OnEnable()
         {
@@ -27,10 +36,22 @@ namespace ExampleProject.UI.BaseUI
             ThisToggle.onValueChanged.RemoveListener(ListenerMethod);
         }
 
+        #endregion
+
+        #region Private Methods
+
+
+
+        #endregion
+
+        #region Public Methods
+
         protected virtual void ListenerMethod(bool _value)
         {
             SoundSystem.Instance.PlayUIClick();
             VibrationSystem.Instance.PlayVibration();
         }
+
+        #endregion
     }
 }

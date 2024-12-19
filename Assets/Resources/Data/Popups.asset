@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2759a3567833d11469a320ac3d00484b, type: 3}
-  m_Name: BasePopups
+  m_Name: Popups
   m_EditorClassIdentifier: 
   resourceDataList:
   - {fileID: 11400000, guid: 39bc68c19d811f44f949087dc91b8d97, type: 2}

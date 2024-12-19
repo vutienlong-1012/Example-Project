@@ -7,25 +7,47 @@ using Sirenix.OdinInspector;
 
 namespace ExampleProject.UI.BaseUI.BasePopup
 {
-    [CreateAssetMenu(fileName = "BasePopups", menuName = "ScriptableObjects/BasePopups")]
-    public class BasePopups : ScriptableObject
+    [CreateAssetMenu(fileName = "Popups", menuName = "ScriptableObjects/Popups")]
+    public class Popups : ScriptableObject
     {
-        [ShowInInspector, ReadOnly]
-        protected const string resourceFolderPath = "Data/BasePopups";
-
-        private static ResourceLoader<BasePopups> resourceLoader = new(resourceFolderPath);
+        #region Fields
 
         [SerializeField] List<BasePopupData> resourceDataList = new();
+        const string resourceFolderPath = "Data/Popups";
+        static ResourceLoader<Popups> resourceLoader = new(resourceFolderPath);
+
+        #endregion
+
+        #region Properties
+
+
+
+        #endregion
+
+        #region LifeCycle   
+
+
+
+        #endregion
+
+        #region Private Methods
+
+
+
+        #endregion
+
+        #region Public Methods
 
         public static List<BasePopupData> GetResourceDataList()
         {
             return resourceLoader.Resource.resourceDataList;
         }
-
         public static BasePopupData GetResourceData(PopupId _id)
         {
             var _data = GetResourceDataList().Find(x => x.id.Equals(_id));
             return _data;
         }
+
+        #endregion      
     }
 }

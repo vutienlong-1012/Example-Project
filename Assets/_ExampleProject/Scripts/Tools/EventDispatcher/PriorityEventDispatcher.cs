@@ -126,6 +126,11 @@ public class PriorityEventDispatcher<K, T, C> where C : IEqualityComparer<K>, ne
         {
             return handler.Equals(other.handler);
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 
     public static void Test()

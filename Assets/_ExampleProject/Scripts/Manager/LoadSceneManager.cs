@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using ExampleProject.Tools;
 using ExampleProject.Gameplay.Scenes;
+using ExampleProject.UI.BaseUI.BasePopup;
 
 namespace ExampleProject.Manager
 {

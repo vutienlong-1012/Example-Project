@@ -1,26 +1,34 @@
-﻿using System.Collections;
+﻿using ExampleProject.UI.BaseUI;
+using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ExampleProject.Tools
+namespace ExampleProject.UI.DevModePopup
 {
-    public class FPS : MonoBehaviour
+    public class FPSText : BaseText
     {
-        public Text fpsText;
+        #region Fields
 
-        public float updateInterval = 0.5f;
+        [SerializeField] float updateInterval = 0.5f;
         float accum = 0.0f;
         int frames = 0;
         float timeleft;
         float fps;
 
-        private void Start()
+        #endregion
+
+        #region Properties
+
+        #endregion
+
+        #region LifeCycle   
+
+        void Start()
         {
             timeleft = updateInterval;
         }
-
-        // Update is called once per frame
         void Update()
         {
             timeleft -= Time.deltaTime;
@@ -37,16 +45,30 @@ namespace ExampleProject.Tools
                 frames = 0;
             }
 
-            fpsText.text = "FPS: " + fps.ToString("F2");
+            ThisText.text = "FPS: " + fps.ToString("F2");
             if (fps >= 60)
-                fpsText.color = Color.green;
+                ThisText.color = Color.green;
             else
                 if (fps >= 30)
-                fpsText.color = Color.yellow;
+                ThisText.color = Color.yellow;
             else
-                fpsText.color = Color.red;
+                ThisText.color = Color.red;
 
             //charNumberText.text = "Number: " + PlayerManager.instance.characterNumberControl.transform.childCount;
         }
+
+        #endregion
+
+        #region Private Methods
+
+
+
+        #endregion
+
+        #region Public Methods
+
+
+
+        #endregion      
     }
 }

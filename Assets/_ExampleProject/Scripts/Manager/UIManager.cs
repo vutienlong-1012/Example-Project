@@ -44,7 +44,7 @@ namespace ExampleProject.Manager
             }
             else
             {
-                BasePopup _tempPopup = Instantiate(BasePopups.GetResourceData(_popupId).basePopupPrefab, canvas);
+                BasePopup _tempPopup = Instantiate(Popups.GetResourceData(_popupId).basePopupPrefab, canvas);
                 _tempPopup.Init(_popupId);
                 existingPopupDictionary.Add(_popupId, _tempPopup);
                 return _tempPopup;

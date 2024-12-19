@@ -78,10 +78,6 @@ namespace ExampleProject.Gameplay.Scenes
 
         #endregion
 
-        #region Protected Methods
-
-        #endregion
-
         #region Public Methods
 
         public void StartFakeLoad()
@@ -95,7 +91,5 @@ namespace ExampleProject.Gameplay.Scenes
         }
 
         #endregion
-
-
     }
 }

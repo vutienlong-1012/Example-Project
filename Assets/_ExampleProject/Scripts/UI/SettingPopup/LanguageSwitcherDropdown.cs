@@ -9,13 +9,32 @@ using ExampleProject.GameSystem;
 
 namespace ExampleProject.UI.SettingPopup
 {
+
     public class LanguageSwitcherDropdown : BaseDropdown
     {
+        #region Fields
+
+
+
+        #endregion
+
+        #region Properties
+
+
+
+        #endregion
+
+        #region LifeCycle   
+
         protected override void OnEnable()
         {
             Init();
             base.OnEnable();
         }
+
+        #endregion
+
+        #region Private Methods
 
         void Init()
         {
@@ -36,11 +55,18 @@ namespace ExampleProject.UI.SettingPopup
                 }
             }
         }
-
         protected override void ListenerMethod(int _value)
         {
             LanguageSystem.Instance.ChangeLanguage(_value);
             base.ListenerMethod(_value);
         }
+
+        #endregion
+
+        #region Public Methods
+
+
+
+        #endregion
     }
 }

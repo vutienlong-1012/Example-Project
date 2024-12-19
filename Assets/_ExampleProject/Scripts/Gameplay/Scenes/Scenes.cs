@@ -13,9 +13,9 @@ namespace ExampleProject.Gameplay.Scenes
     {
         #region Fields
 
-        static ResourceLoader<Scenes> resourceLoader = new(resourceFolderPath);
-        [ShowInInspector, ReadOnly] const string resourceFolderPath = "Data/Scenes";
         [SerializeField] List<SceneData> resourceDataList = new();
+        const string resourceFolderPath = "Data/Scenes";
+        static ResourceLoader<Scenes> resourceLoader = new(resourceFolderPath);
 
         #endregion
 
@@ -32,7 +32,7 @@ namespace ExampleProject.Gameplay.Scenes
             return _data;
         }
 
-        public static UnityEngine.SceneManagement.Scene GetUnityScene(SceneId _id)
+        public static Scene GetUnityScene(SceneId _id)
         {
             var _data = GetResourceDataList().Find(x => x.id.Equals(_id)).SceneName;
             return SceneManager.GetSceneByName(_data);
