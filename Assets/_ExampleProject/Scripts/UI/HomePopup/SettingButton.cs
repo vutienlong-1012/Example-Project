@@ -35,7 +35,10 @@ namespace ExampleProject.UI.HomePopup
         protected override void ListenerMethod()
         {
             base.ListenerMethod();
-            UIManager.Instance.GetPopup(PopupId.SettingPopup).Show();
+            UIManager.Instance.GetPopup(PopupId.SettingPopup).SetOnStartHide(() =>
+            {
+
+            }).Show();
         }
 
         #endregion      
