@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 439110784}
   - component: {fileID: 439110786}
   - component: {fileID: 439110785}
-  - component: {fileID: 439110787}
   m_Layer: 5
   m_Name: BackGroundImage
   m_TagString: Untagged
@@ -77,23 +76,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &439110787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439110783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ac36dca692e48d479d57ad0f22477fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bgRectTransform: {fileID: 439110784}
-  resolutionX: 0
-  resolutionY: 0
-  ratioX: 0
-  ratioY: 0
 --- !u!1 &511582569
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,7 +584,7 @@ PrefabInstance:
     - target: {fileID: 4660142118716238685, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
         type: 3}
       propertyPath: m_Name
-      value: LoadingScenePopup
+      value: I_LoadingScenePopup
       objectReference: {fileID: 0}
     - target: {fileID: 4660142118907719945, guid: 75ea1c3e6fa36ca48a218e76f1c6f8c5,
         type: 3}
@@ -653,6 +635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 0}
   isDestroyOnHide: 1
+  id: 0
   loadingSlider: {fileID: 657781856}
   progressText: {fileID: 0}
 --- !u!224 &3512501362082224507 stripped

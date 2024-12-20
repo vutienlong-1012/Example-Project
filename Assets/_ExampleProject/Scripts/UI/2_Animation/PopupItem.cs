@@ -9,10 +9,10 @@ namespace ExampleProject.UI.UIAnimation
     {
         #region Fields
 
-        [Button, BoxGroup("Time setting")] protected float delayShow;
-        [Button, BoxGroup("Time setting")] protected float delayHide;
-        [Button, BoxGroup("Time setting")] protected float timeShow = 0.3f;
-        [Button, BoxGroup("Time setting")] protected float timeHide = 0.3f;
+        [SerializeField, BoxGroup("Time setting")] protected float delayShow;
+        [SerializeField, BoxGroup("Time setting")] protected float delayHide;
+        [SerializeField, BoxGroup("Time setting")] protected float timeShow = 0.3f;
+        [SerializeField, BoxGroup("Time setting")] protected float timeHide = 0.3f;
 
         #endregion
 

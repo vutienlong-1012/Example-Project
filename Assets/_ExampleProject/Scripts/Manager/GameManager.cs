@@ -28,6 +28,9 @@ namespace ExampleProject.Manager
             }
         }
         UIManager UIManager => UIManager.instance;
+        EventDispatcher EventDispatcher => EventDispatcher.Instance;
+        FakeLoadController FakeLoadController => FakeLoadController.instance;
+        MainHomeController MainHomeController => MainHomeController.instance;
         #endregion
 
         #region LifeCycle   
@@ -44,7 +47,7 @@ namespace ExampleProject.Manager
 
         void ChangeState(GameState _state)
         {
-            EventDispatcher.Instance.Dispatch(EventName.OnBeforeGameStateChange, state);
+            EventDispatcher.Dispatch(EventName.OnBeforeGameStateChange, state);
             switch (_state)
             {
                 case GameState.FakeLoadingMainScene:
@@ -53,27 +56,24 @@ namespace ExampleProject.Manager
                 case GameState.MainScene:
                     HandleMainSceneState();
                     break;
-                case GameState.LoadingNewScene:
-                    HandleLoadingNewSceneState();
-                    break;
                 case GameState.PlayingScene:
                     HandlePlayingScene();
                     break;
             }
             Debug.Log("<color=yellow>Game State: </color>" + _state);
-            EventDispatcher.Instance.Dispatch(EventName.OnAfterGameStateChange, state);
+            EventDispatcher.Dispatch(EventName.OnAfterGameStateChange, state);
         }
         void HandleFakeLoadingMainSceneState()
         {
-            FakeLoadMainScene.instance.StartFakeLoad();
+            FakeLoadController.Init();
+            FakeLoadController.StartFakeLoad(() =>
+            {
+                State = GameState.MainScene;
+            });
         }
         void HandleMainSceneState()
         {
-            UIManager.instance.GetPopup(PopupId.HomePopup).Show();
-        }
-        void HandleLoadingNewSceneState()
-        {
-
+            MainHomeController.Init();
         }
         void HandlePlayingScene()
         {
@@ -100,7 +100,6 @@ namespace ExampleProject.Manager
         None,
         FakeLoadingMainScene,
         MainScene,
-        LoadingNewScene,
         PlayingScene,
     }
 }
