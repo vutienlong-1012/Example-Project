@@ -10,125 +10,149 @@ namespace ExampleProject.UI.BaseUI.BasePopup
     [RequireComponent(typeof(PopupAnimationControl))]
     public class BasePopup : MonoBehaviour
     {
-        [SerializeField, BoxGroup("Popup Reference")]
-        protected Button closeButton;
+        #region Fields
 
-        [ShowInInspector, ReadOnly, BoxGroup("Action")]
-        protected Action onStartShowAction, onCompleteShowAction, onStartHideAction, onCompleteHideAction;
-
-        protected object data;
-
+        [SerializeField, BoxGroup("Popup Reference")] protected Button closeButton;
+        [ShowInInspector, ReadOnly, FoldoutGroup("Action")] protected Action onStartShowAction;
+        [ShowInInspector, ReadOnly, FoldoutGroup("Action")] protected Action onCompleteShowAction;
+        [ShowInInspector, ReadOnly, FoldoutGroup("Action")] protected Action onStartHideAction;
+        [ShowInInspector, ReadOnly, FoldoutGroup("Action")] protected Action onCompleteHideAction;
+        [SerializeField, BoxGroup("Infor"), ReadOnly] PopupId id;
+        [SerializeField, BoxGroup("Infor")] bool isDestroyOnHide = true;
+        [SerializeField, BoxGroup("Infor")] bool isDoAnimation = true;
         PopupAnimationControl menuAnimationControl;
 
-        [ShowInInspector, BoxGroup("Component")]
-        protected PopupAnimationControl ThisMenuAnimationControl => menuAnimationControl = menuAnimationControl != null ? menuAnimationControl : GetComponent<PopupAnimationControl>();
+        protected object data;
+        #endregion
 
-        [ShowInInspector, BoxGroup("Infor")]
-        public bool IsShow => this.gameObject.activeSelf;
+        #region Properties
 
-        [SerializeField, BoxGroup("Infor")]
-        bool isDestroyOnHide = true;
+        [ShowInInspector, BoxGroup("Infor")] public bool IsShow => this.gameObject.activeSelf;
+        [ShowInInspector, BoxGroup("Popup Reference")] protected GameObject RaycastShield => transform.GetChild(transform.childCount - 1).gameObject;
+        [ShowInInspector, BoxGroup("Component")] protected PopupAnimationControl ThisMenuAnimationControl => menuAnimationControl = menuAnimationControl != null ? menuAnimationControl : GetComponent<PopupAnimationControl>();
+        #endregion
 
-        [SerializeField, BoxGroup("Infor"), ReadOnly]
-        PopupId id;
+        #region LifeCycle   
 
-        public BasePopup SetData(object _data)
-        {
-            this.data = _data;
-            return this;
-        }
 
-        public BasePopup SetOnStartShow(Action _actionOnStartShow)
-        {
-            this.onStartShowAction = _actionOnStartShow;
-            return this;
-        }
 
-        public BasePopup SetOnCompleteShow(Action _actionOnCompleteShow)
-        {
-            this.onCompleteShowAction = _actionOnCompleteShow;
-            return this;
-        }
+        #endregion
 
-        public BasePopup SetOnStartHide(Action _actionOnStartHide)
-        {
-            this.onStartHideAction = _actionOnStartHide;
-            return this;
-        }
-
-        public BasePopup SetOnCompleteHide(Action _actionOnCompleteHide)
-        {
-            this.onCompleteHideAction = _actionOnCompleteHide;
-            return this;
-        }
-
-        public void Init(PopupId _id)
-        {
-            id = _id;
-        }
-
-        #region SHOW
-        public virtual void Show(bool _isDoAnimation = true, float _delay = 0f)
-        {
-            ButtonAddListener();
-            ThisMenuAnimationControl.StartShow(_isDoAnimation, _delay, _onShowStarted: OnShowStarted, _onShowCompleted: OnShowCompleted);
-        }
+        #region Private Methods
+        protected virtual void Init() { }
+        protected virtual void InitData() { }
         protected virtual void OnShowStarted()
         {
-            this.gameObject.SetActive(true);
+            SetActive(true);
+            SetInteractable(false);
+            AddListener();
+            InitData();
+            Init();
             this.onStartShowAction?.Invoke();
         }
         protected virtual void OnShowCompleted()
         {
+            SetInteractable(true);
             this.onCompleteShowAction?.Invoke();
-        }
-        #endregion
-
-        #region HIDE
-        public virtual void Hide(bool _isDoAnimation = true, float _delay = 0f)
-        {
-            if (!IsShow)
-                return;
-            ButtonRemoveListener();
-            if (ThisMenuAnimationControl == null)
-            {
-                OnHideStarted();
-                OnHideCompleted();
-            }
-            else
-            {
-                ThisMenuAnimationControl.StartHide(_isDoAnimation, _delay, _onHideStarted: OnHideStarted, _onHideCompleted: OnHideCompleted);
-            }
         }
         protected virtual void OnHideStarted()
         {
+            SetInteractable(false);
             this.onStartHideAction?.Invoke();
         }
         protected virtual void OnHideCompleted()
         {
+            SetInteractable(true);
             this.onCompleteHideAction?.Invoke();
-
+            RemoveListener();
             if (isDestroyOnHide)
             {
                 UIManager.Instance.RemovePopup(id);
                 Destroy(this.gameObject);
             }
             else
-                this.gameObject.SetActive(false);
+                SetActive(false);
         }
-        #endregion
-
-        protected virtual void ButtonAddListener()
+        protected virtual void AddListener()
         {
-            closeButton?.onClick.AddListener(OnClickCloseListenerMethod);
+            if (closeButton == null)
+                return;
+            closeButton.onClick.AddListener(OnClickCloseListener);
         }
-        protected virtual void ButtonRemoveListener()
+        protected virtual void RemoveListener()
         {
-            closeButton?.onClick.RemoveListener(OnClickCloseListenerMethod);
+            if (closeButton == null)
+                return;
+            closeButton.onClick.RemoveListener(OnClickCloseListener);
         }
-        protected virtual void OnClickCloseListenerMethod()
+        protected virtual void OnClickCloseListener()
         {
             this.Hide();
         }
+
+        #endregion
+
+        #region Public Methods
+
+        public BasePopup SetData(object _data)
+        {
+            this.data = _data;
+            return this;
+        }
+        public BasePopup SetOnStartShow(Action _actionOnStartShow)
+        {
+            this.onStartShowAction = _actionOnStartShow;
+            return this;
+        }
+        public BasePopup SetOnCompleteShow(Action _actionOnCompleteShow)
+        {
+            this.onCompleteShowAction = _actionOnCompleteShow;
+            return this;
+        }
+        public BasePopup SetOnStartHide(Action _actionOnStartHide)
+        {
+            this.onStartHideAction = _actionOnStartHide;
+            return this;
+        }
+        public BasePopup SetOnCompleteHide(Action _actionOnCompleteHide)
+        {
+            this.onCompleteHideAction = _actionOnCompleteHide;
+            return this;
+        }
+        public BasePopup SetIsDoAnimation(bool _value)
+        {
+            isDoAnimation = _value;
+            return this;
+        }
+        public void SetId(PopupId _id)
+        {
+            id = _id;
+        }
+        public void SetActive(bool _value)
+        {
+            this.gameObject.SetActive(_value);
+        }
+        public void SetInteractable(bool _value)
+        {
+            RaycastShield.SetActive(!_value);
+        }
+        public virtual void Show()
+        {
+            ThisMenuAnimationControl.StartShow(isDoAnimation, _onShowStarted: OnShowStarted, _onShowCompleted: OnShowCompleted);
+        }
+        public virtual void Hide()
+        {
+            ThisMenuAnimationControl.StartHide(isDoAnimation, _onHideStarted: OnHideStarted, _onHideCompleted: OnHideCompleted);
+        }
+        public void PretendShow()
+        {
+            ThisMenuAnimationControl.StartShow(isDoAnimation, null, null);
+        }
+        public void PretendHide()
+        {
+            ThisMenuAnimationControl.StartHide(isDoAnimation,null,null);
+        }
+
+        #endregion
     }
 }

@@ -22,7 +22,7 @@ namespace ExampleProject.UI.UIAnimation
         #region Properties
 
         [ShowInInspector, ReadOnly]
-        public PopupAnimState CurrentPopupAnimState { get; private set; }
+        public PopupAnimationState CurrentAnimationState { get; private set; }
 
         #endregion
 
@@ -51,11 +51,6 @@ namespace ExampleProject.UI.UIAnimation
                 hideSequence.Join(_item.GetHideTween());
             }
         }
-        void GetAllMenuItem()
-        {
-            popupItemList.Clear();
-            popupItemList = Helpers.GetAllChildsComponent<PopupItem>(this.transform);
-        }
         void HideAllImmediately()
         {
             foreach (var item in popupItemList)
@@ -70,24 +65,30 @@ namespace ExampleProject.UI.UIAnimation
                 item.ShowImmediately();
             }
         }
+        [Button]
+        void GetAllMenuItem()
+        {
+            popupItemList.Clear();
+            popupItemList = Helpers.GetAllChildsComponent<PopupItem>(this.transform);
+        }
 
         #endregion
 
         #region Public Methods
 
-        public void StartShow(bool _isDoAnimation, float _delay, Action _onShowStarted, Action _onShowCompleted)
+        public void StartShow(bool _isDoAnimation, Action _onShowStarted, Action _onShowCompleted)
         {
             //Hide first, then show
             HideAllImmediately();
 
             SetShowSequence();
-            CurrentPopupAnimState = PopupAnimState.Showing;
+            CurrentAnimationState = PopupAnimationState.Showing;
             _onShowStarted?.Invoke();
 
-            showSequence.Play().SetDelay(_delay).OnComplete(() =>
+            showSequence.Play().OnComplete(() =>
             {
                 _onShowCompleted?.Invoke();
-                CurrentPopupAnimState = PopupAnimState.Showed;
+                CurrentAnimationState = PopupAnimationState.Showed;
             });
 
             if (_isDoAnimation is false)
@@ -95,16 +96,16 @@ namespace ExampleProject.UI.UIAnimation
                 showSequence.Complete();
             }
         }
-        public void StartHide(bool _isDoAnimation, float _delay, Action _onHideStarted, Action _onHideCompleted)
+        public void StartHide(bool _isDoAnimation, Action _onHideStarted, Action _onHideCompleted)
         {
             SetHideSequence();
-            CurrentPopupAnimState = PopupAnimState.Hiding;
+            CurrentAnimationState = PopupAnimationState.Hiding;
 
             _onHideStarted?.Invoke();
-            hideSequence.Play().SetDelay(_delay).OnComplete(() =>
+            hideSequence.Play().OnComplete(() =>
             {
                 _onHideCompleted?.Invoke();
-                CurrentPopupAnimState = PopupAnimState.Hidden;
+                CurrentAnimationState = PopupAnimationState.Hidden;
             });
 
             if (_isDoAnimation is false)
@@ -116,7 +117,7 @@ namespace ExampleProject.UI.UIAnimation
         #endregion
     }
 
-    public enum PopupAnimState
+    public enum PopupAnimationState
     {
         None,
         Showing,

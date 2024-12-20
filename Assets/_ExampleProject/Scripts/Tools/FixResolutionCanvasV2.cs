@@ -42,7 +42,7 @@ namespace ExampleProject.Tools
 
         void SetCanvasScalerMatch()
         {
-            ThisanvasScaler.matchWidthOrHeight = Helpers.IsWideScreen() ? longScreenMatch : shortScreenMatch;
+            ThisanvasScaler.matchWidthOrHeight = Helpers.IsLongScreen() ? longScreenMatch : shortScreenMatch;
         }
 
         #endregion
