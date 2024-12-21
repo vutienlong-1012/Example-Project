@@ -11,32 +11,51 @@ namespace ExampleProject.UI.BaseUI
 {
     public class BaseDropdown : MonoBehaviour, IPointerDownHandler
     {
+        #region Fields
+
         Dropdown dropdown;
+
+        #endregion
+
+        #region Properties
 
         [ShowInInspector]
         protected Dropdown ThisDropdown => dropdown = dropdown != null ? dropdown : GetComponent<Dropdown>();
+
+        #endregion
+
+        #region LifeCycle   
+
+
+
+        #endregion
+
+        #region Private Methods
 
         protected virtual void OnEnable()
         {
             ThisDropdown.onValueChanged.AddListener(ListenerMethod);
         }
-
-
         protected virtual void OnDisable()
         {
             ThisDropdown.onValueChanged.RemoveListener(ListenerMethod);
         }
-
         protected virtual void ListenerMethod(int _value)
         {
             SoundSystem.Instance.PlayUIClick();
             VibrationSystem.Instance.PlayVibration();
         }
 
+        #endregion
+
+        #region Public Methods
+
         public virtual void OnPointerDown(PointerEventData eventData)
         {
             SoundSystem.Instance.PlayUIClick();
             VibrationSystem.Instance.PlayVibration();
         }
+
+        #endregion
     }
 }

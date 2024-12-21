@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09635669f19c9fb479892e7e3467a7a0, type: 3}
-  m_Name: HomeBasePopupData
+  m_Name: SettingPopupData
   m_EditorClassIdentifier: 
-  id: 2
-  basePopupPrefab: {fileID: 1957570843, guid: 7ccaa210207e86b46a784eb4b3aaede0, type: 3}
+  id: 4
+  basePopupPrefab: {fileID: 4660142120734290401, guid: 25856c8da0dbc1442866cd332348327b,
+    type: 3}

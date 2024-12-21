@@ -17,7 +17,8 @@ namespace ExampleProject.Gameplay.Scenes
 
         #region Properties
 
-
+        UIManager UIManager => UIManager.instance;
+        LoadSceneManager LoadSceneManager => LoadSceneManager.instance;
 
         #endregion
 
@@ -36,14 +37,14 @@ namespace ExampleProject.Gameplay.Scenes
         #region Public Methods
         public void Init()
         {
-            UIManager.instance.StackCamera(mainCam);
+            UIManager.StackCamera(mainCam);
         }
         public void StartFakeLoad(Action _onComplete)
         {
 #if UNITY_EDITOR
-            LoadSceneManager.Instance.StartFakeLoadMainScene(SceneId.MainHome, _onComplete, editorFakeLoadTime);
+            LoadSceneManager.StartFakeLoadMainScene(SceneId.MainHome, _onComplete, editorFakeLoadTime);
 #else
-            LoadSceneManager.Instance.StartFakeLoadMainScene(SceneId.MainHome, _onComplete, fakeLoadTime);
+            LoadSceneManager.StartFakeLoadMainScene(SceneId.MainHome, _onComplete, fakeLoadTime);
 #endif
         }
 

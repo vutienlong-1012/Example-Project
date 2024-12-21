@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40bcf29f1b74053429a06d767d798155, type: 3}
-  m_Name: GameplaySceneData
+  m_Script: {fileID: 11500000, guid: 09635669f19c9fb479892e7e3467a7a0, type: 3}
+  m_Name: DevModePopupData
   m_EditorClassIdentifier: 
-  id: 3
-  scene: {fileID: 102900000, guid: c1d1d5277e586344d8f77b168792a7a0, type: 3}
+  id: 1
+  basePopupPrefab: {fileID: 0}

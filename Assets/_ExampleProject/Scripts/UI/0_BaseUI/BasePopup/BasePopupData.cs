@@ -18,9 +18,10 @@ namespace ExampleProject.UI.BaseUI.BasePopup
     public enum PopupId
     {
         None = 0,
-        LoadingScenePopup = 1,
-        HomePopup = 2,
-        SettingPopup = 3,
-        DevModePopup = 4,
+        DevModePopup = 1,
+        LoadingScenePopup = 2,
+        HomePopup = 3,
+        SettingPopup = 4,
+        Gameplay = 5,
     }
 }

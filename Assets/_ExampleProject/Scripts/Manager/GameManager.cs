@@ -31,6 +31,8 @@ namespace ExampleProject.Manager
         EventDispatcher EventDispatcher => EventDispatcher.Instance;
         FakeLoadController FakeLoadController => FakeLoadController.instance;
         MainHomeController MainHomeController => MainHomeController.instance;
+        LoadSceneManager LoadSceneManager => LoadSceneManager.instance;
+        GameplayController GameplayController => GameplayController.instance;
         #endregion
 
         #region LifeCycle   
@@ -77,7 +79,10 @@ namespace ExampleProject.Manager
         }
         void HandlePlayingScene()
         {
-
+            LoadSceneManager.LoadScene(SceneId.Gameplay, () =>
+            {
+                GameplayController.Init();
+            });
         }
 
         #endregion
