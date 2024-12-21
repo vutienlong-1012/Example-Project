@@ -11,10 +11,10 @@ namespace ExampleProject.UI.UIAnimation
     {
         #region Fields
 
-        [Button, BoxGroup("Tween setting"), SerializeField] float showAlpha;
-        [Button, BoxGroup("Tween setting"), SerializeField] float hideAlpha;
-        [Button, BoxGroup("Tween setting"), SerializeField] Ease easeShow = Ease.Linear;
-        [Button, BoxGroup("Tween setting"), SerializeField] Ease easeHide = Ease.Linear;
+        [BoxGroup("Tween setting"), SerializeField] float showAlpha;
+        [BoxGroup("Tween setting"), SerializeField] float hideAlpha;
+        [BoxGroup("Tween setting"), SerializeField] Ease easeShow = Ease.Linear;
+        [BoxGroup("Tween setting"), SerializeField] Ease easeHide = Ease.Linear;
 
         Image image;
 

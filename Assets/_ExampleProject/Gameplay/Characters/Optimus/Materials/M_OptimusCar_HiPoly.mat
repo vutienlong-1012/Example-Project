@@ -133,7 +133,7 @@ Material:
     - _Blend: 0
     - _BumpScale: 1
     - _CastShadows: 1
-    - _CharacterHeight: 0.96
+    - _CharacterHeight: 3.31
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2

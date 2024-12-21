@@ -29,8 +29,8 @@ namespace ExampleProject.Manager
         }
         UIManager UIManager => UIManager.instance;
         EventDispatcher EventDispatcher => EventDispatcher.Instance;
-        FakeLoadMainScene FakeLoadMainScene => FakeLoadMainScene.Instance;
-        LoadSceneManager LoadSceneManager => LoadSceneManager.Instance;
+        FakeLoadController FakeLoadController => FakeLoadController.instance;
+        MainHomeController MainHomeController => MainHomeController.instance;
         #endregion
 
         #region LifeCycle   
@@ -56,9 +56,6 @@ namespace ExampleProject.Manager
                 case GameState.MainScene:
                     HandleMainSceneState();
                     break;
-                case GameState.LoadingNewScene:
-                    HandleLoadingNewSceneState();
-                    break;
                 case GameState.PlayingScene:
                     HandlePlayingScene();
                     break;
@@ -68,19 +65,19 @@ namespace ExampleProject.Manager
         }
         void HandleFakeLoadingMainSceneState()
         {
-            FakeLoadMainScene.StartFakeLoad();
+            FakeLoadController.Init();
+            FakeLoadController.StartFakeLoad(() =>
+            {
+                State = GameState.MainScene;
+            });
         }
         void HandleMainSceneState()
         {
-            UIManager.GetPopup(PopupId.HomePopup).Show();
-        }
-        void HandleLoadingNewSceneState()
-        {
-
+            MainHomeController.Init();
         }
         void HandlePlayingScene()
         {
-            LoadSceneManager.LoadScene(SceneId.Gameplay, null);
+
         }
 
         #endregion
@@ -103,7 +100,6 @@ namespace ExampleProject.Manager
         None,
         FakeLoadingMainScene,
         MainScene,
-        LoadingNewScene,
         PlayingScene,
     }
 }

@@ -9,10 +9,10 @@ namespace ExampleProject.UI.UIAnimation
     {
         #region Fields
 
-        [Button, BoxGroup("Tween setting"), SerializeField] Vector3 showPos;
-        [Button, BoxGroup("Tween setting"), SerializeField] Vector3 hidePos;
-        [Button, BoxGroup("Tween setting"), SerializeField] Ease easeShow = Ease.Linear;
-        [Button, BoxGroup("Tween setting"), SerializeField] Ease easeHide = Ease.Linear;
+        [BoxGroup("Tween setting"), SerializeField] Vector3 showPos;
+        [BoxGroup("Tween setting"), SerializeField] Vector3 hidePos;
+        [BoxGroup("Tween setting"), SerializeField] Ease easeShow = Ease.Linear;
+        [BoxGroup("Tween setting"), SerializeField] Ease easeHide = Ease.Linear;
 
         RectTransform rectTransform;
 
