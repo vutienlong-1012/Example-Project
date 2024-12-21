@@ -51,24 +51,29 @@ namespace ExampleProject.UI.UIAnimation
                 hideSequence.Join(_item.GetHideTween());
             }
         }
+        [Button(50), HorizontalGroup("1", 150)]
         void GetAllMenuItem()
         {
             popupItemList.Clear();
             popupItemList = Helpers.GetAllChildsComponent<PopupItem>(this.transform);
         }
+        [Button(25), VerticalGroup("1/2", 100)]
         void HideAllImmediately()
         {
             foreach (var item in popupItemList)
             {
                 item.HideImmediately();
             }
+            CurrentPopupAnimState = PopupAnimState.Hidden;
         }
+        [Button(25), VerticalGroup("1/2", 100)]
         void ShowAllImmediately()
         {
             foreach (var item in popupItemList)
             {
                 item.ShowImmediately();
             }
+            CurrentPopupAnimState = PopupAnimState.Showed;
         }
 
         #endregion

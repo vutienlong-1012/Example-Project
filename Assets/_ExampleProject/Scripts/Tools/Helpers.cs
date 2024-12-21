@@ -186,6 +186,30 @@ namespace ExampleProject.Tools
             RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasParent.transform as RectTransform, _screenPosition, _canvasParent.worldCamera, out Vector2 _localPosition);
             return _localPosition;
         }
+        public static void SetLeftRightTopBottom(RectTransform _rtf, float _left,
+            float _right, float _top, float _bottom)
+        {
+            _rtf.offsetMin = new Vector2(_left, _rtf.offsetMin.y);
+            _rtf.offsetMax = new Vector2(-_right, _rtf.offsetMax.y);
+            _rtf.offsetMax = new Vector2(_rtf.offsetMax.x, -_top);
+            _rtf.offsetMin = new Vector2(_rtf.offsetMin.x, _bottom);
+        }
+        public static void SetLeft(RectTransform _rtf, float _left)
+        {
+            _rtf.offsetMin = new Vector2(_left, _rtf.offsetMin.y);
+        }
+        public static void SetRight(RectTransform _rtf, float _right)
+        {
+            _rtf.offsetMax = new Vector2(-_right, _rtf.offsetMax.y);
+        }
+        public static void SetTop(RectTransform _rtf, float _top)
+        {
+            _rtf.offsetMax = new Vector2(_rtf.offsetMax.x, -_top);
+        }
+        public static void SetBottom(RectTransform _rtf, float _bottom)
+        {
+            _rtf.offsetMin = new Vector2(_rtf.offsetMin.x, _bottom);
+        }
         #endregion
 
         #region Raycast

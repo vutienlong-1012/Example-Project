@@ -28,6 +28,9 @@ namespace ExampleProject.Manager
             }
         }
         UIManager UIManager => UIManager.instance;
+        EventDispatcher EventDispatcher => EventDispatcher.Instance;
+        FakeLoadMainScene FakeLoadMainScene => FakeLoadMainScene.Instance;
+        LoadSceneManager LoadSceneManager => LoadSceneManager.Instance;
         #endregion
 
         #region LifeCycle   
@@ -44,7 +47,7 @@ namespace ExampleProject.Manager
 
         void ChangeState(GameState _state)
         {
-            EventDispatcher.Instance.Dispatch(EventName.OnBeforeGameStateChange, state);
+            EventDispatcher.Dispatch(EventName.OnBeforeGameStateChange, state);
             switch (_state)
             {
                 case GameState.FakeLoadingMainScene:
@@ -61,15 +64,15 @@ namespace ExampleProject.Manager
                     break;
             }
             Debug.Log("<color=yellow>Game State: </color>" + _state);
-            EventDispatcher.Instance.Dispatch(EventName.OnAfterGameStateChange, state);
+            EventDispatcher.Dispatch(EventName.OnAfterGameStateChange, state);
         }
         void HandleFakeLoadingMainSceneState()
         {
-            FakeLoadMainScene.instance.StartFakeLoad();
+            FakeLoadMainScene.StartFakeLoad();
         }
         void HandleMainSceneState()
         {
-            UIManager.instance.GetPopup(PopupId.HomePopup).Show();
+            UIManager.GetPopup(PopupId.HomePopup).Show();
         }
         void HandleLoadingNewSceneState()
         {
@@ -77,7 +80,7 @@ namespace ExampleProject.Manager
         }
         void HandlePlayingScene()
         {
-
+            LoadSceneManager.LoadScene(SceneId.Gameplay, null);
         }
 
         #endregion
