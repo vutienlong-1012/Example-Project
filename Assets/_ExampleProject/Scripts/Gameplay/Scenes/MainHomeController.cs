@@ -1,6 +1,8 @@
 using ExampleProject.Manager;
 using ExampleProject.Tools;
 using ExampleProject.UI.BaseUI.BasePopup;
+using ExampleProject.UI.GameplayPopup;
+using ExampleProject.UI.HomePopup;
 using UnityEngine;
 
 namespace ExampleProject.Gameplay.Scenes
@@ -27,7 +29,11 @@ namespace ExampleProject.Gameplay.Scenes
 
         #region Private Methods
 
-
+        void HideUnnecesaryPopup()
+        {
+            if (UIManager.IsHasPopup(PopupId.Gameplay, out GameplayPopup _gameplay))
+                _gameplay.SetIsDoAnimation(false).Hide();
+        }
 
         #endregion
 
@@ -36,6 +42,7 @@ namespace ExampleProject.Gameplay.Scenes
         public void Init()
         {
             UIManager.StackCamera(mainCam);
+            HideUnnecesaryPopup();
             UIManager.GetPopup(PopupId.HomePopup).Show();
         }
 

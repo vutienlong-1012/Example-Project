@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 3591862225950784114}
   - component: {fileID: 6112080916290224683}
   - component: {fileID: 7506453487337955700}
+  - component: {fileID: 6479491525379112083}
   m_Layer: 5
   m_Name: HomeButton
   m_TagString: Untagged
@@ -223,6 +224,18 @@ MonoBehaviour:
   hidePos: {x: -107.6, y: -15, z: 0}
   easeShow: 1
   easeHide: 1
+--- !u!114 &6479491525379112083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8766436888009679665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e2661d32ee6314caf0797d87953b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3131210115669539144
 PrefabInstance:
   m_ObjectHideFlags: 0

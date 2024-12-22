@@ -79,10 +79,8 @@ namespace ExampleProject.Manager
         }
         void HandlePlayingScene()
         {
-            LoadSceneManager.LoadScene(SceneId.Gameplay, () =>
-            {
-                GameplayController.Init();
-            });
+
+            GameplayController.Init();
         }
 
         #endregion

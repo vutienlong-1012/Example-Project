@@ -5,9 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ExampleProject.UI.HomePopup
+namespace ExampleProject.UI.GameplayPopup
 {
-    public class PlayButton : BaseButton
+    public class HomeButton : BaseButton
     {
         #region Fields
 
@@ -32,9 +32,9 @@ namespace ExampleProject.UI.HomePopup
         protected override void ListenerMethod()
         {
             base.ListenerMethod();
-            LoadSceneManager.Instance.LoadScene(SceneId.Gameplay, () =>
+            LoadSceneManager.Instance.LoadScene(SceneId.MainHome, () =>
             {
-                GameManager.Instance.State = GameState.PlayingScene;
+                GameManager.Instance.State = GameState.MainScene;
             });
         }
 

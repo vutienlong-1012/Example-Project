@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GameplayPopupData
   m_EditorClassIdentifier: 
   id: 5
-  basePopupPrefab: {fileID: 4660142120734290401, guid: 25856c8da0dbc1442866cd332348327b,
+  basePopupPrefab: {fileID: 7782332877973212839, guid: 39bcab73a5c4a6d4d95e6f673bae7393,
     type: 3}
