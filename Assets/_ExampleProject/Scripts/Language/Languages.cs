@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 
 namespace ExampleProject.Gameplay.Language
 {
-    [CreateAssetMenu(fileName = "Popups", menuName = "ScriptableObjects/Popups")]
+    [CreateAssetMenu(fileName = "Languages", menuName = "ScriptableObjects/Languages")]
     public class Languages : ScriptableObject
     {
         #region Fields

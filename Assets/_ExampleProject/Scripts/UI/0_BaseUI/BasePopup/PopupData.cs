@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace ExampleProject.UI.BaseUI.BasePopup
 {
-    [CreateAssetMenu(fileName = "BasePopupData", menuName = "ScriptableObjects/BasePopupData"), InlineEditor]
-    public class BasePopupData : ScriptableObject
+    [CreateAssetMenu(fileName = "PopupData", menuName = "ScriptableObjects/PopupData"), InlineEditor]
+    public class PopupData : ScriptableObject
     {
         #region Fields
 
