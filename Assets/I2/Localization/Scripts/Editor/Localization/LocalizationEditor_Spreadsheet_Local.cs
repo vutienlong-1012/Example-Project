@@ -26,14 +26,14 @@ namespace I2.Loc
 
 						string sPath = string.Empty;
 						try {
-						sPath = GameSystem.IO.Path.GetDirectoryName(sFileName);
+						sPath = System.IO.Path.GetDirectoryName(sFileName);
 						}
-						catch( GameSystem.Exception e){}
+						catch( System.Exception e){}
 
 						if (string.IsNullOrEmpty(sPath))
 							sPath = Application.dataPath + "/";
 
-						sFileName = GameSystem.IO.Path.GetFileName(sFileName);
+						sFileName = System.IO.Path.GetFileName(sFileName);
 						if (string.IsNullOrEmpty(sFileName))
 							sFileName = "Localization.csv";
 
@@ -211,9 +211,13 @@ namespace I2.Loc
 
             GUILayout.BeginHorizontal();
                 GUILayout.FlexibleSpace();
+                
+                GUILayout.BeginVertical();
                 EditorGUIUtility.labelWidth += 10;
                 EditorGUILayout.PropertyField(mProp_Spreadsheet_SpecializationAsRows, new GUIContent("Show Specializations as Rows", "true: Make each specialization a separate row (e.g. Term[VR]..., Term[Touch]....\nfalse: Merge specializations into same cell separated by [i2s_XXX]"));
+                EditorGUILayout.PropertyField(mProp_Spreadsheet_SortRows, new GUIContent("Sort Rows", "true: Sort each term by its name....\nfalse: Keep the terms order"));
                 EditorGUIUtility.labelWidth -= 10;
+                GUILayout.EndVertical();
             GUILayout.EndHorizontal();
 
 			
@@ -328,7 +332,7 @@ namespace I2.Loc
 		{
             LanguageSourceData source = GetSourceData();
 
-            string CSVstring = source.Export_CSV(null, Separator, mProp_Spreadsheet_SpecializationAsRows.boolValue);
+            string CSVstring = source.Export_CSV(null, Separator, mProp_Spreadsheet_SpecializationAsRows.boolValue, mProp_Spreadsheet_SortRows.boolValue);
 			File.WriteAllText (FileName, CSVstring, encoding);
 		}
 	}

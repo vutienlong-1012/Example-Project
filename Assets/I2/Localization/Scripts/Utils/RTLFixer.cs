@@ -198,7 +198,7 @@ namespace I2.Loc
     }
 
     /// <summary>
-    /// ResourceData Structure for conversion
+    /// Data Structure for conversion
     /// </summary>
     internal class ArabicMapping
     {

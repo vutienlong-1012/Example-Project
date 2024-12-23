@@ -171,8 +171,8 @@ namespace I2.Loc
             string SavedLanguage = PersistentStorage.GetSetting_String("I2 Language", string.Empty);
             string SysLanguage = GetCurrentDeviceLanguage();
 
-            // Try selecting the GameSystem Language
-            // But fallback to the first language found  if the GameSystem Language is not available in any source
+            // Try selecting the System Language
+            // But fallback to the first language found  if the System Language is not available in any source
 
 			if (!string.IsNullOrEmpty(SavedLanguage) && HasLanguage(SavedLanguage, Initialize: false, SkipDisabled:true))
             {
