@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using ExampleProject.Tools;
+using ExampleProject.Manager;
 using ExampleProject.GameSystem;
 
 namespace ExampleProject.UI.SettingPopup

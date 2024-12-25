@@ -3,7 +3,7 @@ using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 
 
-namespace ExampleProject.Tools
+namespace ExampleProject.Manager
 {
     public class UserDataManagerEditor : OdinEditorWindow
     {
@@ -11,22 +11,22 @@ namespace ExampleProject.Tools
         private static void OpenWindow()
         {
             GetWindow<UserDataManagerEditor>().Show();
-            UserData = VTLPlayerPrefs.GetObjectValue<UserData>(StringsSafeAccess.PREF_USER_DATA);
+            UserData = UserDataManager.UserData;
         }
 
-        [OnValueChanged(nameof(OnValidate)), ShowInInspector]
-        public static UserData UserData;
+        [ShowInInspector] public static UserData UserData;
 
 
         private void OnValidate()
         {
-            VTLPlayerPrefs.SetObjectValue(StringsSafeAccess.PREF_USER_DATA, UserData);
+            if (UserData != null)
+                UserDataManager.SetUserData(UserData);
         }
 
         [Button(ButtonSizes.Gigantic)]
         void Refresh()
         {
-            UserData = VTLPlayerPrefs.GetObjectValue<UserData>(StringsSafeAccess.PREF_USER_DATA);
-        }
+            UserData = UserDataManager.UserData;
+        }      
     }
 }

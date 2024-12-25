@@ -12,7 +12,6 @@ namespace ExampleProject.Gameplay.Language
         #region Fields
 
         [PreviewField] public Sprite flag;
-        public LanguageId id;
         public string code;
 
         #endregion

@@ -13,7 +13,7 @@ namespace ExampleProject.Gameplay.Language
         #region Fields
 
         [SerializeField] List<LanguageData> resourceDataList = new();
-        const string resourceFolderPath = "Data/Popups";
+        const string resourceFolderPath = "Data/Languages";
         static ResourceLoader<Languages> resourceLoader = new(resourceFolderPath);
 
         #endregion
@@ -42,9 +42,9 @@ namespace ExampleProject.Gameplay.Language
         {
             return resourceLoader.Resource.resourceDataList;
         }
-        public static LanguageData GetResourceData(LanguageId _id)
+        public static LanguageData GetResourceData(string _id)
         {
-            var _data = GetResourceDataList().Find(x => x.id.Equals(_id));
+            var _data = GetResourceDataList().Find(x => x.code.Equals(_id));
             return _data;
         }
 

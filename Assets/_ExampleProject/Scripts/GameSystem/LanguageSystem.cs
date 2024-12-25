@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using ExampleProject.Manager;
 using ExampleProject.Tools;
 
 namespace ExampleProject.GameSystem

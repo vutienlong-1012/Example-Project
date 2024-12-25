@@ -1,165 +1,158 @@
+using ExampleProject.Tools;
 using I2.Loc;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
-namespace ExampleProject.Tools
+namespace ExampleProject.Manager
 {
-    public class UserDataManager : MonoBehaviour
+    public class UserDataManager 
     {
         public static bool IsSoundOn
         {
-            get => userData.isSoundOn;
+            get => UserData.isSoundOn;
             set
             {
-                userData.isSoundOn = value;
+                UserData.isSoundOn = value;
                 SaveData();
             }
         }
-
         public static bool IsMusicOn
         {
-            get => userData.isMusicOn;
+            get => UserData.isMusicOn;
             set
             {
-                userData.isMusicOn = value;
+                UserData.isMusicOn = value;
                 SaveData();
             }
         }
-
         public static bool IsVibrationOn
         {
-            get => userData.isVibrationOn;
+            get => UserData.isVibrationOn;
             set
             {
-                userData.isVibrationOn = value;
+                UserData.isVibrationOn = value;
                 SaveData();
             }
         }
-
         public static string CurrentLanguage
         {
-            get => userData.currentLanguage;
+            get => UserData.currentLanguage;
             set
             {
-                userData.currentLanguage = value;
+                UserData.currentLanguage = value;
                 LocalizationManager.CurrentLanguage = value;
                 SaveData();
             }
         }
-
         public static int CountGamePlayed
         {
-            get => userData.countGamePlayed;
+            get => UserData.countGamePlayed;
             set
             {
-                userData.countGamePlayed = value;
+                UserData.countGamePlayed = value;
                 SaveData();
             }
         }
-
         public static bool IsCheatNoAd
         {
-            get => userData.isCheatNoAds;
+            get => UserData.isCheatNoAds;
             set
             {
-                userData.isCheatNoAds = value;
+                UserData.isCheatNoAds = value;
                 SaveData();
             }
         }
-
         public static bool IsShowFps
         {
-            get => userData.isShowFps;
+            get => UserData.isShowFps;
             set
             {
-                userData.isShowFps = value;
+                UserData.isShowFps = value;
                 SaveData();
             }
         }
-
         public static bool IsShowDebug
         {
-            get => userData.isShowDebug;
+            get => UserData.isShowDebug;
             set
             {
-                userData.isShowDebug = value;
+                UserData.isShowDebug = value;
                 SaveData();
             }
         }
-
         public static bool IsShowMaxMediationDebug
         {
-            get => userData.isShowMediationDebug;
+            get => UserData.isShowMediationDebug;
             set
             {
-                userData.isShowMediationDebug = value;
+                UserData.isShowMediationDebug = value;
                 SaveData();
             }
         }
-
         public static bool IsRated
         {
-            get => userData.isRated;
+            get => UserData.isRated;
             set
             {
-                userData.isRated = value;
+                UserData.isRated = value;
                 SaveData();
             }
         }
-
         public static bool IsShowRateAtLeastOne
         {
-            get => userData.isShowRateAtLeastOne;
+            get => UserData.isShowRateAtLeastOne;
             set
             {
-                userData.isShowRateAtLeastOne = value;
+                UserData.isShowRateAtLeastOne = value;
                 SaveData();
             }
         }
-
         public static int CurrentIndexShowRate
         {
-            get => userData.currentIndexShowRate;
+            get => UserData.currentIndexShowRate;
             set
             {
-                userData.currentIndexShowRate = value;
+                UserData.currentIndexShowRate = value;
                 SaveData();
             }
         }
-
         public static bool IsRemovedAds
         {
-            get => userData.isRemovedAds;
+            get => UserData.isRemovedAds;
             set
             {
-                userData.isRemovedAds = value;
+                UserData.isRemovedAds = value;
                 SaveData();
             }
         }
 
         #region User Data
-        static UserData userData;
 
+        public static UserData UserData { get; private set; }
+        public static void SetUserData(UserData _data)
+        {
+            UserData = _data;
+            SaveData();
+        }
         static UserDataManager()
         {
-            userData = GetData();
-            if (userData == null)
+            UserData = GetData();
+            if (UserData == null)
             {
-                userData = new UserData();
+                UserData = new();
                 SaveData();
             }
         }
         static void SaveData()
         {
-            VTLPlayerPrefs.SetObjectValue(StringsSafeAccess.PREF_USER_DATA, userData);
-            //ES3.Save(StringsSafeAccess.PREF_USER_DATA, userData);
+            VTLPlayerPrefs.SetObjectValue(StringsSafeAccess.PREF_USER_DATA, UserData);
         }
         static UserData GetData()
         {
             return VTLPlayerPrefs.GetObjectValue<UserData>(StringsSafeAccess.PREF_USER_DATA);
-            //return ES3.Load<UserData>(StringsSafeAccess.PREF_USER_DATA, new UserData()); 
         }
+
         #endregion
     }
 
