@@ -144,12 +144,12 @@ namespace ExampleProject.Manager
             isVibrationOn = true;
             currentLanguage = LocalizationManager.CurrentLanguage;
 
-            countGamePlayed = 0;
 
             isCheatNoAds = false;
             isShowFps = false;
             isShowDebug = false;
 
+            countGamePlayed = 0;
             fistTimePlay = DateTime.MinValue.ToString(CultureInfo.InvariantCulture);
         }
     }
