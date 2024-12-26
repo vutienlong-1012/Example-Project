@@ -28,7 +28,7 @@ namespace ExampleProject.UI.SettingPopup
 
         protected override void OnEnable()
         {
-            ThisToggle.isOn = UserDataManager.IsSoundOn;
+            ThisToggle.isOn = UserDataManager.SoundVolume == 1; ;
             base.OnEnable();
         }
 
@@ -38,7 +38,7 @@ namespace ExampleProject.UI.SettingPopup
 
         protected override void ListenerMethod(bool _value)
         {
-            SoundSystem.Instance.SetSound(_value);
+            SoundSystem.Instance.SetSound(_value == true ? 1 : 0);
             base.ListenerMethod(_value);
         }
 
