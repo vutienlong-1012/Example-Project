@@ -38,6 +38,7 @@ namespace ExampleProject.Gameplay.Scenes
         public void Init()
         {
             UIManager.StackCamera(mainCam);
+            UserDataManager.FistTimePlay = DateTime.Now;
         }
         public void StartFakeLoad(Action _onComplete)
         {

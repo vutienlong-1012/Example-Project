@@ -25,7 +25,7 @@ namespace ExampleProject.GameSystem
 
         private void OnEnable()
         {
-            musicAudioSource.mute = !UserDataManager.IsMusicOn;
+            musicAudioSource.volume = UserDataManager.MusicVolume;
         }
 
         #endregion
@@ -46,21 +46,14 @@ namespace ExampleProject.GameSystem
 
         public void PlayMusic(AudioClip _audioClip)
         {
-            if (!UserDataManager.IsMusicOn)
-            {
-                musicAudioSource.clip = _audioClip;
-                return;
-            }
-            else
-            {
-                musicAudioSource.clip = _audioClip;
-                musicAudioSource.Play();
-            }
+
+            musicAudioSource.clip = _audioClip;
+            musicAudioSource.Play();
         }
-        public void SetMusic(bool _value)
+        public void SetMusic(float _value)
         {
-            UserDataManager.IsMusicOn = _value;
-            musicAudioSource.mute = !UserDataManager.IsMusicOn;
+            UserDataManager.MusicVolume = _value;
+            musicAudioSource.volume = UserDataManager.MusicVolume;
         }
 
         #endregion

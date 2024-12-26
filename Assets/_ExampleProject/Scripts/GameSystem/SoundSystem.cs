@@ -45,28 +45,16 @@ namespace ExampleProject.GameSystem
 
         public void PlaySoundOneShot(AudioSource _audioSource, AudioClip _audioClip)
         {
-            if (!UserDataManager.IsSoundOn)
-                return;
-            else
-                _audioSource.PlayOneShot(_audioClip);
+            _audioSource.PlayOneShot(_audioClip, UserDataManager.SoundVolume);
         }
-        public void PlaySoundOneShot(AudioSource _audioSource, AudioClip _audioClip, float _volume)
-        {
-            if (!UserDataManager.IsSoundOn)
-                return;
-            else
-                _audioSource.PlayOneShot(_audioClip, _volume);
-        }
+
         public void PlayUIClick()
         {
-            if (!UserDataManager.IsSoundOn)
-                return;
-            else
-                uIAudioSource.PlayOneShot(uIOnClickAudioClip);
+            uIAudioSource.PlayOneShot(uIOnClickAudioClip, UserDataManager.SoundVolume);
         }
-        public void SetSound(bool _value)
+        public void SetSound(float _value)
         {
-            UserDataManager.IsSoundOn = _value;
+            UserDataManager.SoundVolume = _value;
         }
 
         #endregion

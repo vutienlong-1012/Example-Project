@@ -2,27 +2,28 @@ using ExampleProject.Tools;
 using I2.Loc;
 using Sirenix.OdinInspector;
 using System;
+using System.Globalization;
 using UnityEngine;
 
 namespace ExampleProject.Manager
 {
-    public class UserDataManager 
+    public class UserDataManager
     {
-        public static bool IsSoundOn
+        public static float SoundVolume
         {
-            get => UserData.isSoundOn;
+            get => float.Parse(UserData.soundVolume, CultureInfo.InvariantCulture);
             set
             {
-                UserData.isSoundOn = value;
+                UserData.soundVolume = value.ToString(CultureInfo.InvariantCulture);
                 SaveData();
             }
         }
-        public static bool IsMusicOn
+        public static float MusicVolume
         {
-            get => UserData.isMusicOn;
+            get => float.Parse(UserData.musicVolume, CultureInfo.InvariantCulture);
             set
             {
-                UserData.isMusicOn = value;
+                UserData.musicVolume = value.ToString(CultureInfo.InvariantCulture);
                 SaveData();
             }
         }
@@ -42,15 +43,6 @@ namespace ExampleProject.Manager
             {
                 UserData.currentLanguage = value;
                 LocalizationManager.CurrentLanguage = value;
-                SaveData();
-            }
-        }
-        public static int CountGamePlayed
-        {
-            get => UserData.countGamePlayed;
-            set
-            {
-                UserData.countGamePlayed = value;
                 SaveData();
             }
         }
@@ -81,48 +73,21 @@ namespace ExampleProject.Manager
                 SaveData();
             }
         }
-        public static bool IsShowMaxMediationDebug
+        public static int CountGamePlayed
         {
-            get => UserData.isShowMediationDebug;
+            get => UserData.countGamePlayed;
             set
             {
-                UserData.isShowMediationDebug = value;
+                UserData.countGamePlayed = value;
                 SaveData();
             }
         }
-        public static bool IsRated
+        public static DateTime FistTimePlay
         {
-            get => UserData.isRated;
+            get => DateTime.Parse(UserData.fistTimePlay, CultureInfo.InvariantCulture);
             set
             {
-                UserData.isRated = value;
-                SaveData();
-            }
-        }
-        public static bool IsShowRateAtLeastOne
-        {
-            get => UserData.isShowRateAtLeastOne;
-            set
-            {
-                UserData.isShowRateAtLeastOne = value;
-                SaveData();
-            }
-        }
-        public static int CurrentIndexShowRate
-        {
-            get => UserData.currentIndexShowRate;
-            set
-            {
-                UserData.currentIndexShowRate = value;
-                SaveData();
-            }
-        }
-        public static bool IsRemovedAds
-        {
-            get => UserData.isRemovedAds;
-            set
-            {
-                UserData.isRemovedAds = value;
+                UserData.fistTimePlay = value.ToString(CultureInfo.InvariantCulture);
                 SaveData();
             }
         }
@@ -160,28 +125,22 @@ namespace ExampleProject.Manager
     public class UserData
     {
 
-        public bool isSoundOn;
-        public bool isMusicOn;
-        public bool isVibrationOn;
-        public string currentLanguage;
+        [BoxGroup("System")] public string soundVolume;
+        [BoxGroup("System")] public string musicVolume;
+        [BoxGroup("System")] public bool isVibrationOn;
+        [BoxGroup("System")] public string currentLanguage;
 
-        public int countGamePlayed;
+        [BoxGroup("Develop")] public bool isCheatNoAds;
+        [BoxGroup("Develop")] public bool isShowFps;
+        [BoxGroup("Develop")] public bool isShowDebug;
 
-        public bool isCheatNoAds;
-        public bool isShowFps;
-        public bool isShowDebug;
-        public bool isShowMediationDebug;
-
-        public bool isRated;
-        public bool isShowRateAtLeastOne;
-        public int currentIndexShowRate;
-
-        public bool isRemovedAds;
+        [BoxGroup("Data")] public int countGamePlayed;
+        [BoxGroup("Data")] public string fistTimePlay;
 
         public UserData()
         {
-            isSoundOn = true;
-            isMusicOn = true;
+            soundVolume = "1";
+            musicVolume = "1";
             isVibrationOn = true;
             currentLanguage = LocalizationManager.CurrentLanguage;
 
@@ -190,13 +149,8 @@ namespace ExampleProject.Manager
             isCheatNoAds = false;
             isShowFps = false;
             isShowDebug = false;
-            isShowMediationDebug = false;
 
-            isRated = false;
-            isShowRateAtLeastOne = false;
-            currentIndexShowRate = 0;
-
-            isRemovedAds = false;
+            fistTimePlay = DateTime.MinValue.ToString(CultureInfo.InvariantCulture);
         }
     }
 }
