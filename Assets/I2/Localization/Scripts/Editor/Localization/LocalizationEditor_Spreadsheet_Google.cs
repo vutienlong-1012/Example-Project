@@ -370,9 +370,12 @@ namespace I2.Loc
 
             GUILayout.BeginHorizontal();
                 GUILayout.FlexibleSpace();
+                GUILayout.BeginVertical();
                 EditorGUIUtility.labelWidth += 10;
                 EditorGUILayout.PropertyField(mProp_Spreadsheet_SpecializationAsRows, new GUIContent("Show Specializations as Rows", "true: Make each specialization a separate row (e.g. Term[VR]..., Term[Touch]....\nfalse: Merge specializations into same cell separated by [i2s_XXX]"));
+                EditorGUILayout.PropertyField(mProp_Spreadsheet_SortRows, new GUIContent("Sort Rows", "true: Sort each term by its name....\nfalse: Keep the terms order"));
                 EditorGUIUtility.labelWidth -= 10;
+                GUILayout.EndVertical();
             GUILayout.EndHorizontal();
             GUILayout.Space(10);
 
@@ -574,7 +577,14 @@ namespace I2.Loc
 
 				if (string.IsNullOrEmpty(Error))
 				{
-					Result = Encoding.UTF8.GetString(mConnection_WWW.downloadHandler.data); //mConnection_WWW.text;
+					// Try first converting with the right encoding
+					var bytes = mConnection_WWW.downloadHandler.data;
+					if (bytes!=null)
+						Result = Encoding.UTF8.GetString(bytes); //mConnection_WWW.text;
+					
+					// Fallback to use the default encoding
+					else
+						Result = mConnection_WWW.downloadHandler.text;
 				}
 
 				StopConnectionWWW();

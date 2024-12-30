@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Popups
   m_EditorClassIdentifier: 
   resourceDataList:
-  - {fileID: 11400000, guid: 39bc68c19d811f44f949087dc91b8d97, type: 2}
+  - {fileID: 11400000, guid: cd18890be0ce7054cb04bc9729b06acc, type: 2}
   - {fileID: 11400000, guid: de197c42e4c7ed04d9e92e12912afb5a, type: 2}
+  - {fileID: 11400000, guid: 39bc68c19d811f44f949087dc91b8d97, type: 2}
   - {fileID: 11400000, guid: c5c7379bcf96a72479925afd09d28dfb, type: 2}
+  - {fileID: 11400000, guid: 3ee4fc3b333c65d48b584b4662ae4a69, type: 2}

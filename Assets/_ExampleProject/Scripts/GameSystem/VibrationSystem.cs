@@ -4,6 +4,7 @@ using ExampleProject.Tools;
 using UnityEngine;
 using Lofelt.NiceVibrations;
 using Sirenix.OdinInspector;
+using ExampleProject.Manager;
 
 namespace ExampleProject.GameSystem
 {

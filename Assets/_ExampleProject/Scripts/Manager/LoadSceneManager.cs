@@ -45,30 +45,6 @@ namespace ExampleProject.Manager
 
         #region Public Methods
 
-        public void LoadScene(SceneId _sceneID, Action _onCompleteLoading)
-        {
-            Debug.Log("<color=yellow>Loading scene: </color>" + _sceneID);
-            CurrentSceneId = _sceneID;
-            loadingPopup = (LoadingScenePopup)UIManager.GetPopup(PopupId.LoadingScenePopup);
-            loadingPopup.Show();
-
-            StartCoroutine(_AsyncLoad());
-
-            IEnumerator _AsyncLoad()
-            {
-                AsyncOperation _asyncLoad;
-
-                _asyncLoad = SceneManager.LoadSceneAsync(Scenes.GetResourceData(_sceneID).SceneName);
-                while (!_asyncLoad.isDone)
-                {
-                    loadingPopup.SetProgress(_asyncLoad.progress);
-                    yield return null;
-                }
-                loadingPopup.Hide();
-                _onCompleteLoading?.Invoke();
-            }
-        }
-
         public void StartFakeLoadMainScene(SceneId _sceneID, Action _onCompleteAction, float _fakeTime)
         {
             loadingPopup = (LoadingScenePopup)UIManager.GetPopup(PopupId.LoadingScenePopup);
@@ -105,7 +81,29 @@ namespace ExampleProject.Manager
                 };
             }
         }
+        public void LoadScene(SceneId _sceneID, Action _onCompleteLoading)
+        {
+            Debug.Log("<color=yellow>Loading scene: </color>" + _sceneID);
+            CurrentSceneId = _sceneID;
+            loadingPopup = (LoadingScenePopup)UIManager.GetPopup(PopupId.LoadingScenePopup);
+            loadingPopup.Show();
 
+            StartCoroutine(_AsyncLoad());
+
+            IEnumerator _AsyncLoad()
+            {
+                AsyncOperation _asyncLoad;
+
+                _asyncLoad = SceneManager.LoadSceneAsync(Scenes.GetResourceData(_sceneID).SceneName);
+                while (!_asyncLoad.isDone)
+                {
+                    loadingPopup.SetProgress(_asyncLoad.progress);
+                    yield return null;
+                }
+                loadingPopup.Hide();
+                _onCompleteLoading?.Invoke();
+            }
+        }
         public void UnloadCurrentScene()
         {
             if (isUnloadingScene)
@@ -134,6 +132,7 @@ namespace ExampleProject.Manager
                 isUnloadingScene = false;
             }
         }
+
         #endregion
     }
 }

@@ -194,7 +194,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0
+  near clip plane: 0.01
   far clip plane: 10
   field of view: 60
   orthographic: 1
@@ -1198,8 +1198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207b507fc81ce564a9549143d662fb7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  longScreenMatch: 1
-  shortScreenMatch: 0
+  longScreenMatch: 0
+  shortScreenMatch: 1
 --- !u!1 &1568798700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,7 +1580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDontDestroyOnLoad: 0
   fakeLoadTime: 8
-  editorFakeLoadTime: 8
+  editorFakeLoadTime: 1
   mainCam: {fileID: 330585545}
 --- !u!1 &1991045575
 GameObject:

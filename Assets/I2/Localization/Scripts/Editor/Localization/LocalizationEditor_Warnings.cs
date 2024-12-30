@@ -19,7 +19,7 @@ namespace I2.Loc
 
 //That works as a GLOBAL source accessible in ALL scenes. That’s why its recommended to add all your translations there.
 
-//You don't need to instantiate that prefab into the scene, just click the prefab and add the ResourceData.
+//You don't need to instantiate that prefab into the scene, just click the prefab and add the Data.
 
 //Only use Sources in the scene when the localization is meant to be ONLY used there.
 //However, that's not advised and is only used in the Examples to keep them separated from your project localization.

@@ -96,7 +96,7 @@ namespace I2.Loc
 				if (!AutoEnablePlugins)
 					return;
 			}
-			//var tar = GameSystem.Enum.GetValues(typeof(BuildTargetGroup));
+			//var tar = System.Enum.GetValues(typeof(BuildTargetGroup));
 			foreach (BuildTargetGroup target in Enum.GetValues(typeof(BuildTargetGroup)))
 				if (target!=BuildTargetGroup.Unknown && !target.HasAttributeOfType<ObsoleteAttribute>())
 				{
@@ -219,11 +219,11 @@ namespace I2.Loc
                 if (!Directory.Exists(fullresFolder))
                     Directory.CreateDirectory(fullresFolder);
 
-                sourcePath = ResourcesFolder + "/" + LocalizationManager.GlobalSources[0] + ".loader";
+                sourcePath = ResourcesFolder + "/" + LocalizationManager.GlobalSources[0] + ".asset";
             }
             else
             {
-                sourcePath = sourcePath.Replace(".prefab", ".loader");
+                sourcePath = sourcePath.Replace(".prefab", ".asset");
             }
 
             AssetDatabase.CreateAsset(asset, sourcePath);
@@ -238,13 +238,13 @@ namespace I2.Loc
             Application.OpenURL(LocalizeInspector.HelpURL_Documentation);
         }
 
-        [MenuItem("Tools/I2 Localization/Open I2Languages.loader", false, 0)]
+        [MenuItem("Tools/I2 Localization/Open I2Languages.asset", false, 0)]
         public static void OpenGlobalSource()
         {
             CreateLanguageSources();
             LanguageSourceAsset GO = Resources.Load<LanguageSourceAsset>(LocalizationManager.GlobalSources[0]);
             if (GO == null)
-                Debug.Log("Unable to find Global Language at Assets/Resources/" + LocalizationManager.GlobalSources[0] + ".loader");
+                Debug.Log("Unable to find Global Language at Assets/Resources/" + LocalizationManager.GlobalSources[0] + ".asset");
             
             Selection.activeObject = GO;
         }
@@ -259,7 +259,7 @@ namespace I2.Loc
 			string ScriptsFolder = "Assets";
 			string ScriptText = LocalizationEditor.mScriptLocalizationHeader + "	}\n}";
 			
-			GameSystem.IO.File.WriteAllText(ScriptsFolder + "/ScriptLocalization.cs", ScriptText);
+			System.IO.File.WriteAllText(ScriptsFolder + "/ScriptLocalization.cs", ScriptText);
 			
 			AssetDatabase.SaveAssets();
 			AssetDatabase.Refresh();

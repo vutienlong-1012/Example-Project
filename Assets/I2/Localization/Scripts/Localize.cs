@@ -507,7 +507,7 @@ namespace I2.Loc
 		#endregion
 	
 		#region Utilities
-		// This can be used to set the language when a toggle is clicked
+		// This can be used to set the language when a button is clicked
 		public void SetGlobalLanguage( string Language )
 		{
 			LocalizationManager.CurrentLanguage = Language;

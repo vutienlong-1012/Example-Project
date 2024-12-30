@@ -472,7 +472,7 @@ namespace I2.Loc
 
 					Object Obj = null;
 
-					// Try getting the loader from the References section
+					// Try getting the asset from the References section
 					if (localizeCmp!=null)
 						Obj = localizeCmp.FindTranslatedObject<Object>(Translation);
 					if (Obj==null && source != null)

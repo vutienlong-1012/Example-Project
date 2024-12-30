@@ -86,7 +86,7 @@ namespace I2.Loc
 				byte[] buffer = UnityEngine.Windows.File.ReadAllBytes (Path);
 				Text = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
 			#else
-				/*using (GameSystem.IO.StreamReader reader = GameSystem.IO.File.OpenText(Path))
+				/*using (System.IO.StreamReader reader = System.IO.File.OpenText(Path))
 				{
 					Text = reader.ReadToEnd();
 				}*/

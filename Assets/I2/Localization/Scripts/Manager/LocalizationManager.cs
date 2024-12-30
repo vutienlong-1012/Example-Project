@@ -35,7 +35,7 @@ namespace I2.Loc
 
         public static string GetVersion()
 		{
-			return "2.8.20 f2";
+			return "2.8.22 f4";
 		}
 
 		public static int GetRequiredWebServiceVersion()

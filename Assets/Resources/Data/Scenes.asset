@@ -15,3 +15,4 @@ MonoBehaviour:
   resourceDataList:
   - {fileID: 11400000, guid: df3baa56fc4328d4ea44856158c0dca5, type: 2}
   - {fileID: 11400000, guid: 368b1c6c68d86f945af681fd6b65e461, type: 2}
+  - {fileID: 11400000, guid: 5c1bd8157c1e91446bf43a7101ee225f, type: 2}

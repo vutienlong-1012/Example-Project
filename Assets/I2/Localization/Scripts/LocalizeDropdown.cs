@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace I2.Loc
 {
 	#if !UNITY_5_0 && !UNITY_5_1
-    [AddComponentMenu("I2/Localization/Localize dropdown")]
+    [AddComponentMenu("I2/Localization/Localize Dropdown")]
 	public class LocalizeDropdown : MonoBehaviour
 	{
         public List<string> _Terms = new List<string>();

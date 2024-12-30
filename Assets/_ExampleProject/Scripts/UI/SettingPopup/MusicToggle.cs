@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using ExampleProject.Tools;
+using ExampleProject.Manager;
 using ExampleProject.GameSystem;
 
 namespace ExampleProject.UI.SettingPopup
@@ -26,7 +26,7 @@ namespace ExampleProject.UI.SettingPopup
 
         protected override void OnEnable()
         {
-            ThisToggle.isOn = UserDataManager.IsMusicOn;
+            ThisToggle.isOn = UserDataManager.MusicVolume == 1;
             base.OnEnable();
         }
 
@@ -36,7 +36,7 @@ namespace ExampleProject.UI.SettingPopup
 
         protected override void ListenerMethod(bool _value)
         {
-            MusicSystem.Instance.SetMusic(_value);
+            MusicSystem.Instance.SetMusic(_value == true ? 1 : 0);
             base.ListenerMethod(_value);
         }
 

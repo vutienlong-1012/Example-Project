@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using I2.Loc;
-using ExampleProject.Tools;
+using ExampleProject.Manager;
 using ExampleProject.UI.BaseUI;
 using ExampleProject.GameSystem;
+using ExampleProject.Gameplay.Language;
 
 namespace ExampleProject.UI.SettingPopup
 {
@@ -45,6 +46,7 @@ namespace ExampleProject.UI.SettingPopup
                 Dropdown.OptionData _optionData = new()
                 {
                     text = LocalizationManager.GetTranslation(_languages[i], true, 0, true, false, null, _languages[i], true),
+                    image = Languages.GetResourceData(_languages[i]).flag,
                 };
                 ThisDropdown.options.Add(_optionData);
 

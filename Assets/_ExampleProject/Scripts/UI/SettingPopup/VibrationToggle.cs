@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using ExampleProject.Tools;
 using ExampleProject.GameSystem;
+using ExampleProject.Manager;
 
 namespace ExampleProject.UI.SettingPopup
 {

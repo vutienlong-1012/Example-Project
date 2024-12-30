@@ -17,7 +17,7 @@ namespace ExampleProject.Gameplay.Scenes
 
         #region Properties
 
-        [ShowInInspector] public string SceneName => scene.name;
+        [ShowInInspector] public string SceneName => scene != null ? scene.name : "";
 
         #endregion
     }

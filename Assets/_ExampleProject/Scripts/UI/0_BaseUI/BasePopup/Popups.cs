@@ -12,7 +12,7 @@ namespace ExampleProject.UI.BaseUI.BasePopup
     {
         #region Fields
 
-        [SerializeField] List<BasePopupData> resourceDataList = new();
+        [SerializeField] List<PopupData> resourceDataList = new();
         const string resourceFolderPath = "Data/Popups";
         static ResourceLoader<Popups> resourceLoader = new(resourceFolderPath);
 
@@ -38,11 +38,11 @@ namespace ExampleProject.UI.BaseUI.BasePopup
 
         #region Public Methods
 
-        public static List<BasePopupData> GetResourceDataList()
+        public static List<PopupData> GetResourceDataList()
         {
             return resourceLoader.Resource.resourceDataList;
         }
-        public static BasePopupData GetResourceData(PopupId _id)
+        public static PopupData GetResourceData(PopupId _id)
         {
             var _data = GetResourceDataList().Find(x => x.id.Equals(_id));
             return _data;
