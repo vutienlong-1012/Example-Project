@@ -1,3 +1,4 @@
+
 using ExampleProject.Manager;
 using ExampleProject.Tools;
 using System;
@@ -42,11 +43,13 @@ namespace ExampleProject.Gameplay.Scenes
         }
         public void StartFakeLoad(Action _onComplete)
         {
+            float _loadTime;
 #if UNITY_EDITOR
-            LoadSceneManager.StartFakeLoadMainScene(SceneId.MainHome, _onComplete, editorFakeLoadTime);
+            _loadTime = editorFakeLoadTime;
 #else
-            LoadSceneManager.StartFakeLoadMainScene(SceneId.MainHome, _onComplete, fakeLoadTime);
+            _loadTime = fakeLoadTime;
 #endif
+            LoadSceneManager.StartFakeLoadMainScene(SceneId.MainHome, _onComplete, _loadTime);
         }
 
         #endregion
